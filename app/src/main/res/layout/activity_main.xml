@@ -2,85 +2,69 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent" android:layout_height="fill_parent"
-    android:background="#338fd7"
-    android:id="@+id/layoutContainer" android:orientation="horizontal">
+    android:id="@+id/layoutContainer" android:orientation="horizontal" android:background="#338fd7">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
 
-    <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.15">
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:gravity ="center"
-        android:layout_weight="0.7">
-        <!-- This is the part that's 70% of the total width. I'm inserting a LinearLayout and buttons.-->
-        <LinearLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="45dp"
+            android:layout_gravity="center"
+            android:text="CoinPoket"
+            android:textColor="#0a0a0a"
+            android:gravity="center">
+        </TextView>
+
+        <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="Añadir gasto"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:padding="20dp">
+        </Button>
+        <Button
+            android:text="Añadir ingreso"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+        </Button>
+        <Button
+            android:text="Consultar cuentas"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        </Button>
+        <Button
+            android:text="Objetivos"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+        </Button>
+        <Button
+            android:text="Deudas"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+        </Button>
 
-
-            <TextView
-                android:id="@+id/text_message"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="55dp"
-                android:text="CoinPoket"
-                android:textColor="#0a0a0a">
-            </TextView>
-
-            <Button
-                android:text="Añadir Gasto"
-                android:textSize="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:aligncomponent="0.7"
-                android:padding="20dp">
-            </Button>
-            <Button
-                android:text="Añadir Ingreso"
-                android:textSize="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
-            </Button>
-            <Button
-                android:text="Consultar cuentas"
-                android:textSize="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-            </Button>
-            <Button
-                android:text="Objetivos"
-                android:textSize="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
-            </Button>
-            <Button
-                android:text="Deudas"
-                android:textSize="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
-            </Button>
-
-        </LinearLayout>
-        <!-- 70% Width End-->
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.15">
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

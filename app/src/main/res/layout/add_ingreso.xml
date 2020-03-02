@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent" android:layout_height="fill_parent"
-    android:id="@+id/layoutContainer" android:orientation="vertical">
+    android:id="@+id/layoutContainer" android:orientation="vertical" android:background="#338fd7">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="20dp"
-                    android:text="Gasto puntual"
+                    android:text="Ingreso Puntual"
                     android:layout_marginBottom="20dp"
                     android:textColor="#0a0a0a"
                     android:background="#eb3612">
@@ -49,7 +49,7 @@
                     android:gravity="center"
                     android:textSize="30dp"
                     android:layout_marginTop="20dp"
-                    android:text="Concepto"
+                    android:text="Remitente"
                     android:layout_marginBottom="10dp"
                     android:textColor="#0a0a0a"
                     android:background="#fcfcf4">
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="20dp"
-                    android:text="Gasto puntual"
+                    android:text="Cambiar Ingreso"
                     android:layout_marginBottom="20dp"
                     android:textColor="#0a0a0a"
                     android:background="#fcfcf4">
@@ -169,13 +169,13 @@
                 android:layout_gravity="bottom">
 
                 <Button
-                    android:text="Individual"
+                    android:text="Deuda"
                     android:textSize="14dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </Button>
                 <Button
-                    android:text="Compartido"
+                    android:text="No deuda"
                     android:textSize="14dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -188,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="13dp"
-                android:text="Nombre del compañero"
+                android:text="Nombre del pagador"
                 android:textColor="#0a0a0a">
             </TextView>
 
