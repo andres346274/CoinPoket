@@ -1,220 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
-    android:id="@+id/layoutContainer" android:orientation="vertical">
+    android:id="@+id/layoutContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_weight="0.2">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp">
+            android:layout_weight="0.8"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginRight="10dp">
+                android:layout_weight="1"
+                android:gravity="center|center_horizontal"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#eb3612"
                     android:gravity="center"
-                    android:textSize="20dp"
                     android:text="Gasto puntual"
-                    android:layout_marginBottom="20dp"
                     android:textColor="#0a0a0a"
-                    android:background="#eb3612">
-                </TextView>
+                    android:textSize="30dp"></TextView>
+
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#fcfcf4"
                     android:gravity="center"
-                    android:textSize="30dp"
-                    android:layout_marginTop="20dp"
                     android:text="Concepto"
-                    android:layout_marginBottom="10dp"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="30dp"></TextView>
+
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#fcfcf4"
                     android:gravity="center"
-                    android:textSize="30dp"
                     android:text="Cantidad"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="30dp"></TextView>
+
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#fcfcf4"
                     android:gravity="center"
-                    android:textSize="25dp"
                     android:text="Fecha y Hora"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="30dp"></TextView>
+
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#fcfcf4"
                     android:gravity="center"
-                    android:textSize="25dp"
                     android:text="Localizacion"
-                    android:layout_marginTop="10dp"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="30dp"></TextView>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:layout_weight="0.5"
-                android:layout_marginLeft="10dp">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="20dp"
-                    android:text="Gasto puntual"
                     android:layout_marginBottom="20dp"
+                    android:background="#fcfcf4"
+                    android:gravity="center"
+                    android:text="Gasto puntual"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="20dp"></TextView>
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="30dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#fcfcf4"
+                    android:gravity="center"
                     android:text="Concepto"
-                    android:layout_marginBottom="10dp"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="30dp"></TextView>
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#fcfcf4"
                     android:gravity="center"
-                    android:textSize="30dp"
                     android:text="Cantidad"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="30dp"></TextView>
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#fcfcf4"
                     android:gravity="center"
-                    android:textSize="25dp"
                     android:text="Fecha y Hora"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="25dp"></TextView>
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="25dp"
-                    android:text="Localizacion"
                     android:layout_marginTop="10dp"
+                    android:background="#fcfcf4"
+                    android:gravity="center"
+                    android:text="Localizacion"
                     android:textColor="#0a0a0a"
-                    android:background="#fcfcf4">
-                </TextView>
+                    android:textSize="25dp"></TextView>
 
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:layout_gravity="bottom">
+            android:layout_width="match_parent"
+            android:layout_height="0"
+            android:layout_gravity="bottom"
+            android:layout_weight="0.2"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="bottom">
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
                 <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
                     android:text="Individual"
-                    android:textSize="14dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </Button>
+                    android:textSize="14dp"></Button>
+
                 <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
                     android:text="Compartido"
-                    android:textSize="14dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </Button>
+                    android:textSize="14dp"></Button>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="13dp"
-                android:text="Nombre del compañero"
-                android:textColor="#0a0a0a">
-            </TextView>
-
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="bottom">
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
 
-                <TextView
+                <EditText
+                    android:id="@+id/editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="25dp"
-                    android:layout_marginRight="10dp"
-                    android:text="Poner nomre aqui"
-                    android:textColor="#0a0a0a">
-                </TextView>
+                    android:layout_gravity="left"
+                    android:layout_weight="0.75"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:singleLine="true" />
 
                 <Button
-                    android:text="Añadir"
-                    android:textSize="14dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </Button>
+                    android:layout_height="wrap_content"
+                    android:text="Añadir"
+                    android:textSize="14dp"></Button>
 
             </LinearLayout>
 
@@ -222,23 +198,23 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_gravity="bottom"
-        android:layout_weight="0.8">
+        android:layout_weight="0.2"
+        android:gravity="center|center_vertical"
+        android:orientation="vertical">
 
         <Button
-            android:text="Actualizar"
-            android:textSize="30dp"
-            android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:background="#4fef3f"
+            android:gravity="center"
             android:padding="20dp"
-            android:background="#4fef3f">
-        </Button>
+            android:text="Actualizar"
+            android:textSize="30dp"></Button>
 
     </LinearLayout>
 
