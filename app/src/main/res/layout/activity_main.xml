@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:id="@+id/layoutContainer" android:orientation="horizontal" android:background="#338fd7">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="45dp"
+            android:layout_gravity="center"
+            android:text="CoinPoket"
+            android:textColor="#0a0a0a"
+            android:gravity="center">
+        </TextView>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Añadir gasto"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:padding="20dp">
+        </Button>
+        <Button
+            android:text="Añadir ingreso"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+        </Button>
+        <Button
+            android:text="Consultar cuentas"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        </Button>
+        <Button
+            android:text="Objetivos"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+        </Button>
+        <Button
+            android:text="Deudas"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+        </Button>
+
+    </LinearLayout>
+</LinearLayout>
