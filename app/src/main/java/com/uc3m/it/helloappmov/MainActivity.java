@@ -15,20 +15,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
     }
 
     //  Metodo que procesa la pulsacion (onClick) del boton
     //  se indica en el atributo "android:onClick" del elemento Button definido en XML
-    public void sendName(View view) {
+    public void add_gasto_main(View view) {
         // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
         Intent intent = new Intent(this, SecondActivity.class);
         // Obtenemos referencias a los elementos del interfaz grafico
-        EditText nameText = (EditText) findViewById(R.id.edit_message);
-        Button okButton = (Button) findViewById(R.id.button_ok);
+        //EditText nameText = (EditText) findViewById(R.id.edit_message);
+        Button okButton = (Button) findViewById(R.id.button_add_gasto);
 
         // Creamos la informacion a pasar entre actividades
         Bundle b = new Bundle();
-        b.putString("NAME", nameText.getText().toString());
+        //b.putString("NAME", nameText.getText().toString());
 
         // Asociamos esta informacion al intent
         intent.putExtras(b);
