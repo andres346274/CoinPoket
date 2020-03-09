@@ -10,18 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".add_gasto"
+            android:label="@string/title_activity_add_gasto"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SecondActivity"
             android:label="@string/title_activity_second"
-            android:parentActivityName="com.uc3m.it.helloappmov.MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
