@@ -18,8 +18,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SecondActivity"
-            android:label="@string/title_activity_second"
+            android:name=".add_gasto"
+            android:label="CoinPoket | Añadir Gasto"
+            android:parentActivityName="com.uc3m.it.helloappmov.MainActivity">
+        </activity>
+        <activity
+            android:name=".add_ingreso"
+            android:label="CoinPoket | Añadir Ingreso"
+            android:parentActivityName="com.uc3m.it.helloappmov.MainActivity">
+        </activity>
+        <activity
+            android:name=".consultar"
+            android:label="CoinPoket | Consultar Cuentas"
+            android:parentActivityName="com.uc3m.it.helloappmov.MainActivity">
+        </activity>
+        <activity
+            android:name=".objetivos"
+            android:label="CoinPoket | Objetivos"
+            android:parentActivityName="com.uc3m.it.helloappmov.MainActivity">
+        </activity>
+        <activity
+            android:name=".deudas"
+            android:label="CoinPoket | Deudas"
             android:parentActivityName="com.uc3m.it.helloappmov.MainActivity">
         </activity>
     </application>

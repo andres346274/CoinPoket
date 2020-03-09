@@ -43,7 +43,8 @@
             android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:onClick="add_ingreso_main">
         </Button>
         <Button
             android:id="@+id/button_consultar"
@@ -52,7 +53,8 @@
             android:layout_marginTop="20dp"
             android:padding="20dp"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:onClick="consultar_main">
         </Button>
         <Button
             android:id="@+id/button_objetivos"
@@ -61,7 +63,8 @@
             android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:onClick="objetivos_main">
         </Button>
         <Button
             android:id="@+id/button_deudas"
@@ -70,7 +73,8 @@
             android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:onClick="deudas_main">
         </Button>
 
     </LinearLayout>
