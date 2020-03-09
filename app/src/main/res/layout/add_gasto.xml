@@ -6,20 +6,19 @@
     android:id="@+id/layoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_weight="0.7"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="0.8"
             android:orientation="horizontal">
 
@@ -28,8 +27,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center|center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -38,11 +37,14 @@
                     android:gravity="center"
                     android:text="Gasto puntual"
                     android:textColor="#0a0a0a"
-                    android:textSize="30dp"></TextView>
+                    android:textSize="20dp"
+                    android:layout_marginBottom="20dp"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
                     android:background="#fcfcf4"
                     android:gravity="center"
                     android:text="Concepto"
@@ -52,6 +54,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="#fcfcf4"
                     android:gravity="center"
                     android:text="Cantidad"
@@ -61,20 +65,24 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="#fcfcf4"
                     android:gravity="center"
                     android:text="Fecha y Hora"
                     android:textColor="#0a0a0a"
-                    android:textSize="30dp"></TextView>
+                    android:textSize="25dp"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="#fcfcf4"
                     android:gravity="center"
                     android:text="Localizacion"
                     android:textColor="#0a0a0a"
-                    android:textSize="30dp"></TextView>
+                    android:textSize="25dp"></TextView>
 
             </LinearLayout>
 
@@ -82,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginRight="20dp">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -145,7 +154,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="bottom"
-            android:layout_weight="0.2"
+            android:layout_weight="0.3"
             android:orientation="vertical">
 
             <LinearLayout
@@ -156,17 +165,17 @@
 
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:text="Individual"
-                    android:textSize="14dp"></Button>
+                    android:textSize="10dp"></Button>
 
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:text="Compartido"
-                    android:textSize="14dp"></Button>
+                    android:textSize="10dp"></Button>
 
             </LinearLayout>
 
