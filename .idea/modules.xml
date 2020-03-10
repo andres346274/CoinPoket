@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file:///var/home/lab/alum0/03/32/636/Escritorio/coin_mirama/CoinPoket/CoinPoket.iml" filepath="/var/home/lab/alum0/03/32/636/Escritorio/coin_mirama/CoinPoket/CoinPoket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/CoinPoket-app.iml" filepath="$PROJECT_DIR$/app/CoinPoket-app.iml" group="CoinPoket/app" />
       <module fileurl="file:///var/home/lab/alum0/03/32/636/Escritorio/coin_mirama/CoinPoket/app/app.iml" filepath="/var/home/lab/alum0/03/32/636/Escritorio/coin_mirama/CoinPoket/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trabajo_rama_andres-CoinPoket.iml" filepath="$PROJECT_DIR$/trabajo_rama_andres-CoinPoket.iml" group="CoinPoket" />
     </modules>
   </component>
 </project>
