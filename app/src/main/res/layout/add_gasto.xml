@@ -6,14 +6,17 @@
     android:id="@+id/layoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#338fd7">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.7"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +31,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp">
+                android:layout_marginRight="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -91,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_marginRight="20dp">
+                android:layout_marginLeft="10dp">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -225,11 +228,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:background="#4fef3f"
             android:gravity="center"
             android:padding="20dp"
-            android:text="Actualizar"
-            android:textSize="30dp"></Button>
+            android:text="Añadir"
+            android:textSize="30dp"
+            android:background="@drawable/round_green_button"></Button>
 
     </LinearLayout>
 

@@ -9,8 +9,8 @@
         android:layout_height="fill_parent"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical"
         android:layout_gravity="center">
 
@@ -26,36 +26,52 @@
             </TextView>
 
             <Button
+                android:id="@+id/button_gastos_dia"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Gastos por dia"
+                android:text="Gastos por día"
                 android:layout_gravity="center"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:layout_marginTop="20dp"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:background="@drawable/shape_border"
+                android:onClick="gastos_dia_main">
             </Button>
             <Button
+                android:id="@+id/button_gastos_mes"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:text="Gastos por mes"
-                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:textSize="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:background="@drawable/shape_border"
+                android:onClick="gastos_mes_main">
             </Button>
             <Button
+                android:id="@+id/button_gastos_year"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:text="Gastos por año"
-                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:textSize="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:padding="20dp"
+                android:background="@drawable/shape_border"
+                android:onClick="gastos_year_main">
             </Button>
             <Button
-                android:text="Gastos totales"
-                android:textSize="30dp"
-                android:layout_marginTop="70dp"
+                android:id="@+id/button_gastos_total"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="30dp">
+                android:text="GASTOS TOTALES"
+                android:layout_gravity="center"
+                android:textSize="28dp"
+                android:layout_marginTop="30dp"
+                android:padding="20dp"
+                android:background="@drawable/shape_border"
+                android:onClick="gastos_total_main">
             </Button>
 
     </LinearLayout>
