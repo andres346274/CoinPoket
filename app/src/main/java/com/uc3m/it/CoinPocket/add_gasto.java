@@ -13,16 +13,27 @@ import java.util.Locale;
 
 public class add_gasto extends AppCompatActivity {
 
+    EditText concepto;
+    EditText cantidad;
     EditText etFecha;
     Calendar calendario = Calendar.getInstance();
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_gasto);
 
+        concepto = (EditText) findViewById(R.id.id_concepto);
+        cantidad = (EditText) findViewById(R.id.id_cantidad);
+        etFecha = findViewById(R.id.id_etFecha);
 
-        etFecha = findViewById(R.id.etFecha);
+
+
+
         etFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
