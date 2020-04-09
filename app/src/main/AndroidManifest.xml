@@ -40,11 +40,11 @@
                 android:parentActivityName="com.uc3m.it.CoinPocket.consultar">
             </activity>
                 <activity
-                    android:name="com.uc3m.it.CoinPocket.ScrollTable"
+                    android:name="com.uc3m.it.CoinPocket.Modificar_gastos_hoy"
                     android:label="CoinPocket | Modificar gasto"
                     android:parentActivityName="com.uc3m.it.CoinPocket.gastos_dia">
                 </activity>
-            <activity
+        <activity
                 android:name="com.uc3m.it.CoinPocket.gastos_mes"
                 android:label="CoinPocket | Gastos por mes"
                 android:parentActivityName="com.uc3m.it.CoinPocket.consultar">

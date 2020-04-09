@@ -257,6 +257,7 @@
                 android:gravity="center"
                 android:padding="20dp"
                 android:text="Añadir"
+                android:onClick="save_ingreso"
                 android:textSize="30dp"></Button>
 
         </LinearLayout>

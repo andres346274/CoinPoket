@@ -37,8 +37,9 @@
                 android:stretchColumns="1">
 
                 <TableRow>
-                    <TextView
+                    <EditText
                         android:layout_column="1"
+                        android:id="@+id/gasto_prueba"
                         android:text="Open..."
                         android:padding="3dip" />
                     <TextView
@@ -111,6 +112,7 @@
 
         <Button
             android:text="Modificar gastos"
+            android:id="@+id/button_modificar_gastos_hoy"
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
