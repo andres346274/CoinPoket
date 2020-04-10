@@ -12,4 +12,7 @@
 
     <string name="hello">Hello, %1$s!</string>
 
+    <string name="dbactv">baseDatos</string>
+    <string name="dbedit">baseDatosEdit</string>
+
 </resources>
