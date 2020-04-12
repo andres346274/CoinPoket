@@ -27,11 +27,15 @@ import static com.uc3m.it.CoinPocket.MainActivity.filename;
 
 public class add_gasto extends AppCompatActivity {
 
+    private static final int SHOW_SUB_ACTIVITY_ONE = 1;
+
     //EditText id_gasto;
     EditText concepto;
     EditText cantidad;
     EditText etFecha;
+    EditText localizacion;
     Button ButtonSaveGasto;
+    Button buttonLocalizacion;
     Calendar calendario = Calendar.getInstance();
 
 
@@ -46,10 +50,11 @@ public class add_gasto extends AppCompatActivity {
 
         concepto = (EditText) findViewById(R.id.id_concepto);
         cantidad = (EditText) findViewById(R.id.id_cantidad);
+        localizacion = (EditText) findViewById(R.id.id_localizacion);
         //id_gasto = (EditText) findViewById(R.id.id_gasto);
         etFecha = findViewById(R.id.id_etFecha);
         ButtonSaveGasto = (Button) findViewById(R.id.SaveGasto);
-
+        buttonLocalizacion = (Button) findViewById(R.id.id_button_localizacion);
 
 
         etFecha.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +75,35 @@ public class add_gasto extends AppCompatActivity {
             }
         });
 
+    }
+    public void add_localizacion(View view) {
+
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivityForResult(intent, SHOW_SUB_ACTIVITY_ONE);
+    }
+
+    @Override
+
+    public void onActivityResult(int requestCode,
+                                 int resultCode,
+                                 Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (SHOW_SUB_ACTIVITY_ONE) : {
+                if (resultCode == MapsActivity.RESULT_OK) {
+
+                    double lati = data.getDoubleExtra("LATITUD", -1);
+                    double longi = data.getDoubleExtra("LONGITUD", -1);
+
+                    String latitude = Double.valueOf(lati).toString();
+                    String longitude = Double.valueOf(longi).toString();
+
+                    localizacion.setText(latitude+", "+longitude);
+                }
+                break;
+            }
+
+        }
     }
 
 
@@ -95,6 +129,7 @@ public class add_gasto extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"Id Registro: " + idResultante, Toast.LENGTH_SHORT).show();
         db.close();
 
+        finish();
     }
 
 

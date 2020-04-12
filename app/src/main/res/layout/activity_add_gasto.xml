@@ -66,15 +66,13 @@
                 android:textColor="#0a0a0a"
                 android:textSize="30dp"></TextView>
 
-            <TextView
+            <Button
+                android:id="@+id/id_button_localizacion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#fcfcf4"
-                android:gravity="center"
-                android:text="Localizacion"
-                android:textColor="#0a0a0a"
-                android:textSize="30dp"></TextView>
+                android:onClick="add_localizacion"
+                android:text="Localización" />
 
         </LinearLayout>
 
@@ -101,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:hint="Max. 140 caracteres."
                 android:inputType="textPersonName"
                 android:maxLength="140" />
@@ -125,16 +124,14 @@
                 android:text=""
                 android:textColor="#0a0a0a"></EditText>
 
-            <TextView
+            <EditText
+                android:id="@+id/id_localizacion"
                 android:layout_width="match_parent"
-                android:id="@+id/id_local_gasto"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#fcfcf4"
                 android:gravity="center"
-                android:text="Localizacion"
-                android:textColor="#0a0a0a"
-                android:textSize="30dp"></TextView>
+                android:hint="Localización"
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
