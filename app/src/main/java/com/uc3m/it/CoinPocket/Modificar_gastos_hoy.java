@@ -66,8 +66,8 @@ public class Modificar_gastos_hoy extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView adapterView, View view, int i, long l) {
                 String name = adapterView.getItemAtPosition(i).toString();
-                char nameShow = name.charAt( 0 );
-                id_gasto_seleccionado = Character.toString( nameShow );
+                String[] nameShow = name.split( "#" );
+                id_gasto_seleccionado = nameShow[0];
                 //Toast.makeText(getApplicationContext(),"Id nameShow: " + nameShow, Toast.LENGTH_SHORT).show();
                 //Log.d(TAG, "onItemClick: You Clicked on " + name);
                 SQLiteDatabase db = conn.getReadableDatabase();
