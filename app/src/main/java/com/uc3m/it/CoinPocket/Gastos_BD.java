@@ -1,4 +1,9 @@
 package com.uc3m.it.CoinPocket;
+/**Código basado en las siguientes fuentes:
+
+ --> https://github.com/chenaoh/EjemploSQLite
+
+ */
 
 public class Gastos_BD {
 

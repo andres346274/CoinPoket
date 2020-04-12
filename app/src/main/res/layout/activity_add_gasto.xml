@@ -8,7 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#338fd7">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,6 +101,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:background="#fcfcf4"
                 android:hint="Max. 140 caracteres."
                 android:inputType="textPersonName"
                 android:maxLength="140" />
@@ -108,6 +110,8 @@
                 android:id="@+id/id_cantidad"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="#fcfcf4"
                 android:layout_weight="1"
                 android:inputType="numberDecimal" />
 
@@ -129,6 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#fcfcf4"
                 android:gravity="center"
                 android:hint="Localización"
                 android:inputType="textPersonName" />

@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -112,11 +113,14 @@ public class add_gasto extends AppCompatActivity {
         SQLiteDatabase db = newconn.getWritableDatabase();
 
         Integer id_gasto = 0;
+        ArrayList arra_compare = new ArrayList();
         Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS,null);
         while (cursor.moveToNext()){
+            arra_compare.add( cursor.getInt(0) );
+        }
+        while (arra_compare.contains( id_gasto )) {
             id_gasto = id_gasto + 1;
         }
-
 
         ContentValues values = new ContentValues();
         values.put(utilidades.CAMPO_ID_GASTO, id_gasto.toString());
@@ -126,10 +130,10 @@ public class add_gasto extends AppCompatActivity {
         Long idResultante=db.insert(utilidades.TABLA_GASTOS,utilidades.CAMPO_CONCEPTO_GASTO,values);
 
 
-        Toast.makeText(getApplicationContext(),"Id Registro: " + idResultante, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Gasto Registrado" + idResultante, Toast.LENGTH_SHORT).show();
         db.close();
+        returnHome();
 
-        finish();
     }
 
 
@@ -166,8 +170,16 @@ public class add_gasto extends AppCompatActivity {
 
         etFecha.setText(sdf.format(calendario.getTime()));
     }
+
+    public void returnHome() {
+
+        Intent home_intent = new Intent(getApplicationContext(),
+                MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        startActivity(home_intent);
+    }
 }
 
-//Fuente de la BD https://www.youtube.com/redirect?q=https%3A%2F%2Fgithub.com%2Fmitchtabian%2FSaveReadWriteDeleteSQLite&redir_token=AM04Oaop5J59AFPRyfVjP_A_3Et8MTU4NjQzMzUzM0AxNTg2MzQ3MTMz&event=video_description&v=aQAIMY-HzL8
+
 
 

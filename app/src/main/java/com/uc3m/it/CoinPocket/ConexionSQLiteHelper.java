@@ -1,5 +1,11 @@
 package com.uc3m.it.CoinPocket;
 
+/**Código basado en las siguientes fuentes:
+
+ --> https://github.com/chenaoh/EjemploSQLite
+
+ */
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,27 +34,4 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + utilidades.TABLA_GASTOS);
         onCreate(db);
     }
-
-    /**
-    public Cursor getData(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String[] projection = {
-                "_id",
-          utilidades.CAMPO_CONCEPTO_GASTO
-        };
-        String sorOrder = "_id" + "DESC";
-
-        return db.query(
-                utilidades.TABLA_GASTOS,
-                projection,
-                null, null, null, null,
-                sorOrder
-        );
-
-        /*String query = "SELECT * FROM " + utilidades.TABLA_GASTOS;
-        Cursor data = db.rawQuery(query, null);
-        return data;*/
-    //}
 }
-
-//Funte del codigo https://www.youtube.com/watch?v=ml0i0hnL_WY
