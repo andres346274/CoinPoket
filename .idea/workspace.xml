@@ -10,32 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a8b8585-24f1-48fb-8fcb-beaeed17d89c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CoinPoket_App-CoinPoket.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/DatabaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Modificar_gastos_hoy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/modificar_hoy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Gastos_BD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/modificarEliminar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/utilidades/utilidades.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_eliminar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/edit_data_bdweb.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/DatabaseHelper.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Modificar_gastos_hoy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Modificar_gastos_hoy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/add_gasto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/add_gasto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/add_ingreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/add_ingreso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/gastos_dia.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/gastos_dia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_gasto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_gasto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_ingreso.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_ingreso.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/gastos_dia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/gastos_dia.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trabajo_rama_andres-CoinPoket.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/modificar_hoy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/modificar_hoy.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,8 +56,8 @@
       <list>
         <option value="valueResourceFile" />
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>

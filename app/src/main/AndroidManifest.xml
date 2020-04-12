@@ -44,6 +44,11 @@
                     android:label="CoinPocket | Modificar gasto"
                     android:parentActivityName="com.uc3m.it.CoinPocket.gastos_dia">
                 </activity>
+                <activity
+                    android:name="com.uc3m.it.CoinPocket.modificarEliminar"
+                    android:label="CoinPocket | Modificar gasto"
+                    android:parentActivityName="com.uc3m.it.CoinPocket.Modificar_gastos_hoy">
+                </activity>
         <activity
                 android:name="com.uc3m.it.CoinPocket.gastos_mes"
                 android:label="CoinPocket | Gastos por mes"
