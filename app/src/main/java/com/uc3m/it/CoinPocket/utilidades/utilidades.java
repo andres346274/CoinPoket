@@ -3,7 +3,7 @@ package com.uc3m.it.CoinPocket.utilidades;
 public class utilidades {
 
     //Constantes campos tabla gastos
-    public static final String TABLA_GASTOS="Gastos_BD";
+    public static final String TABLA_GASTOS="GastosBD";
     public static final String CAMPO_ID_GASTO="id";
     public static final String CAMPO_CONCEPTO_GASTO="concepto";
     public static final String CAMPO_CANTIDAD_GASTO="cantidad";

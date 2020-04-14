@@ -8,7 +8,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -24,69 +23,69 @@
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.add_gasto"
+            android:name="com.uc3m.it.CoinPocket.AddGasto"
             android:label="CoinPocket | Añadir Gasto"
             android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.add_ingreso"
+            android:name="com.uc3m.it.CoinPocket.AddIngreso"
             android:label="CoinPocket | Añadir Ingreso"
             android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.consultar"
+            android:name="com.uc3m.it.CoinPocket.ConsultarMovimientos"
             android:label="CoinPocket | Consultar Cuentas"
             android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.gastos_dia"
+            android:name="com.uc3m.it.CoinPocket.GastosDia"
             android:label="CoinPocket | Gastos por día"
-            android:parentActivityName="com.uc3m.it.CoinPocket.consultar">
+            android:parentActivityName="com.uc3m.it.CoinPocket.ConsultarMovimientos">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.Modificar_gastos_hoy"
+            android:name="com.uc3m.it.CoinPocket.ModificarGastosHoy"
             android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.gastos_dia">
+            android:parentActivityName="com.uc3m.it.CoinPocket.GastosDia">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.modificarEliminar"
+            android:name="com.uc3m.it.CoinPocket.ModificarEliminar"
             android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.Modificar_gastos_hoy">
+            android:parentActivityName="com.uc3m.it.CoinPocket.ModificarGastosHoy">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.gastos_mes"
+            android:name="com.uc3m.it.CoinPocket.GastosMes"
             android:label="CoinPocket | Gastos por mes"
-            android:parentActivityName="com.uc3m.it.CoinPocket.consultar">
+            android:parentActivityName="com.uc3m.it.CoinPocket.ConsultarMovimientos">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.change_mes"
+            android:name="com.uc3m.it.CoinPocket.ChangeMes"
             android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.gastos_mes">
+            android:parentActivityName="com.uc3m.it.CoinPocket.GastosMes">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.gastos_year"
+            android:name="com.uc3m.it.CoinPocket.GastosYear"
             android:label="CoinPocket | Gastos por año"
-            android:parentActivityName="com.uc3m.it.CoinPocket.consultar">
+            android:parentActivityName="com.uc3m.it.CoinPocket.ConsultarMovimientos">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.change_year"
+            android:name="com.uc3m.it.CoinPocket.ChangeYear"
             android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.gastos_year">
+            android:parentActivityName="com.uc3m.it.CoinPocket.GastosYear">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.gastos_total"
+            android:name="com.uc3m.it.CoinPocket.GastosTotal"
             android:label="CoinPocket | Gastos por totales"
-            android:parentActivityName="com.uc3m.it.CoinPocket.consultar">
+            android:parentActivityName="com.uc3m.it.CoinPocket.ConsultarMovimientos">
         </activity>
 
         <meta-data
@@ -96,17 +95,17 @@
         <activity
             android:name="com.uc3m.it.CoinPocket.MapsActivity"
             android:label="CoinPocket | Mapa"
-            android:parentActivityName="com.uc3m.it.CoinPocket.add_gasto" >
+            android:parentActivityName="com.uc3m.it.CoinPocket.AddGasto" >
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.objetivos"
+            android:name="com.uc3m.it.CoinPocket.Objetivos"
             android:label="CoinPocket | Objetivos"
             android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.deudas"
+            android:name="com.uc3m.it.CoinPocket.Deudas"
             android:label="CoinPocket | Deudas"
             android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
         </activity>

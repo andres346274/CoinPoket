@@ -14,10 +14,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void add_gasto_main(View view) {
-        Intent intent = new Intent(this, add_gasto.class);
+        Intent intent = new Intent(this, AddGasto.class);
         Button okButton = (Button) findViewById(R.id.button_add_gasto);
 
         Bundle b = new Bundle();
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void add_ingreso_main(View view) {
-        Intent intent = new Intent(this, add_ingreso.class);
+        Intent intent = new Intent(this, AddIngreso.class);
         Button okButton = (Button) findViewById(R.id.button_add_ingreso);
 
         Bundle b = new Bundle();
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void consultar_main(View view) {
-        Intent intent = new Intent(this, Modificar_gastos_hoy.class);
+        Intent intent = new Intent(this, ModificarGastosHoy.class);
         Button okButton = (Button) findViewById(R.id.button_consultar);
 
         Bundle b = new Bundle();
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void objetivos_main(View view) {
-        Intent intent = new Intent(this, objetivos.class);
+
+        Intent intent = new Intent(this, Objetivos.class);
         Button okButton = (Button) findViewById(R.id.button_objetivos);
 
         Bundle b = new Bundle();
@@ -58,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deudas_main(View view) {
-        Intent intent = new Intent(this, deudas.class);
+
+        Intent intent = new Intent(this, Deudas.class);
         Button okButton = (Button) findViewById(R.id.button_deudas);
 
         Bundle b = new Bundle();

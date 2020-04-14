@@ -6,16 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class ScrollTable extends AppCompatActivity implements Horizontal_ScrollTable.ScrollViewListener, Vertical_ScrollTable.ScrollViewListener {
+public class ScrollTable extends AppCompatActivity implements HorizontalScrollTable.ScrollViewListener, VerticalScrollTable.ScrollViewListener {
 
     private static int SCREEN_HEIGHT;
     private static int SCREEN_WIDTH;
@@ -34,11 +32,11 @@ public class ScrollTable extends AppCompatActivity implements Horizontal_ScrollT
     TableRow tableRow;
     TableRow tableRowB;
 
-    Horizontal_ScrollTable horizontalScrollViewB;
-    Horizontal_ScrollTable horizontalScrollViewD;
+    HorizontalScrollTable horizontalScrollViewB;
+    HorizontalScrollTable horizontalScrollViewD;
 
-    Vertical_ScrollTable scrollViewC;
-    Vertical_ScrollTable scrollViewD;
+    VerticalScrollTable scrollViewC;
+    VerticalScrollTable scrollViewD;
 
     /*
          This is for counting how many columns are added in the row.
@@ -140,16 +138,16 @@ public class ScrollTable extends AppCompatActivity implements Horizontal_ScrollT
     }
 
     private void initializeScrollers(){
-        horizontalScrollViewB= new Horizontal_ScrollTable(getApplicationContext());
+        horizontalScrollViewB= new HorizontalScrollTable(getApplicationContext());
         horizontalScrollViewB.setPadding(0,0,0,0);
 
-        horizontalScrollViewD= new Horizontal_ScrollTable(getApplicationContext());
+        horizontalScrollViewD= new HorizontalScrollTable(getApplicationContext());
         horizontalScrollViewD.setPadding(0,0,0,0);
 
-        scrollViewC= new Vertical_ScrollTable(getApplicationContext());
+        scrollViewC= new VerticalScrollTable(getApplicationContext());
         scrollViewC.setPadding(0,0,0,0);
 
-        scrollViewD= new Vertical_ScrollTable(getApplicationContext());
+        scrollViewD= new VerticalScrollTable(getApplicationContext());
         scrollViewD.setPadding(0,0,0,0);
 
         horizontalScrollViewB.setLayoutParams(new ViewGroup.LayoutParams(SCREEN_WIDTH- (SCREEN_WIDTH/5), SCREEN_HEIGHT/20));
@@ -197,7 +195,7 @@ public class ScrollTable extends AppCompatActivity implements Horizontal_ScrollT
     }
 
     @Override
-    public void onScrollChanged(Horizontal_ScrollTable scrollView, int x, int y, int oldx, int oldy) {
+    public void onScrollChanged(HorizontalScrollTable scrollView, int x, int y, int oldx, int oldy) {
         if(scrollView == horizontalScrollViewB){
             horizontalScrollViewD.scrollTo(x,y);
         }
@@ -208,7 +206,7 @@ public class ScrollTable extends AppCompatActivity implements Horizontal_ScrollT
     }
 
     @Override
-    public void onScrollChanged(Vertical_ScrollTable scrollView, int x, int y, int oldx, int oldy) {
+    public void onScrollChanged(VerticalScrollTable scrollView, int x, int y, int oldx, int oldy) {
         if(scrollView == scrollViewC){
             scrollViewD.scrollTo(x,y);
         }
