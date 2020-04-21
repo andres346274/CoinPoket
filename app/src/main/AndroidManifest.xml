@@ -3,6 +3,7 @@
     package="com.uc3m.it.CoinPocket">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -13,8 +14,8 @@
 
         <activity
             android:name="com.uc3m.it.CoinPocket.MainActivity"
-            android:label="CoinPocket">
-
+            android:label="CoinPocket"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -91,11 +92,15 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAYHdcSBwDEqgxjnqBiMOchVGkf5yBiREM" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name="com.uc3m.it.CoinPocket.MapsActivity"
             android:label="CoinPocket | Mapa"
-            android:parentActivityName="com.uc3m.it.CoinPocket.AddGasto" >
+            android:parentActivityName="com.uc3m.it.CoinPocket.AddGasto"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         </activity>
 
         <activity

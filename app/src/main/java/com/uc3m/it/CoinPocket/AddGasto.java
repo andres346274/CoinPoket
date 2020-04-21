@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,9 +17,11 @@ import android.widget.Toast;
 
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class AddGasto extends AppCompatActivity {
@@ -86,10 +90,16 @@ public class AddGasto extends AppCompatActivity {
                     double lati = data.getDoubleExtra("LATITUD", -1);
                     double longi = data.getDoubleExtra("LONGITUD", -1);
 
-                    String latitude = Double.valueOf(lati).toString();
-                    String longitude = Double.valueOf(longi).toString();
+                    List<Address> addresses = null;
+                    Geocoder gc = new Geocoder(this, Locale.getDefault());
+                    try {
 
-                    localizacion.setText(latitude+", "+longitude);
+                        addresses = gc.getFromLocation(lati, longi, 10);
+                        localizacion.setText(addresses.get(0).getAddressLine(0));
+
+                    } catch (IOException e) {
+                        localizacion.setText("No se ha podido añadir la ubicación correctamente");
+                    }
                 }
                 break;
             }

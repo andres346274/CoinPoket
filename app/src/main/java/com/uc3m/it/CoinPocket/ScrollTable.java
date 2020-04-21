@@ -175,17 +175,17 @@ public class ScrollTable extends AppCompatActivity implements HorizontalScrollTa
 
         TableLayout.LayoutParams layoutParamsTableLayoutA= new TableLayout.LayoutParams(SCREEN_WIDTH/5, SCREEN_HEIGHT/20);
         tableLayoutA.setLayoutParams(layoutParamsTableLayoutA);
-        tableLayoutA.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        tableLayoutA.setBackgroundColor(getResources().getColor(R.color.color900white));
         this.relativeLayoutA.addView(tableLayoutA);
 
         TableLayout.LayoutParams layoutParamsTableLayoutB= new TableLayout.LayoutParams(SCREEN_WIDTH -(SCREEN_WIDTH/5), SCREEN_HEIGHT/20);
         tableLayoutB.setLayoutParams(layoutParamsTableLayoutB);
-        tableLayoutB.setBackgroundColor(getResources().getColor(R.color.colorSecondary));
+        tableLayoutB.setBackgroundColor(getResources().getColor(R.color.color700white));
         this.horizontalScrollViewB.addView(tableLayoutB);
 
         TableLayout.LayoutParams layoutParamsTableLayoutC= new TableLayout.LayoutParams(SCREEN_WIDTH/5, SCREEN_HEIGHT - (SCREEN_HEIGHT/20));
         tableLayoutC.setLayoutParams(layoutParamsTableLayoutC);
-        tableLayoutC.setBackgroundColor(getResources().getColor(R.color.colorSecondary));
+        tableLayoutC.setBackgroundColor(getResources().getColor(R.color.color700white));
         this.scrollViewC.addView(tableLayoutC);
 
         TableLayout.LayoutParams layoutParamsTableLayoutD= new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT);

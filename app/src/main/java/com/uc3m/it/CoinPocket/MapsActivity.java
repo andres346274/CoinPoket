@@ -120,7 +120,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng coordenadas = new LatLng(latitud, longitud);
 
 
-
         int zoomlevel = 17; // nivel de zoom (1: mundo, 5: continente,  10: ciudad,  15: calle,  20: edificios)
 
         CameraPosition camPos= new CameraPosition.Builder()
@@ -200,7 +199,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // http://developer.android.com/reference/com/google/android/gms/maps/CameraUpdateFactory.html
 
         // Pasamos el tipo de actualización configurada al método del mapa que mueve la cámara
-        mMap.moveCamera(update);
+        //mMap.moveCamera(update);
 
     }
     public void devolverLocalizacion(View view) {

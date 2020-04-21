@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color50"
     android:orientation="vertical">
 
     <Button
@@ -9,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="devolverLocalizacion"
-        android:text="Añadir esta ubicación" />
+        android:text="Añadir esta ubicación"
+        android:background="@drawable/button_simple_config"
+        android:textColor="@color/color50"
+        />
 
     <fragment
         android:id="@+id/map"

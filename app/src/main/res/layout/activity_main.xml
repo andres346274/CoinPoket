@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
-    android:id="@+id/layoutContainer" android:orientation="horizontal" android:background="#338fd7">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/layoutContainer"
+    android:orientation="horizontal"
+    android:background="@color/color50">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -14,73 +18,97 @@
         android:orientation="vertical"
         android:layout_gravity="center">
 
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="45dp"
             android:layout_gravity="center"
-            android:text="CoinPocket"
-            android:textColor="#0a0a0a"
-            android:gravity="center">
-        </TextView>
+            android:layout_weight="0.2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.75"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="CoinPocket"
+                android:textColor="#0a0a0a"
+                android:textSize="30sp"></TextView>
+
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/button_add_gasto"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Añadir gasto"
             android:layout_gravity="center"
-            android:textSize="20dp"
+            android:layout_weight="1"
             android:layout_marginTop="20dp"
-            android:padding="20dp"
+            android:background="@drawable/button_simple_config"
+            android:fontFamily="sans-serif-condensed-light"
             android:onClick="add_gasto_main"
-            android:background="@drawable/shape_border">
-        </Button>
+            android:padding="20dp"
+            android:text="Añadir gasto"
+            android:textColor="@color/color50"
+            android:textSize="20sp"></Button>
+
         <Button
             android:id="@+id/button_add_ingreso"
-            android:text="Añadir ingreso"
-            android:textSize="20dp"
-            android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_simple_config"
+            android:fontFamily="sans-serif-condensed-light"
             android:onClick="add_ingreso_main"
-            android:background="@drawable/shape_border">
-        </Button>
+            android:padding="20dp"
+            android:text="Añadir ingreso"
+            android:textColor="@color/color50"
+            android:textSize="20sp"></Button>
+
         <Button
             android:id="@+id/button_consultar"
-            android:text="Consultar cuentas"
-            android:textSize="20dp"
-            android:layout_marginTop="20dp"
-            android:padding="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_simple_config"
+            android:fontFamily="sans-serif-condensed-light"
             android:onClick="consultar_main"
-            android:background="@drawable/shape_border">
-        </Button>
+            android:padding="20dp"
+            android:text="Consultar cuentas"
+            android:textColor="@color/color50"
+            android:textSize="20sp"></Button>
+
         <Button
             android:id="@+id/button_objetivos"
-            android:text="Objetivos"
-            android:textSize="20dp"
-            android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_simple_config"
+            android:fontFamily="sans-serif-condensed-light"
             android:onClick="objetivos_main"
-            android:background="@drawable/shape_border">
-        </Button>
+            android:padding="20dp"
+            android:text="Objetivos"
+            android:textColor="@color/color50"
+            android:textSize="20sp"></Button>
+
         <Button
             android:id="@+id/button_deudas"
-            android:text="Deudas"
-            android:textSize="20dp"
-            android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_simple_config"
+            android:fontFamily="sans-serif-condensed-light"
             android:onClick="deudas_main"
-            android:background="@drawable/shape_border">
-        </Button>
+            android:padding="20dp"
+            android:text="Deudas"
+            android:textColor="@color/color50"
+            android:textSize="20sp"></Button>
 
     </LinearLayout>
 </LinearLayout>
