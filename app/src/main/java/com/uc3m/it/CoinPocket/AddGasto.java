@@ -29,40 +29,40 @@ public class AddGasto extends AppCompatActivity {
     private static final int SHOW_SUB_ACTIVITY_ONE = 1;
 
     //EditText id_gasto;
-    EditText concepto;
-    EditText cantidad;
-    EditText etFecha;
-    EditText localizacion;
-    Button ButtonSaveGasto;
-    Button buttonLocalizacion;
-    Calendar calendario = Calendar.getInstance();
+    EditText conceptoIngreso;
+    EditText cantidadGasto;
+    EditText etFechaGasto;
+    EditText localizacionGasto;
+    Button buttonSaveGasto;
+    Button buttonLocalizacionGasto;
+    Calendar calendarioGasto = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_gasto);
 
-        concepto = (EditText) findViewById(R.id.id_concepto);
-        cantidad = (EditText) findViewById(R.id.id_cantidad);
-        localizacion = (EditText) findViewById(R.id.id_localizacion);
+        conceptoIngreso = (EditText) findViewById(R.id.id_concepto_gasto);
+        cantidadGasto = (EditText) findViewById(R.id.id_cantidad_gasto);
+        localizacionGasto = (EditText) findViewById(R.id.id_localizacion_gasto);
         //id_gasto = (EditText) findViewById(R.id.id_gasto);
-        etFecha = findViewById(R.id.id_etFecha);
-        ButtonSaveGasto = (Button) findViewById(R.id.SaveGasto);
-        buttonLocalizacion = (Button) findViewById(R.id.id_button_localizacion);
+        etFechaGasto = findViewById(R.id.id_etFecha_gasto);
+        buttonSaveGasto = (Button) findViewById(R.id.id_save_gasto);
+        buttonLocalizacionGasto = (Button) findViewById(R.id.id_button_localizacion_gasto);
 
 
-        etFecha.setOnClickListener(new View.OnClickListener() {
+        etFechaGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(AddGasto.this, date, calendario
-                        .get(Calendar.YEAR), calendario.get(Calendar.MONTH),
-                        calendario.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(AddGasto.this, date, calendarioGasto
+                        .get(Calendar.YEAR), calendarioGasto.get(Calendar.MONTH),
+                        calendarioGasto.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
         ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_gastos", null, 1);
 
-        ButtonSaveGasto.setOnClickListener(new View.OnClickListener() {
+        buttonSaveGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 registrarGasto();
@@ -78,7 +78,6 @@ public class AddGasto extends AppCompatActivity {
     }
 
     @Override
-
     public void onActivityResult(int requestCode,
                                  int resultCode,
                                  Intent data) {
@@ -95,10 +94,10 @@ public class AddGasto extends AppCompatActivity {
                     try {
 
                         addresses = gc.getFromLocation(lati, longi, 10);
-                        localizacion.setText(addresses.get(0).getAddressLine(0));
+                        localizacionGasto.setText(addresses.get(0).getAddressLine(0));
 
                     } catch (IOException e) {
-                        localizacion.setText("No se ha podido añadir la ubicación correctamente");
+                        localizacionGasto.setText("No se ha podido añadir la ubicación correctamente");
                     }
                 }
                 break;
@@ -123,8 +122,8 @@ public class AddGasto extends AppCompatActivity {
 
         ContentValues values = new ContentValues();
         values.put(utilidades.CAMPO_ID_GASTO, id_gasto.toString());
-        values.put(utilidades.CAMPO_CONCEPTO_GASTO, concepto.getText().toString());
-        values.put(utilidades.CAMPO_CANTIDAD_GASTO, cantidad.getText().toString());
+        values.put(utilidades.CAMPO_CONCEPTO_GASTO, conceptoIngreso.getText().toString());
+        values.put(utilidades.CAMPO_CANTIDAD_GASTO, cantidadGasto.getText().toString());
 
         Long idResultante=db.insert(utilidades.TABLA_GASTOS,utilidades.CAMPO_CONCEPTO_GASTO,values);
 
@@ -155,9 +154,9 @@ public class AddGasto extends AppCompatActivity {
         public void onDateSet(DatePicker view, int year, int monthOfYear,
                               int dayOfMonth) {
             // TODO Auto-generated method stub
-            calendario.set(Calendar.YEAR, year);
-            calendario.set(Calendar.MONTH, monthOfYear);
-            calendario.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            calendarioGasto.set(Calendar.YEAR, year);
+            calendarioGasto.set(Calendar.MONTH, monthOfYear);
+            calendarioGasto.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             actualizarInput();
         }
 
@@ -167,7 +166,7 @@ public class AddGasto extends AppCompatActivity {
         String formatoDeFecha = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
-        etFecha.setText(sdf.format(calendario.getTime()));
+        etFechaGasto.setText(sdf.format(calendarioGasto.getTime()));
     }
 
     public void returnHome() {

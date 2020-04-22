@@ -47,8 +47,8 @@ public class ModificarGastosHoy extends AppCompatActivity {
         setContentView(R.layout.activity_modificar_hoy);
         mListView = (ListView) findViewById(R.id.listView);
         conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_gastos", null, 1);
-        campoConcepto = (EditText) findViewById(R.id.id_concepto);
-        campoCantidad = (EditText) findViewById(R.id.id_cantidad);
+        campoConcepto = (EditText) findViewById(R.id.id_concepto_gasto);
+        campoCantidad = (EditText) findViewById(R.id.id_cantidad_gasto);
 
 
 

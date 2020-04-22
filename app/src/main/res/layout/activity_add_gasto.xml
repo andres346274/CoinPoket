@@ -26,12 +26,12 @@
             android:background="@color/color50"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:text="Importe"
+            android:text="Importe del gasto"
             android:textColor="#0a0a0a"
             android:textSize="14sp"></TextView>
 
         <EditText
-            android:id="@+id/id_cantidad"
+            android:id="@+id/id_cantidad_gasto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -55,7 +55,7 @@
             android:textSize="14sp"></TextView>
 
         <EditText
-            android:id="@+id/id_etFecha"
+            android:id="@+id/id_etFecha_gasto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -81,7 +81,7 @@
             android:textSize="14sp"></TextView>
 
         <EditText
-            android:id="@+id/id_concepto"
+            android:id="@+id/id_concepto_gasto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.8"
@@ -102,7 +102,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/id_localizacion"
+                android:id="@+id/id_localizacion_gasto"
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -116,7 +116,7 @@
 
 
             <Button
-                android:id="@+id/id_button_localizacion"
+                android:id="@+id/id_button_localizacion_gasto"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -131,7 +131,7 @@
 
 
     <Button
-        android:id="@+id/SaveGasto"
+        android:id="@+id/id_save_gasto"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
