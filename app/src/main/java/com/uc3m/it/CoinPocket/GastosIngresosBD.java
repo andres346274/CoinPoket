@@ -1,23 +1,40 @@
 package com.uc3m.it.CoinPocket;
+
+import java.util.Calendar;
+
 /**Código basado en las siguientes fuentes:
 
  --> https://github.com/chenaoh/EjemploSQLite
 
  */
 
-public class GastosBD {
+public class  GastosIngresosBD {
 
+    private Integer gastoingreso;
     private Integer id;
     private String concepto;
     private String cantidad;
     private String fecha;
     private String localizacion;
 
-    public GastosBD(){
+    public GastosIngresosBD(){
+        this.gastoingreso = gastoingreso;
         this.id=id;
         this.concepto=concepto;
         this.cantidad=cantidad;
+        this.fecha =fecha;
+        this.localizacion = localizacion;
 
+    }
+
+    //GastoIngreso es un booleano hecho con Integer que indica si lo insertado es un gasto (1) o si es un ingreso (0)
+
+    public Integer getGastoingreso() {
+        return gastoingreso;
+    }
+
+    public void setGastoingreso(Integer gastoIngreso) {
+        this.gastoingreso = gastoIngreso;
     }
 
     public Integer getId() {

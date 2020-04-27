@@ -9,10 +9,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
@@ -28,25 +30,28 @@ public class AddGasto extends AppCompatActivity {
 
     private static final int SHOW_SUB_ACTIVITY_ONE = 1;
 
+    private static final String TAG = "ListDataActivity";
+
     //EditText id_gasto;
-    EditText conceptoIngreso;
+    EditText conceptoGasto;
     EditText cantidadGasto;
-    EditText etFechaGasto;
+    TextView etFechaGasto;
     EditText localizacionGasto;
     Button buttonSaveGasto;
     Button buttonLocalizacionGasto;
     Calendar calendarioGasto = Calendar.getInstance();
+    List<Address> addresses = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_gasto);
 
-        conceptoIngreso = (EditText) findViewById(R.id.id_concepto_gasto);
+        conceptoGasto = (EditText) findViewById(R.id.id_concepto_gasto);
         cantidadGasto = (EditText) findViewById(R.id.id_cantidad_gasto);
         localizacionGasto = (EditText) findViewById(R.id.id_localizacion_gasto);
-        //id_gasto = (EditText) findViewById(R.id.id_gasto);
-        etFechaGasto = findViewById(R.id.id_etFecha_gasto);
+        etFechaGasto = (TextView) findViewById(R.id.id_etFecha_gasto);
         buttonSaveGasto = (Button) findViewById(R.id.id_save_gasto);
         buttonLocalizacionGasto = (Button) findViewById(R.id.id_button_localizacion_gasto);
 
@@ -60,7 +65,7 @@ public class AddGasto extends AppCompatActivity {
             }
         });
 
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_gastos", null, 1);
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_gastos_ingresos", null, 1);
 
         buttonSaveGasto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,12 +94,13 @@ public class AddGasto extends AppCompatActivity {
                     double lati = data.getDoubleExtra("LATITUD", -1);
                     double longi = data.getDoubleExtra("LONGITUD", -1);
 
-                    List<Address> addresses = null;
+
                     Geocoder gc = new Geocoder(this, Locale.getDefault());
                     try {
 
                         addresses = gc.getFromLocation(lati, longi, 10);
                         localizacionGasto.setText(addresses.get(0).getAddressLine(0));
+                        Log.d(TAG, "--------------------->>>Mostrar Localizacion: " + addresses.get(0).getAddressLine(0) );
 
                     } catch (IOException e) {
                         localizacionGasto.setText("No se ha podido añadir la ubicación correctamente");
@@ -107,28 +113,36 @@ public class AddGasto extends AppCompatActivity {
     }
 
     private void registrarGasto(){
-        ConexionSQLiteHelper newconn = new ConexionSQLiteHelper(this, "bd_gastos", null, 1);
+        ConexionSQLiteHelper newconn = new ConexionSQLiteHelper(this, "bd_gastos_ingresos", null, 1);
         SQLiteDatabase db = newconn.getWritableDatabase();
 
         Integer id_gasto = 0;
         ArrayList arra_compare = new ArrayList();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
         while (cursor.moveToNext()){
-            arra_compare.add( cursor.getInt(0) );
+            arra_compare.add( cursor.getInt(1) );
         }
         while (arra_compare.contains( id_gasto )) {
             id_gasto = id_gasto + 1;
         }
 
+
+        String formatoDeFecha = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
+
         ContentValues values = new ContentValues();
-        values.put(utilidades.CAMPO_ID_GASTO, id_gasto.toString());
-        values.put(utilidades.CAMPO_CONCEPTO_GASTO, conceptoIngreso.getText().toString());
-        values.put(utilidades.CAMPO_CANTIDAD_GASTO, cantidadGasto.getText().toString());
+        values.put( utilidades.CAMPO_GASTO_INGRESO, "1");
+        values.put(utilidades.CAMPO_ID_GASTO_INGRESO, id_gasto.toString());
+        values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, conceptoGasto.getText().toString());
+        values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidadGasto.getText().toString());
+        values.put( utilidades.CAMPO_FECHA_GASTO_INGRESO, sdf.format(calendarioGasto.getTime()));
+        values.put( utilidades.CAMPO_LOCALIZACION_GASTO_INGRESO, addresses.get(0).getAddressLine(0) );
+        //Log.d(TAG, "--------------------->>>Values: " + values);
 
-        Long idResultante=db.insert(utilidades.TABLA_GASTOS,utilidades.CAMPO_CONCEPTO_GASTO,values);
+        Long idResultante=db.insert(utilidades.TABLA_GASTOS_INGRESOS_BD,null,values);
 
 
-        Toast.makeText(getApplicationContext(),"Gasto Registrado " + idResultante, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"Gasto Registrado " + idResultante, Toast.LENGTH_SHORT).show();
         db.close();
         returnHome();
 
@@ -167,6 +181,7 @@ public class AddGasto extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         etFechaGasto.setText(sdf.format(calendarioGasto.getTime()));
+
     }
 
     public void returnHome() {

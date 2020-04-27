@@ -23,7 +23,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(utilidades.CREAR_TABLA_GASTOS);
+        db.execSQL(utilidades.CREAR_TABLA_GASTOS_INGRESOS);
     }
 
     /**
@@ -31,7 +31,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper{
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAntigua, int versionNueva) {
-        db.execSQL("DROP TABLE IF EXISTS " + utilidades.TABLA_GASTOS);
+        db.execSQL("DROP TABLE IF EXISTS " + utilidades.TABLA_GASTOS_INGRESOS_BD);
         onCreate(db);
     }
 }
