@@ -12,8 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a8b8585-24f1-48fb-8fcb-beaeed17d89c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CoinPoket_Post_preEntrega-CoinPoket.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/CoinPoket-app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/git_CoinPocket-CoinPoket.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -27,21 +26,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoinPoket-pre_entrega_14.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/CoinPoket-pre_entrega_14-app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket_Post_preEntrega-CoinPoket.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddGasto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddGasto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddIngreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddIngreso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/GastosBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/GastosIngresosBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/HorizontalScrollTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarEliminar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarEliminar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarGastosHoy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarGastosHoy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ScrollTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/VerticalScrollTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/utilidades/utilidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/utilidades/utilidades.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_gasto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_gasto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_ingreso.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_ingreso.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_eliminar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_eliminar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Deudas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Deudas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_deudas.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_deudas.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,15 +71,15 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyClot2/MyClot2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.uc3m.it.CoinPocket" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
     </key>
   </component>
   <component name="RunDashboard">

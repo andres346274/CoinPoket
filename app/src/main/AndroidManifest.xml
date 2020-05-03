@@ -115,6 +115,12 @@
             android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
         </activity>
 
+        <activity
+            android:name="com.uc3m.it.CoinPocket.AddDeuda"
+            android:label="CoinPocket | Añadir Deuda"
+            android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
+        </activity>
+
     </application>
 
 </manifest>

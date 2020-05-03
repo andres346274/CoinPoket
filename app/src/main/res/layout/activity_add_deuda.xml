@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/color50">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:background="@color/color50"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Nombre"
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></TextView>
+        <EditText
+            android:id="@+id/id_persona_deuda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:gravity="top|left"
+            android:hint="Persona que debo o me debe."
+            android:ems="1"
+            android:maxLength="50"
+            android:paddingLeft="10dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Importe de la deuda"
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></TextView>
+
+        <EditText
+            android:id="@+id/id_cantidad_deuda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:hint="Click para añadir."
+            android:gravity="top|left"
+            android:inputType="numberDecimal"
+            android:paddingLeft="10dp"
+            android:textSize="14sp" />
+
+        <TextView
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Fecha"
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></TextView>
+
+        <EditText
+            android:id="@+id/id_etFecha_deuda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:focusable="false"
+            android:gravity="top|left"
+            android:hint="Click para añadir."
+            android:inputType="date"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Concepto"
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></TextView>
+
+        <EditText
+            android:id="@+id/id_concepto_deuda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:background="@color/color50"
+            android:gravity="top|left"
+            android:hint="Máx. 140 caracteres."
+            android:ems="1"
+            android:inputType="textMultiLine"
+            android:maxLength="140"
+            android:paddingLeft="10dp"
+            android:textSize="14sp" />
+
+        <RadioGroup
+            android:id="@+id/id_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:text="A pagar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:text="A deber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/id_save_deuda"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:layout_weight="0.1"
+        android:background="@drawable/button_simple_config"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Añadir"
+        android:textColor="@color/color50"
+        android:textSize="25sp"></Button>
+
+</LinearLayout>

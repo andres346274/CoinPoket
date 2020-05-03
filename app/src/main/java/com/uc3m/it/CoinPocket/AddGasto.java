@@ -142,7 +142,7 @@ public class AddGasto extends AppCompatActivity {
         Long idResultante=db.insert(utilidades.TABLA_GASTOS_INGRESOS_BD,null,values);
 
 
-        //Toast.makeText(getApplicationContext(),"Gasto Registrado " + idResultante, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Gasto Registrado " + idResultante, Toast.LENGTH_SHORT).show();
         db.close();
         returnHome();
 

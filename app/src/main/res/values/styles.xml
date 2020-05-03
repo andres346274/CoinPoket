@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/color500white</item>
         <item name="colorPrimaryDark">@color/color900white</item>
         <item name="colorAccent">@color/color700white</item>
-        <item name="fontFamily">sans-serif-condensed</item> <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
+        <item name="fontFamily">sans-serif-condensed-light</item> <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
     </style>
 
 </resources>
