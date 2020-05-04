@@ -12,14 +12,14 @@ import android.widget.RadioGroup;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 //https://codinginflow.com/tutorials/android/radio-buttons-radio-group
 // codigo del los radio buttons https://stackoverflow.com/questions/6440259/how-to-get-the-selected-index-of-a-radiogroup-in-android
 
-public class AddDeuda<checkedRadioButtonId> extends AppCompatActivity {
+public class AddDeuda extends AppCompatActivity {
 
-    private static final int SHOW_SUB_ACTIVITY_ONE = 1;
 
     //EditText id_gasto;
     EditText conceptoDeuda;
@@ -29,6 +29,7 @@ public class AddDeuda<checkedRadioButtonId> extends AppCompatActivity {
     Button buttonSaveDeuda;
     Calendar calendarioDeuda = Calendar.getInstance();
     RadioGroup radioGroup;
+    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,8 @@ public class AddDeuda<checkedRadioButtonId> extends AppCompatActivity {
         etFechaDeuda = findViewById(R.id.id_etFecha_deuda);
         buttonSaveDeuda = (Button) findViewById(R.id.id_save_deuda);
         radioGroup = (RadioGroup)findViewById(R.id.id_radio_group);
+
+        etFechaDeuda.setText(date_n);
 
         etFechaDeuda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +88,7 @@ public class AddDeuda<checkedRadioButtonId> extends AppCompatActivity {
     };
 
     private void actualizarInput() {
-        String formatoDeFecha = "MM/dd/yy"; //In which you need put here
+        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         etFechaDeuda.setText(sdf.format(calendarioDeuda.getTime()));

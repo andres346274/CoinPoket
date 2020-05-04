@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -42,6 +43,7 @@ public class AddIngreso extends AppCompatActivity {
     Button buttonLocalizacionIngreso;
     Calendar calendarioIngreso = Calendar.getInstance();
     List<Address> addresses = null;
+    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class AddIngreso extends AppCompatActivity {
         etFechaIngreso = (TextView) findViewById(R.id.id_etFecha_ingreso);
         buttonSaveIngreso = (Button) findViewById(R.id.id_save_ingreso);
         buttonLocalizacionIngreso = (Button) findViewById(R.id.id_button_localizacion_ingreso);
+
+        etFechaIngreso.setText(date_n);
 
         etFechaIngreso.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +126,7 @@ public class AddIngreso extends AppCompatActivity {
             id_gasto = id_gasto + 1;
         }
 
-        String formatoDeFecha = "MM/dd/yy"; //In which you need put here
+        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         ContentValues values = new ContentValues();
@@ -158,7 +162,7 @@ public class AddIngreso extends AppCompatActivity {
 
     private void actualizarInput() {
 
-        String formatoDeFecha = "MM/dd/yy"; //In which you need put here
+        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         etFechaIngreso.setText(sdf.format(calendarioIngreso.getTime()));

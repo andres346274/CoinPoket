@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -41,6 +42,7 @@ public class AddGasto extends AppCompatActivity {
     Button buttonLocalizacionGasto;
     Calendar calendarioGasto = Calendar.getInstance();
     List<Address> addresses = null;
+    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class AddGasto extends AppCompatActivity {
         etFechaGasto = (TextView) findViewById(R.id.id_etFecha_gasto);
         buttonSaveGasto = (Button) findViewById(R.id.id_save_gasto);
         buttonLocalizacionGasto = (Button) findViewById(R.id.id_button_localizacion_gasto);
+
+        etFechaGasto.setText(date_n);
 
 
         etFechaGasto.setOnClickListener(new View.OnClickListener() {
@@ -94,16 +98,18 @@ public class AddGasto extends AppCompatActivity {
                     double lati = data.getDoubleExtra("LATITUD", -1);
                     double longi = data.getDoubleExtra("LONGITUD", -1);
 
+                    //localizacionGasto.setText(lati+","+longi);
 
                     Geocoder gc = new Geocoder(this, Locale.getDefault());
+
                     try {
 
                         addresses = gc.getFromLocation(lati, longi, 10);
                         localizacionGasto.setText(addresses.get(0).getAddressLine(0));
-                        Log.d(TAG, "--------------------->>>Mostrar Localizacion: " + addresses.get(0).getAddressLine(0) );
+                       // Log.d(TAG, "--------------------->>>Mostrar Localizacion: " + addresses.get(0).getAddressLine(0) );
 
                     } catch (IOException e) {
-                        localizacionGasto.setText("No se ha podido añadir la ubicación correctamente");
+                       localizacionGasto.setText("No se ha podido añadir la ubicación correctamente");
                     }
                 }
                 break;
@@ -127,7 +133,7 @@ public class AddGasto extends AppCompatActivity {
         }
 
 
-        String formatoDeFecha = "MM/dd/yy"; //In which you need put here
+        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         ContentValues values = new ContentValues();
@@ -177,7 +183,7 @@ public class AddGasto extends AppCompatActivity {
     };
 
     private void actualizarInput() {
-        String formatoDeFecha = "MM/dd/yy"; //In which you need put here
+        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         etFechaGasto.setText(sdf.format(calendarioGasto.getTime()));

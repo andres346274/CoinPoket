@@ -32,7 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Location localizacion;
-    private String saludo="HOLAAA";
+    private String mensaje ="UBICACIÓN ACTUAL";
     private final int REQUEST_PERMISSION_ACCESS_FINE_LOCATION=1;
 
 
@@ -131,7 +131,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.addMarker(new MarkerOptions()
                 .position(coordenadas)
-                .title(saludo))
+                .title(mensaje))
                 .showInfoWindow(); // si no se hace ésto sólo muestra mensaje cuando se pulsa marcador
 
         // Comprobamos si tenemos permiso para acceder a la localización
@@ -171,7 +171,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             MarkerOptions markerOpts = new MarkerOptions();
             markerOpts.position(position); // ubicación en el mapa (único requisito imprescindible)
 
-            markerOpts.title("Marker"); // título
+            markerOpts.title("UBICACIÓN SELECCIONADA"); // título
             markerOpts.snippet(coordText); // texto complementario al título
 
             Marker marker = mMap.addMarker(markerOpts);
