@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void consultar_main(View view) {
-        Intent intent = new Intent(this, ModificarGastosHoy.class);
+        Intent intent = new Intent(this, ListaGastosIngresos.class);
         Button okButton = (Button) findViewById(R.id.button_consultar);
 
         Bundle b = new Bundle();

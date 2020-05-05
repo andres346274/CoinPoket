@@ -20,7 +20,7 @@
         android:layout_weight="1"></ListView>
 
     <Button
-        android:id="@+id/id_add_objetivo"
+        android:id="@+id/id_button_add_objetivo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
@@ -28,6 +28,7 @@
         android:gravity="center"
         android:padding="15dp"
         android:text="Añadir objetivo"
+        android:onClick="add_objetivo"
         android:textColor="@color/color50"
         android:textSize="20sp"></Button>
 

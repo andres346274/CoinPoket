@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_add_deuda"
+                android:id="@+id/id_button_add_deuda"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -40,14 +40,14 @@
                 android:textSize="20sp"></Button>
 
             <Button
-                android:id="@+id/button_consultar_deudas"
+                android:id="@+id/id_button_consultar_deudas"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="60dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_simple_config"
-                android:onClick="add_consultar_deuda"
+                android:onClick="list_deudas"
                 android:padding="20dp"
                 android:text="Consultar deudas"
                 android:textColor="@color/color50"

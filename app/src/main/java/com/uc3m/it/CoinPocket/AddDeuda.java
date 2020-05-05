@@ -25,7 +25,7 @@ public class AddDeuda extends AppCompatActivity {
     EditText conceptoDeuda;
     EditText cantidadDeuda;
     EditText etFechaDeuda;
-    EditText localizacionGasto;
+    //EditText localizacionGasto;
     Button buttonSaveDeuda;
     Calendar calendarioDeuda = Calendar.getInstance();
     RadioGroup radioGroup;

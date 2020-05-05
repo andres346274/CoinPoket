@@ -9,6 +9,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,7 @@ public class AddGasto extends AppCompatActivity {
     //EditText id_gasto;
     EditText conceptoGasto;
     EditText cantidadGasto;
+    //TextView fecha;
     TextView etFechaGasto;
     EditText localizacionGasto;
     Button buttonSaveGasto;
@@ -54,8 +56,10 @@ public class AddGasto extends AppCompatActivity {
         cantidadGasto = (EditText) findViewById(R.id.id_cantidad_gasto);
         localizacionGasto = (EditText) findViewById(R.id.id_localizacion_gasto);
         etFechaGasto = (TextView) findViewById(R.id.id_etFecha_gasto);
+        //fecha = (TextView) findViewById(R.id.id_fecha);
         buttonSaveGasto = (Button) findViewById(R.id.id_save_gasto);
         buttonLocalizacionGasto = (Button) findViewById(R.id.id_button_localizacion_gasto);
+
 
         etFechaGasto.setText(date_n);
 

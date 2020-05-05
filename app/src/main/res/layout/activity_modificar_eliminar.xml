@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/concepto_modificar_eliminar"
+            android:id="@+id/id_concepto_modificar_eliminar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
@@ -25,7 +25,7 @@
             ></EditText>
 
         <TextView
-            android:id="@+id/fecha_modificar_eliminar"
+            android:id="@+id/id_fecha_modificar_eliminar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
@@ -35,10 +35,6 @@
             android:textSize="14sp"
             android:textColor="@android:color/black"
             ></TextView>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,7 +53,7 @@
                 android:textColor="@android:color/black"
                 ></TextView>
             <EditText
-                android:id="@+id/cantidad_modificar_eliminar"
+                android:id="@+id/id_cantidad_modificar_eliminar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.05"
@@ -76,7 +72,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
-                android:id="@+id/localizacion_modificar_eliminar"
+                android:id="@+id/id_localizacion_modificar_eliminar"
                 android:layout_width="match_parent"
                 android:layout_weight="0.7"
                 android:layout_height="match_parent"
@@ -107,7 +103,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/modificar_gasto_concreto"
+            android:id="@+id/id_modificar_gasto_concreto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -118,7 +114,7 @@
             ></Button>
 
         <Button
-            android:id="@+id/eliminar_gasto_concreto"
+            android:id="@+id/id_eliminar_gasto_concreto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

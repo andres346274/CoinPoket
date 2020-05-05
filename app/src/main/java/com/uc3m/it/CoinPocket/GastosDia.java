@@ -19,7 +19,7 @@ public class GastosDia extends AppCompatActivity {
         ButtonModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GastosDia.this, ModificarGastosHoy.class);
+                Intent intent = new Intent(GastosDia.this, ListaGastosIngresos.class);
                 startActivity(intent);
             }
         });

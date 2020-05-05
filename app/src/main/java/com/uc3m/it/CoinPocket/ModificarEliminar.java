@@ -46,7 +46,7 @@ public class ModificarEliminar extends AppCompatActivity {
 
     Calendar calendarioModificar = Calendar.getInstance();
 
-    ModificarGastosHoy seleccion = new ModificarGastosHoy();
+    ListaGastosIngresos seleccion = new ListaGastosIngresos();
 
     List<Address> addresses = null;
 
@@ -55,12 +55,12 @@ public class ModificarEliminar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_eliminar);
         conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_gastos_ingresos", null, 1);
-        campoConcepto = (EditText) findViewById(R.id.concepto_modificar_eliminar);
-        campoCantidad = (EditText) findViewById(R.id.cantidad_modificar_eliminar);
-        campofecha = (TextView) findViewById( R.id.fecha_modificar_eliminar );
-        campoLocalizacion = (EditText) findViewById( R.id.localizacion_modificar_eliminar );
-        modificar_gasto = (Button) findViewById( R.id.modificar_gasto_concreto );
-        eliminar_gasto = (Button) findViewById( R.id.eliminar_gasto_concreto );
+        campoConcepto = (EditText) findViewById(R.id.id_concepto_modificar_eliminar);
+        campoCantidad = (EditText) findViewById(R.id.id_cantidad_modificar_eliminar);
+        campofecha = (TextView) findViewById( R.id.id_fecha_modificar_eliminar);
+        campoLocalizacion = (EditText) findViewById( R.id.id_localizacion_modificar_eliminar);
+        modificar_gasto = (Button) findViewById( R.id.id_modificar_gasto_concreto);
+        eliminar_gasto = (Button) findViewById( R.id.id_eliminar_gasto_concreto);
         button_modificar_localizacion = (Button) findViewById(R.id.id_button_modificar_localizacion);
         positivo_negativo = (TextView) findViewById( R.id.id_positivo_negativo_modificar_eliminar );
 
@@ -208,7 +208,7 @@ public class ModificarEliminar extends AppCompatActivity {
     public void returnHome() {
 
         Intent home_intent = new Intent(getApplicationContext(),
-                ModificarGastosHoy.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                ListaGastosIngresos.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         startActivity(home_intent);
     }

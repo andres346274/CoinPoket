@@ -17,7 +17,18 @@ public class Deudas extends AppCompatActivity {
     public void add_deuda (View view) {
 
         Intent intent = new Intent(this, AddDeuda.class);
-        Button okButton = (Button) findViewById(R.id.button_add_deuda);
+        Button okButton = (Button) findViewById(R.id.id_button_add_deuda);
+
+        Bundle b = new Bundle();
+        intent.putExtras(b);
+
+        startActivity(intent);
+    }
+
+    public void list_deudas (View view) {
+
+        Intent intent = new Intent(this, ListaDeudas.class);
+        Button okButton = (Button) findViewById(R.id.id_button_consultar_deudas);
 
         Bundle b = new Bundle();
         intent.putExtras(b);

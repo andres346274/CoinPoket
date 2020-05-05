@@ -48,7 +48,7 @@
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.ModificarGastosHoy"
+            android:name="com.uc3m.it.CoinPocket.ListaGastosIngresos"
             android:label="CoinPocket | Modificar gasto"
             android:parentActivityName="com.uc3m.it.CoinPocket.GastosDia">
         </activity>
@@ -56,7 +56,7 @@
         <activity
             android:name="com.uc3m.it.CoinPocket.ModificarEliminar"
             android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.ModificarGastosHoy">
+            android:parentActivityName="com.uc3m.it.CoinPocket.ListaGastosIngresos">
         </activity>
 
         <activity
@@ -118,7 +118,25 @@
         <activity
             android:name="com.uc3m.it.CoinPocket.AddDeuda"
             android:label="CoinPocket | Añadir Deuda"
-            android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
+            android:parentActivityName="com.uc3m.it.CoinPocket.Deudas">
+        </activity>
+
+        <activity
+            android:name="com.uc3m.it.CoinPocket.ListaDeudas"
+            android:label="CoinPocket | Lista Deudas"
+            android:parentActivityName="com.uc3m.it.CoinPocket.Deudas">
+        </activity>
+
+        <activity
+            android:name="com.uc3m.it.CoinPocket.SaldarDeuda"
+            android:label="CoinPocket | Saldar Deuda"
+            android:parentActivityName="com.uc3m.it.CoinPocket.ListaDeudas">
+        </activity>
+
+        <activity
+            android:name="com.uc3m.it.CoinPocket.AddObjetivo"
+            android:label="CoinPocket | Fijar Objetivo"
+            android:parentActivityName="com.uc3m.it.CoinPocket.Objetivos">
         </activity>
 
     </application>
