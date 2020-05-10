@@ -44,19 +44,43 @@
 
         <TextView
             style="@style/Widget.AppCompat.TextView.SpinnerItem"
-            android:id="@+id/id_fecha_objetivo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/color50"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:text="Fecha PENSAR SI PONER DIAS O ALGO MAS"
+            android:text="Fecha incio"
             android:textColor="#0a0a0a"
             android:textSize="14sp"></TextView>
 
         <TextView
-            android:id="@+id/id_etFecha_obetivo"
+            android:id="@+id/id_etFecha_inicio_objetivo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:focusable="false"
+            android:gravity="top|left"
+            android:hint="Click para añadir."
+            android:inputType="date"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></TextView>
+        <TextView
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Fecha final"
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></TextView>
+        <TextView
+            android:id="@+id/id_etFecha_final_objetivo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -82,7 +106,7 @@
             android:textSize="14sp"></TextView>
 
         <EditText
-            android:id="@+id/id_concepto_objetivo"
+            android:id="@+id/id_motivo_objetivo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.8"
@@ -94,6 +118,29 @@
             android:maxLength="140"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
+
+        <RadioGroup
+            android:id="@+id/id_radio_group_objetivos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_objetivo_ahorro"
+                android:text="Objetivo de ahorro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radio_objetivo_gastomax"
+                android:text="Objetivo de gasto máximo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+        </RadioGroup>
 
     </LinearLayout>
 

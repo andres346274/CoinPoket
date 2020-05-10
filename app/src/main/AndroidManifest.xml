@@ -110,6 +110,13 @@
         </activity>
 
         <activity
+            android:name="com.uc3m.it.CoinPocket.ModificarObjetivo"
+            android:label="CoinPocket | Modificar Objetivo"
+            android:parentActivityName="com.uc3m.it.CoinPocket.Objetivos">
+        </activity>
+
+
+        <activity
             android:name="com.uc3m.it.CoinPocket.Deudas"
             android:label="CoinPocket | Deudas"
             android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
@@ -125,6 +132,12 @@
             android:name="com.uc3m.it.CoinPocket.ListaDeudas"
             android:label="CoinPocket | Lista Deudas"
             android:parentActivityName="com.uc3m.it.CoinPocket.Deudas">
+        </activity>
+
+        <activity
+            android:name="com.uc3m.it.CoinPocket.ModificarDeuda"
+            android:label="CoinPocket | Modificar Deuda"
+            android:parentActivityName="com.uc3m.it.CoinPocket.ListaDeudas">
         </activity>
 
         <activity

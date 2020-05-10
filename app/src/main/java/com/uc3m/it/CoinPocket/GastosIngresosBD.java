@@ -1,7 +1,5 @@
 package com.uc3m.it.CoinPocket;
 
-import java.util.Calendar;
-
 /**Código basado en las siguientes fuentes:
 
  --> https://github.com/chenaoh/EjemploSQLite

@@ -143,16 +143,27 @@ public class AddGasto extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put( utilidades.CAMPO_GASTO_INGRESO, "1");
         values.put(utilidades.CAMPO_ID_GASTO_INGRESO, id_gasto.toString());
-        values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, conceptoGasto.getText().toString());
-        values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidadGasto.getText().toString());
+        if(conceptoGasto.getText()!=null){
+            values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, conceptoGasto.getText().toString());
+        }else{
+            values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, "");
+        }
+        if(cantidadGasto.getText()!=null){
+            values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidadGasto.getText().toString());
+        }else {
+            values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, "0");
+        }
         values.put( utilidades.CAMPO_FECHA_GASTO_INGRESO, sdf.format(calendarioGasto.getTime()));
-        values.put( utilidades.CAMPO_LOCALIZACION_GASTO_INGRESO, addresses.get(0).getAddressLine(0) );
+        if(addresses!=null){
+            values.put( utilidades.CAMPO_LOCALIZACION_GASTO_INGRESO, addresses.get(0).getAddressLine(0) );
+        }
+
         //Log.d(TAG, "--------------------->>>Values: " + values);
 
         Long idResultante=db.insert(utilidades.TABLA_GASTOS_INGRESOS_BD,null,values);
 
 
-        Toast.makeText(getApplicationContext(),"Gasto Registrado " + idResultante, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Gasto Registrado", Toast.LENGTH_SHORT).show();
         db.close();
         returnHome();
 

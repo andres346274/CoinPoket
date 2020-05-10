@@ -132,16 +132,27 @@ public class AddIngreso extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put( utilidades.CAMPO_GASTO_INGRESO, "0" );
         values.put(utilidades.CAMPO_ID_GASTO_INGRESO, id_gasto.toString());
-        values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, conceptoIngreso.getText().toString());
-        values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidadIngreso.getText().toString());
+        if(conceptoIngreso.getText()!=null){
+            values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, conceptoIngreso.getText().toString());
+        }else{
+            values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, "");
+        }
+        if(cantidadIngreso.getText()!=null){
+            values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidadIngreso.getText().toString());
+        }else{
+            values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, "0");
+        }
         values.put( utilidades.CAMPO_FECHA_GASTO_INGRESO, sdf.format(calendarioIngreso.getTime()));
-        values.put( utilidades.CAMPO_LOCALIZACION_GASTO_INGRESO, addresses.get(0).getAddressLine(0) );
+        if(addresses!=null){
+            values.put( utilidades.CAMPO_LOCALIZACION_GASTO_INGRESO, addresses.get(0).getAddressLine(0) );
+        }
+
         Log.d(TAG, "--------------------->>>Values: " + values);
 
         Long idResultante=db.insert(utilidades.TABLA_GASTOS_INGRESOS_BD,null,values);
 
 
-        Toast.makeText(getApplicationContext(),"Ingreso Registrado " + idResultante, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Ingreso Registrado ", Toast.LENGTH_SHORT).show();
         db.close();
         returnHome();
 

@@ -99,7 +99,7 @@ public class ModificarEliminar extends AppCompatActivity {
     public void consultarGasto() {
         SQLiteDatabase db=conn.getReadableDatabase();
         String[] parametros= {seleccion.listaIDs.get( seleccion.posicionListaClick).split( "#" )[0]};
-        //Log.d(TAG, "------------------->>> Has entrado en:" + parametros );
+        //Log.d(TAG, "------------------->>> Parametros en deudas:" + parametros );
 
         try {
             Cursor cursor=db.rawQuery("SELECT * FROM " +utilidades.TABLA_GASTOS_INGRESOS_BD+" WHERE "+utilidades.CAMPO_ID_GASTO_INGRESO+"=? ",parametros);
@@ -197,7 +197,7 @@ public class ModificarEliminar extends AppCompatActivity {
     };
 
     private void actualizarInput() {
-        String formatoDeFecha = "MM/dd/yy"; //In which you need put here
+        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         campofecha.setText(sdf.format(calendarioModificar.getTime()));
