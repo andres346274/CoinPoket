@@ -22,9 +22,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;

@@ -17,12 +17,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.uc3m.it.CoinPocket.adapter.SpinnerAdapter;
 import com.uc3m.it.CoinPocket.data.RatioSingleton;
 import com.uc3m.it.CoinPocket.response.Ratio;
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
-
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -34,12 +32,15 @@ import java.util.Locale;
 
 public class AddIngreso extends AppCompatActivity {
 
+    //ANDRES
     private static final String TAG = "ListDataActivity";
 
     private static final int ACTIVITY_CREATE=0;
 
+    //Variable para recuperar latitud y longitud cuando lanzamos la activity de mapas
     private static final int SHOW_SUB_ACTIVITY_ONE = 1;
 
+    //Inicializacion de las variables de la activity
     EditText conceptoIngreso;
     EditText cantidadIngreso;
     TextView etFechaIngreso;
@@ -47,27 +48,27 @@ public class AddIngreso extends AppCompatActivity {
     Button buttonSaveIngreso;
     Button buttonLocalizacionIngreso;
     Calendar calendarioIngreso = Calendar.getInstance();
-    List<Address> addresses = null;
+    List<Address> addresses = null;//Variable para la utilizacion del geocoder
     Spinner moneda;
-    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());//Variable de la fecha actual
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ingreso);
 
+        //Asignacion de los componentes que usamos en la activity
         conceptoIngreso = (EditText) findViewById(R.id.id_concepto_ingreso);
         cantidadIngreso = (EditText) findViewById(R.id.id_cantidad_ingreso);
         localizacionIngreso = (EditText) findViewById(R.id.id_localizacion_ingreso);
         etFechaIngreso = (TextView) findViewById(R.id.id_etFecha_ingreso);
         buttonSaveIngreso = (Button) findViewById(R.id.id_save_ingreso);
         buttonLocalizacionIngreso = (Button) findViewById(R.id.id_button_localizacion_ingreso);
+        //Variable moneda para el ingreso de la moneda que usamos
         moneda = findViewById(R.id.moneda);
         moneda.setAdapter(new SpinnerAdapter(this, android.R.layout.simple_spinner_dropdown_item, RatioSingleton.getRatios()));
-
-
         etFechaIngreso.setText(date_n);
-
+        //Asignacion del escuchador por si modificamos la fecha
         etFechaIngreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +76,7 @@ public class AddIngreso extends AppCompatActivity {
                         calendarioIngreso.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
+        //Escuchador del boton del registro del ingreso
         buttonSaveIngreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,9 +84,8 @@ public class AddIngreso extends AppCompatActivity {
             }
         });
 
-
     }
-
+    //Arrancamos la activity del mapa con la indicacion de que es una sub actividad que luego nos devolvera valores
     public void add_localizacion(View view) {
 
         Intent intent = new Intent(this, MapsActivity.class);
@@ -93,6 +93,7 @@ public class AddIngreso extends AppCompatActivity {
     }
 
     @Override
+    //Captura y gestion de la latitud y la longitud que nos devuelve la activity del mapa
     public void onActivityResult(int requestCode,
                                  int resultCode,
                                  Intent data) {
@@ -104,14 +105,17 @@ public class AddIngreso extends AppCompatActivity {
                     double lati = data.getDoubleExtra("LATITUD", -1);
                     double longi = data.getDoubleExtra("LONGITUD", -1);
 
-
+                    //Comprobacion de si esta devolviendo lo esperado, en caso de no serlo, el metodo nos devolvera -1
+                    //Arranque del geocoder
                     Geocoder gc = new Geocoder(this, Locale.getDefault());
                     try {
-
-                        addresses = gc.getFromLocation(lati, longi, 10);
+                        //Suponemos que lo coge bien, con sacar el primer resultado valdria
+                        addresses = gc.getFromLocation(lati, longi, 2);
                         localizacionIngreso.setText(addresses.get(0).getAddressLine(0));
 
                     } catch (IOException e) {
+                        //A veces da fallo, pero si la aplicacion esta bien arrancada y no se ha hecho ninguna modificacion poco realista d ela ubicacion funciona correctamente
+                        //Por si os salta el mensaje, lo ponemos como comprobacion de que ha ido bien, en caso de no ser asi favorecemos la experiencia de usuario comunicandolo
                         localizacionIngreso.setText("No se ha podido añadir la ubicación correctamente");
                     }
                 }
@@ -120,7 +124,7 @@ public class AddIngreso extends AppCompatActivity {
 
         }
     }
-
+    //ANDRES
     private void registrarGasto(){
         ConexionSQLiteHelper newconn = new ConexionSQLiteHelper(this, "bd_gastos_ingresos", null, 1);
         SQLiteDatabase db = newconn.getWritableDatabase();
@@ -146,6 +150,7 @@ public class AddIngreso extends AppCompatActivity {
 
         }
 
+        //Formato de la fecha para la inserciones en la base de datos
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
@@ -177,7 +182,7 @@ public class AddIngreso extends AppCompatActivity {
         returnHome();
 
     }
-
+    //Data picker para tomar la fecha introducida en caso de cambiarla
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -190,7 +195,7 @@ public class AddIngreso extends AppCompatActivity {
 
         }
     };
-
+    //Introduccion de la fecha
     private void actualizarInput() {
 
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
@@ -201,8 +206,7 @@ public class AddIngreso extends AppCompatActivity {
 
     public void returnHome() {
 
-        Intent home_intent = new Intent(getApplicationContext(),
-                MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent home_intent = new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         startActivity(home_intent);
     }

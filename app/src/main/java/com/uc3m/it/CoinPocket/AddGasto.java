@@ -18,13 +18,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.uc3m.it.CoinPocket.adapter.SpinnerAdapter;
 import com.uc3m.it.CoinPocket.data.RatioSingleton;
 import com.uc3m.it.CoinPocket.response.Ratio;
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
-
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -36,22 +33,24 @@ import java.util.Locale;
 
 public class AddGasto extends AppCompatActivity {
 
+    //Variable creada para cuando se lance la actividad del mapa al terminar con
+    //la asignacion de la localizacion sepa capturar los datos extras que devuelve
     private static final int SHOW_SUB_ACTIVITY_ONE = 1;
 
+    //ANDRES
     private static final String TAG = "ListDataActivity";
 
-    //EditText id_gasto;
+    //Inicializacion de las variables de la activity
     EditText conceptoGasto;
     EditText cantidadGasto;
     Spinner moneda;
-    //TextView fecha;
     TextView etFechaGasto;
     EditText localizacionGasto;
     Button buttonSaveGasto;
     Button buttonLocalizacionGasto;
     Calendar calendarioGasto = Calendar.getInstance();
-    List<Address> addresses = null;
-    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+    List<Address> addresses = null; //Variable para la utilizacion del geocoder
+    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());//Variable de la fecha actual
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,20 +58,18 @@ public class AddGasto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_gasto);
 
+        //Asignacion de los componentes que usamos en la activity
         conceptoGasto = (EditText) findViewById(R.id.id_concepto_gasto);
         cantidadGasto = (EditText) findViewById(R.id.id_cantidad_gasto);
         localizacionGasto = (EditText) findViewById(R.id.id_localizacion_gasto);
         etFechaGasto = (TextView) findViewById(R.id.id_etFecha_gasto);
-        //fecha = (TextView) findViewById(R.id.id_fecha);
         buttonSaveGasto = (Button) findViewById(R.id.id_save_gasto);
         buttonLocalizacionGasto = (Button) findViewById(R.id.id_button_localizacion_gasto);
-
+        //Variable moneda para el ingreso de la moneda que usamos
         moneda = findViewById(R.id.moneda);
         moneda.setAdapter(new SpinnerAdapter(this, android.R.layout.simple_spinner_dropdown_item, RatioSingleton.getRatios()));
-
         etFechaGasto.setText(date_n);
-
-
+        //Asignacion del escuchador por si modificamos la fecha
         etFechaGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,9 +78,9 @@ public class AddGasto extends AppCompatActivity {
                         calendarioGasto.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
+        //ANDRES
         ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_gastos_ingresos", null, 1);
-
+        //Escuchador del boton del registro del gasto
         buttonSaveGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +89,7 @@ public class AddGasto extends AppCompatActivity {
         });
 
     }
-
+    //Arrancamos la activity del mapa con la indicacion de que es una sub actividad que luego nos devolvera valores
     public void add_localizacion(View view) {
 
         Intent intent = new Intent(this, MapsActivity.class);
@@ -100,6 +97,7 @@ public class AddGasto extends AppCompatActivity {
     }
 
     @Override
+    //Captura y gestion de la latitud y la longitud que nos devuelve la activity del mapa
     public void onActivityResult(int requestCode,
                                  int resultCode,
                                  Intent data) {
@@ -111,17 +109,20 @@ public class AddGasto extends AppCompatActivity {
                     double lati = data.getDoubleExtra("LATITUD", -1);
                     double longi = data.getDoubleExtra("LONGITUD", -1);
 
+                    //Comprobacion de si esta devolviendo lo esperado, en caso de no serlo, el metodo nos devolvera -1
                     //localizacionGasto.setText(lati+","+longi);
-
+                    //Arranque del geocoder
                     Geocoder gc = new Geocoder(this, Locale.getDefault());
 
                     try {
-
-                        addresses = gc.getFromLocation(lati, longi, 10);
+                        //Suponemos que lo coge bien, con sacar el primer resultado valdria
+                        addresses = gc.getFromLocation(lati, longi, 2);
                         localizacionGasto.setText(addresses.get(0).getAddressLine(0));
                        // Log.d(TAG, "--------------------->>>Mostrar Localizacion: " + addresses.get(0).getAddressLine(0) );
 
                     } catch (IOException e) {
+                        //A veces da fallo, pero si la aplicacion esta bien arrancada y no se ha hecho ninguna modificacion poco realista d ela ubicacion funciona correctamente
+                        //Por si os salta el mensaje, lo ponemos como comprobacion de que ha ido bien, en caso de no ser asi favorecemos la experiencia de usuario comunicandolo
                        localizacionGasto.setText("No se ha podido añadir la ubicación correctamente");
                     }
                 }
@@ -129,8 +130,9 @@ public class AddGasto extends AppCompatActivity {
             }
 
         }
-    }
 
+    }
+    //ANDRES
     private void registrarGasto(){
         ConexionSQLiteHelper newconn = new ConexionSQLiteHelper(this, "bd_gastos_ingresos", null, 1);
         SQLiteDatabase db = newconn.getWritableDatabase();
@@ -145,7 +147,7 @@ public class AddGasto extends AppCompatActivity {
             id_gasto = id_gasto + 1;
         }
 
-
+        //Formato de la fecha para la inserciones en la base de datos
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
@@ -198,21 +200,7 @@ public class AddGasto extends AppCompatActivity {
         returnHome();
 
     }
-
-
-/*        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }*/
-
+    //Data picker para tomar la fecha introducida en caso de cambiarla
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -226,22 +214,20 @@ public class AddGasto extends AppCompatActivity {
         }
 
     };
-
+    //Introduccion de la fecha
     private void actualizarInput() {
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
-
         etFechaGasto.setText(sdf.format(calendarioGasto.getTime()));
 
     }
-
+    //ANDRES
     public void returnHome() {
-
-        Intent home_intent = new Intent(getApplicationContext(),
-                MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent home_intent = new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         startActivity(home_intent);
     }
+
 }
 
 

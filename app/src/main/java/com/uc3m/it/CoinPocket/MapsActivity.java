@@ -10,11 +10,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,11 +24,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
-
+//NOTA: Se dejan comentarios de parte del codigo usado proveniente del material subido por los profesores yq ue para esta activity se ha reutilizado
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener{
 
-    private GoogleMap mMap;
-    private Location localizacion;
+    private GoogleMap mMap;//Creacion del mapa
+    private Location localizacion;//Variable usada para manejar la localizacion que se tenga y sobre la que se varia en caso de cambiar
     private String mensaje ="UBICACIÓN ACTUAL";
     private final int REQUEST_PERMISSION_ACCESS_FINE_LOCATION=1;
 
@@ -40,6 +37,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        //Boton que nos devolvera a la activity anterior con la latitud y longitud asignadas
         Button devolverLocalizacion = (Button)findViewById(R.id.id_button_location);
 
         // Comprobamos si tenemos permiso para acceder a la localización
@@ -57,16 +56,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Obtenemos la lista de proveedores disponibles (activos)
         boolean soloActivos = true;
         List<String> proveedores = servicioLoc.getProviders(soloActivos);
-        // Podemos probar a cambiar en el Manifest ACCESS_FINE_LOCATION
-        // por ACCESS_COARSE_LOCATION para ver qué proveedores se pueden
-        // utilizar en cada caso (los mostrados en la pantalla del terminal
-        // cuando ejecutamos la aplicación). También podemos probar a
-        // activar y desactivar los proveedores en el teléfono para ver
-        // que realmente la aplicación funciona como debe (en los ajustes
-        // de Ubicación).
-
-        //Mostramos en la pantalla el nombre de dichos proveedores
-        //(lo dejamos en otro método aparte para que el código sea más claro
 
         //actualizarTextoProveedores(proveedores);
         if (proveedores.isEmpty()) { // No hay ninguno activo y no se puede hacer nada
@@ -84,8 +73,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //Pedimos la última localización conocida por el proveedor
         localizacion = servicioLoc.getLastKnownLocation(proveedorElegido);
-        // Además, vamos a pedir actualizaciones de la posición:
-
         //Tiempo mínimo entre escuchas de nueva posición
         int tiempo = 1000; //milisegundos
         //Distancia mínima entre escuchas de nueva posición
@@ -94,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Pedimos escuchar actualizaciones de posicion que reciba el proveedor elegido, cada
         //1000ms o 100m, que serán procesadas por el escuchador (implementado en esta misma clase)
         servicioLoc.requestLocationUpdates(proveedorElegido, tiempo, distancia, this);
-
+        //Se añade el mapa a la activity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -103,32 +90,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
+        //Asignamos el mapa al de google creado en el inicio
         mMap = googleMap;
-
-        mMap.setOnMapClickListener(mClickListener); // para clicks sobre el mapa
+        //Escuchador para los clicks sobre el mapa a la hora de seleccionar ubucacion
+        mMap.setOnMapClickListener(mClickListener);
+        //Configuraciones A la hroa de cargar el mapa
         UiSettings settings = mMap.getUiSettings();
 
         settings.setZoomControlsEnabled(true); // botones para hacer zoom
 
         settings.setCompassEnabled(true); // brújula (sólo se muestra el icono si se rota el mapa con los dedos)
-
+        //Obtenemos la ubiccion que se encuenta en la locaalizacion para situar el marcador al arrancarlo
         double latitud = localizacion.getLatitude();
         double longitud = localizacion.getLongitude();
 
-        // Add a marker in Sydney and move the camera
+        //Introduciomos la latitud y la longitud para manejarla con una variable tipo latlng
         LatLng coordenadas = new LatLng(latitud, longitud);
 
 
         int zoomlevel = 17; // nivel de zoom (1: mundo, 5: continente,  10: ciudad,  15: calle,  20: edificios)
 
         CameraPosition camPos= new CameraPosition.Builder()
-                .target(coordenadas)//Centramos el mapa en UC3M
-                .zoom(zoomlevel)//Establecemos el zoom en 15
+                .target(coordenadas)//Centramos el mapa en la ubicacion donde nos encontramos
+                .zoom(zoomlevel)//Establecemos el zoom en 17 al igual que cuando asignamos otro para no notar cambio
                 .build();
         CameraUpdate camUpd  = CameraUpdateFactory.newCameraPosition(camPos);
+        //Situamos la camara del mapa donde las coordenadas
         mMap.moveCamera(camUpd);
-
+        //Se añade marcadro de manera automatica cuando cargamos el mapa
         mMap.addMarker(new MarkerOptions()
                 .position(coordenadas)
                 .title(mensaje))
@@ -152,6 +141,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             // Eliminamos cualquier marcador sobre el mapa antes de posicionar el nuevo
             mMap.clear();
+            //Al tocar sobre el mapa cargamso la localizacion de donde hemos hecho click
             localizacion.setLatitude(position.latitude);
             localizacion.setLongitude(position.longitude);
 
@@ -159,7 +149,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // Para realizar la concatenación de texto forma eficiente, usaremos un objeto de la clase StringBuffer:
             StringBuffer text = new StringBuffer();
             text.append("GPS: ");
-            //text.append(position.latitude).append(", ").append("\n").append(position.longitude);
             text.append(localizacion.getLatitude()).append(", ").append(localizacion.getLongitude());
             String coordText = text.toString();
 
@@ -173,8 +162,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             markerOpts.title("UBICACIÓN SELECCIONADA"); // título
             markerOpts.snippet(coordText); // texto complementario al título
-
+            //Añadimos el marcador
             Marker marker = mMap.addMarker(markerOpts);
+            //Centramos el mapa en el lugar seleccionado
             centerMap(position.latitude, position.longitude);
         }
 
@@ -199,9 +189,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // http://developer.android.com/reference/com/google/android/gms/maps/CameraUpdateFactory.html
 
         // Pasamos el tipo de actualización configurada al método del mapa que mueve la cámara
+        //Se encuentra comentado dado que la primera vez siempre falla, posteriormente si que funciona correctamenmte
+        //No se averigua el motivo, el error salta porque dice apuntar a un null en el mapa que quiere centrar (solo en la primera ocasion)
+
         //mMap.moveCamera(update);
 
     }
+    //Metodo atraves del cual se devuelven a la activity anterior la latitud y la longitud con el fin de ser usadas por el geocoder
     public void devolverLocalizacion(View view) {
 
 
@@ -218,31 +212,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onLocationChanged(Location location) {
-
+        //En caso de cambiar la localizacion vuelve a centrar el mapa
         centerMap(location.getLatitude(), location.getLongitude());
 
     }
@@ -264,6 +237,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Lo dejamos vacío porque no queremos realizar ninguna acción
         //cuando el proveedor provider cambia de estado
     }
+
     @Override
     public void onDestroy(){
         super.onDestroy();
@@ -274,10 +248,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         servicioLoc.removeUpdates(this);
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {

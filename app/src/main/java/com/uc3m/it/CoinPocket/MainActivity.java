@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-
+    //METODOS DE LLAMADAS A LAS ACTIVITYS CORRESPONDIENTES
     public void add_gasto_main(View view) {
         Intent intent = new Intent(this, AddGasto.class);
         Button okButton = (Button) findViewById(R.id.button_add_gasto);

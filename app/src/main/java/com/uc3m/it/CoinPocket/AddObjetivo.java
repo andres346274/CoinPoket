@@ -5,8 +5,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,33 +16,28 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
-
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class AddObjetivo extends AppCompatActivity {
-
+    //ANDRES
     private static final String TAG = "ListDataActivity";
 
-    //EditText id_gasto;
+    //Inicializacion de las variables de la activity
     EditText motivoObjetivo;
     EditText cantidadObjetivo;
-    //TextView fecha;
     TextView etFechaInicioObjetivo, etFechaFinalObjetivo;
     Button buttonSaveObjetivo;
-    Calendar calendarioInicioObjetivo = Calendar.getInstance();
+    Calendar calendarioInicioObjetivo = Calendar.getInstance();//ANDRES
     Calendar calendarrioFinalObjetivo = Calendar.getInstance();
     RadioGroup radioGroupObjetivo;
-    RadioButton radioahorro, radioMaxGasto;
-    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+    RadioButton radioahorro, radioMaxGasto;//Para la seleccion del tipo de deuda ue contraemos
+    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());//Variable de la fecha actual
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,24 +45,21 @@ public class AddObjetivo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_objetivo);
 
-
+        //Asignacion de los componentes que usamos en la activity
         cantidadObjetivo = (EditText) findViewById(R.id.id_cantidad_objetivo);
         etFechaInicioObjetivo = (TextView) findViewById(R.id.id_etFecha_inicio_objetivo);
         etFechaFinalObjetivo = (TextView) findViewById(R.id.id_etFecha_final_objetivo);
         motivoObjetivo = (EditText) findViewById(R.id.id_motivo_objetivo);
-        //fecha = (TextView) findViewById(R.id.id_fecha);
         buttonSaveObjetivo = (Button) findViewById(R.id.id_save_objetivo);
         radioGroupObjetivo = (RadioGroup) findViewById( R.id.id_radio_group_objetivos );
         radioahorro = (RadioButton) findViewById( R.id.radio_objetivo_ahorro );
         radioMaxGasto = (RadioButton) findViewById( R.id.radio_objetivo_gastomax);
-
-
-
+        //Rellenamos automaticamente las fechas con la fecha actual
         etFechaInicioObjetivo.setText(date_n);
         etFechaFinalObjetivo.setText(date_n);
 
 
-
+        //Asignacion de escuchadores para la introduccion de la fechas
         etFechaInicioObjetivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +76,7 @@ public class AddObjetivo extends AppCompatActivity {
                         calendarrioFinalObjetivo.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
+        //Escuchador del boton del registro de la deuda
         buttonSaveObjetivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +89,7 @@ public class AddObjetivo extends AppCompatActivity {
         });
 
     }
-
+    //ANDRES
     private void registrarObjetivo() throws ParseException {
         ConexionSQLiteHelperObjetivos newconn = new ConexionSQLiteHelperObjetivos(this, "bd_objetivos", null, 1);
         SQLiteDatabase db = newconn.getWritableDatabase();
@@ -116,8 +106,8 @@ public class AddObjetivo extends AppCompatActivity {
 
         //Log.d(TAG, "--------------------->>> RADIO: " + pagarDeber.getCheckedRadioButtonId());
 
-
-        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
+        //Formato d ela fecha que queremos, esta puesto el que usamos en España
+        String formatoDeFecha = "dd/MM/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         ContentValues values = new ContentValues();
@@ -160,7 +150,7 @@ public class AddObjetivo extends AppCompatActivity {
 
 
     }
-
+    //Datapicker para introduccir las fechas que queramos
     DatePickerDialog.OnDateSetListener dateInicio = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -202,7 +192,7 @@ public class AddObjetivo extends AppCompatActivity {
         etFechaFinalObjetivo.setText(sdf.format(calendarrioFinalObjetivo.getTime()));
 
     }
-
+    //ANDRES
     public String CompararFechas(String z, String y) throws ParseException {
         Log.d(TAG, "--------------------->>> ENTRE COMPARAR FEHCAS: " + z + "--" + y);
 
@@ -232,7 +222,7 @@ public class AddObjetivo extends AppCompatActivity {
             return y;
         }
     }
-
+    //ANDRES
     public void returnHome() {
 
         Intent home_intent = new Intent(getApplicationContext(),
