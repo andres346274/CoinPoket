@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/color50"
     android:orientation="vertical">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,8 @@
             android:paddingLeft="10dp"
             android:text="Objetivo"
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp">
+        </TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,8 +40,9 @@
                 android:gravity="center"
                 android:inputType="numberDecimal"
                 android:textSize="15sp"
-                android:textColor="@android:color/black"
-                ></TextView>
+                android:textColor="@android:color/black">
+            </TextView>
+
             <EditText
                 android:id="@+id/id_cantidad_modificar_objetivo"
                 android:layout_width="match_parent"
@@ -50,8 +52,8 @@
                 android:gravity="top|left"
                 android:inputType="numberDecimal"
                 android:hint="Cantidad del objetivo."
-                android:textSize="14sp"
-                ></EditText>
+                android:textSize="14sp">
+            </EditText>
 
         </LinearLayout>
 
@@ -65,7 +67,8 @@
             android:paddingLeft="10dp"
             android:text="Fecha de inicio"
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp">
+        </TextView>
 
         <TextView
             android:id="@+id/id_fechainicio_modificar_objetivo"
@@ -76,8 +79,9 @@
             android:inputType="numberDecimal"
             android:hint="Fecha desconocida (pulsar para añadir)."
             android:textSize="14sp"
-            android:textColor="@android:color/black"
-            ></TextView>
+            android:textColor="@android:color/black">
+        </TextView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -87,7 +91,8 @@
             android:paddingLeft="10dp"
             android:text="Fecha final"
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp">
+        </TextView>
 
         <TextView
             android:id="@+id/id_fechafin_modificar_objetivo"
@@ -99,8 +104,8 @@
             android:inputType="numberDecimal"
             android:hint="Fecha desconocida (pulsar para añadir)."
             android:textSize="14sp"
-            android:textColor="@android:color/black"
-            ></TextView>
+            android:textColor="@android:color/black">
+        </TextView>
 
         <TextView
             android:layout_width="match_parent"
@@ -111,7 +116,8 @@
             android:paddingLeft="10dp"
             android:text="Motivo"
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp">
+        </TextView>
 
         <EditText
             android:id="@+id/id_motivo_modificar_objetivo"
@@ -120,8 +126,8 @@
             android:paddingLeft="10dp"
             android:gravity="top|left"
             android:hint="No se ha indicado motivo (pulsa para añadir)."
-            android:textSize="14sp"
-            ></EditText>
+            android:textSize="14sp">
+        </EditText>
 
     </LinearLayout>
 
@@ -138,8 +144,8 @@
             android:background="@drawable/button_simple_config"
             android:textColor="@color/color50"
             android:text="Modificar"
-            android:textSize="14sp"
-            ></Button>
+            android:textSize="14sp">
+        </Button>
 
         <Button
             android:id="@+id/id_eliminar_objetivo_concreto"
@@ -149,8 +155,9 @@
             android:background="@drawable/button_simple_config"
             android:textColor="@color/color50"
             android:text="Eliminar"
-            android:textSize="14sp"
-            ></Button>
+            android:textSize="14sp">
+        </Button>
+
     </LinearLayout>
 
 </LinearLayout>

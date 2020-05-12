@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutContainer"
@@ -17,7 +17,8 @@
         android:id="@+id/list_view_objetivos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"></ListView>
+        android:layout_weight="1">
+    </ListView>
 
     <Button
         android:id="@+id/id_button_add_objetivo"
@@ -30,6 +31,7 @@
         android:text="Añadir objetivo"
         android:onClick="add_objetivo"
         android:textColor="@color/color50"
-        android:textSize="20sp"></Button>
+        android:textSize="20sp">
+    </Button>
 
 </LinearLayout>

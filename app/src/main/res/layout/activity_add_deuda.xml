@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutContainer"
@@ -28,7 +29,9 @@
             android:paddingLeft="10dp"
             android:text="Nombre"
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp">
+        </TextView>
+
         <EditText
             android:id="@+id/id_persona_deuda"
             android:layout_width="match_parent"
@@ -40,7 +43,8 @@
             android:ems="1"
             android:maxLength="50"
             android:paddingLeft="10dp"
-            android:textSize="14sp" />
+            android:textSize="14sp">
+        </EditText>
 
         <TextView
             android:layout_width="match_parent"
@@ -51,7 +55,8 @@
             android:paddingLeft="10dp"
             android:text="Importe de la deuda"
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp">
+        </TextView>
 
         <EditText
             android:id="@+id/id_cantidad_deuda"
@@ -63,7 +68,8 @@
             android:gravity="top|left"
             android:inputType="numberDecimal"
             android:paddingLeft="10dp"
-            android:textSize="14sp" />
+            android:textSize="14sp">
+        </EditText>
 
         <TextView
             style="@style/Widget.AppCompat.TextView.SpinnerItem"
@@ -75,7 +81,8 @@
             android:paddingLeft="10dp"
             android:text="Fecha"
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp">
+        </TextView>
 
         <EditText
             android:id="@+id/id_etFecha_deuda"
@@ -90,7 +97,8 @@
             android:paddingLeft="10dp"
             android:text=""
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></EditText>
+            android:textSize="14sp">
+        </EditText>
 
         <TextView
             android:layout_width="match_parent"
@@ -101,7 +109,8 @@
             android:paddingLeft="10dp"
             android:text="Concepto"
             android:textColor="#0a0a0a"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp">
+        </TextView>
 
         <EditText
             android:id="@+id/id_concepto_deuda"
@@ -115,7 +124,8 @@
             android:inputType="textMultiLine"
             android:maxLength="140"
             android:paddingLeft="10dp"
-            android:textSize="14sp" />
+            android:textSize="14sp">
+        </EditText>
 
         <RadioGroup
             android:id="@+id/id_radio_group"
@@ -129,14 +139,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="true"/>
+                    android:checked="true">
+                </RadioButton>
 
                 <RadioButton
                     android:id="@+id/radio2"
                     android:text="A deber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1">
+                </RadioButton>
 
         </RadioGroup>
 
@@ -154,6 +166,7 @@
         android:padding="15dp"
         android:text="Añadir"
         android:textColor="@color/color50"
-        android:textSize="25sp"></Button>
+        android:textSize="25sp">
+    </Button>
 
 </LinearLayout>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -21,8 +22,8 @@
             android:paddingLeft="10dp"
             android:gravity="top|left"
             android:hint="Sin concepto."
-            android:textSize="14sp"
-            ></EditText>
+            android:textSize="14sp">
+        </EditText>
 
         <TextView
             android:id="@+id/id_fecha_modificar_eliminar"
@@ -33,8 +34,8 @@
             android:inputType="numberDecimal"
             android:hint="Fecha desconocida (pulsar para añadir)."
             android:textSize="14sp"
-            android:textColor="@android:color/black"
-            ></TextView>
+            android:textColor="@android:color/black">
+        </TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,8 +51,9 @@
                 android:gravity="center"
                 android:inputType="numberDecimal"
                 android:textSize="15sp"
-                android:textColor="@android:color/black"
-                ></TextView>
+                android:textColor="@android:color/black">
+            </TextView>
+
             <EditText
                 android:id="@+id/id_cantidad_modificar_eliminar"
                 android:layout_width="match_parent"
@@ -61,27 +63,27 @@
                 android:gravity="top|left"
                 android:inputType="numberDecimal"
                 android:hint="No se ha indicado importe."
-                android:textSize="14sp"
-                ></EditText>
+                android:textSize="14sp">
+            </EditText>
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <EditText
                 android:id="@+id/id_localizacion_modificar_eliminar"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.7"
-                android:layout_height="match_parent"
-                android:paddingLeft="10dp"
                 android:gravity="top|left"
-                android:inputType="numberDecimal"
                 android:hint="Localizacion no registrada."
-                android:textSize="14sp"
-                ></EditText>
+                android:inputType="numberDecimal"
+                android:paddingLeft="10dp"
+                android:textSize="14sp">
+            </EditText>
 
             <Button
                 android:id="@+id/id_button_modificar_localizacion"
@@ -91,8 +93,9 @@
                 android:background="@drawable/button_simple_config"
                 android:textColor="@color/color50"
                 android:text="Modificar Localizacion"
-                android:textSize="14sp"
-                ></Button>
+                android:textSize="14sp">
+            </Button>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -110,8 +113,8 @@
             android:background="@drawable/button_simple_config"
             android:textColor="@color/color50"
             android:text="Modificar"
-            android:textSize="14sp"
-            ></Button>
+            android:textSize="14sp">
+        </Button>
 
         <Button
             android:id="@+id/id_eliminar_gasto_concreto"
@@ -121,8 +124,9 @@
             android:background="@drawable/button_simple_config"
             android:textColor="@color/color50"
             android:text="Eliminar"
-            android:textSize="14sp"
-            ></Button>
+            android:textSize="14sp">
+        </Button>
+
     </LinearLayout>
 
 </LinearLayout>
