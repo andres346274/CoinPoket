@@ -12,115 +12,107 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/AppTheme.NoBar"
-            android:label="CoinPocket | Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <activity
+                android:name=".SplashActivity"
+                android:theme="@style/AppTheme.NoBar"
+                android:label="CoinPocket | Splash">
+                    <intent-filter>
+                        <action android:name="android.intent.action.MAIN" />
+                        <category android:name="android.intent.category.LAUNCHER" />
+                    </intent-filter>
+            </activity>
 
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.MainActivity"
+                android:label="CoinPocket"
+                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            </activity>
 
-        <activity
-        android:name="com.uc3m.it.CoinPocket.MainActivity"
-        android:label="CoinPocket"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.AddGasto"
+                android:label="CoinPocket | Añadir Gasto"
+                android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.AddGasto"
-            android:label="CoinPocket | Añadir Gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.AddIngreso"
+                android:label="CoinPocket | Añadir Ingreso"
+                android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.AddIngreso"
-            android:label="CoinPocket | Añadir Ingreso"
-            android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.ListaGastosIngresos"
+                android:label="CoinPocket | Modificar gasto"
+                android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.ListaGastosIngresos"
-            android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.GastosDia">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.ModificarEliminar"
+                android:label="CoinPocket | Modificar gasto"
+                android:parentActivityName="com.uc3m.it.CoinPocket.ListaGastosIngresos">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.ModificarEliminar"
-            android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.ListaGastosIngresos">
-        </activity>
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyAYHdcSBwDEqgxjnqBiMOchVGkf5yBiREM" />
+            <meta-data
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.GastosTotal"
-            android:label="CoinPocket | Gastos por totales"
-            android:parentActivityName="com.uc3m.it.CoinPocket.ConsultarMovimientos">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.MapsActivity"
+                android:label="CoinPocket | Mapa"
+                android:parentActivityName="com.uc3m.it.CoinPocket.AddGasto"
+                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            </activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAYHdcSBwDEqgxjnqBiMOchVGkf5yBiREM" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            <activity
+                android:name="com.uc3m.it.CoinPocket.Objetivos"
+                android:label="CoinPocket | Objetivos"
+                android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.MapsActivity"
-            android:label="CoinPocket | Mapa"
-            android:parentActivityName="com.uc3m.it.CoinPocket.AddGasto"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.ModificarObjetivo"
+                android:label="CoinPocket | Modificar Objetivo"
+                android:parentActivityName="com.uc3m.it.CoinPocket.Objetivos">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.Objetivos"
-            android:label="CoinPocket | Objetivos"
-            android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.Deudas"
+                android:label="CoinPocket | Deudas"
+                android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.ModificarObjetivo"
-            android:label="CoinPocket | Modificar Objetivo"
-            android:parentActivityName="com.uc3m.it.CoinPocket.Objetivos">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.AddDeuda"
+                android:label="CoinPocket | Añadir Deuda"
+                android:parentActivityName="com.uc3m.it.CoinPocket.Deudas">
+            </activity>
 
+            <activity
+                android:name="com.uc3m.it.CoinPocket.ListaDeudas"
+                android:label="CoinPocket | Lista Deudas"
+                android:parentActivityName="com.uc3m.it.CoinPocket.Deudas">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.Deudas"
-            android:label="CoinPocket | Deudas"
-            android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.ModificarDeuda"
+                android:label="CoinPocket | Modificar Deuda"
+                android:parentActivityName="com.uc3m.it.CoinPocket.ListaDeudas">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.AddDeuda"
-            android:label="CoinPocket | Añadir Deuda"
-            android:parentActivityName="com.uc3m.it.CoinPocket.Deudas">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.SaldarDeuda"
+                android:label="CoinPocket | Saldar Deuda"
+                android:parentActivityName="com.uc3m.it.CoinPocket.ListaDeudas">
+            </activity>
 
-        <activity
-            android:name="com.uc3m.it.CoinPocket.ListaDeudas"
-            android:label="CoinPocket | Lista Deudas"
-            android:parentActivityName="com.uc3m.it.CoinPocket.Deudas">
-        </activity>
-
-        <activity
-            android:name="com.uc3m.it.CoinPocket.ModificarDeuda"
-            android:label="CoinPocket | Modificar Deuda"
-            android:parentActivityName="com.uc3m.it.CoinPocket.ListaDeudas">
-        </activity>
-
-        <activity
-            android:name="com.uc3m.it.CoinPocket.SaldarDeuda"
-            android:label="CoinPocket | Saldar Deuda"
-            android:parentActivityName="com.uc3m.it.CoinPocket.ListaDeudas">
-        </activity>
-
-        <activity
-            android:name="com.uc3m.it.CoinPocket.AddObjetivo"
-            android:label="CoinPocket | Fijar Objetivo"
-            android:parentActivityName="com.uc3m.it.CoinPocket.Objetivos">
-        </activity>
+            <activity
+                android:name="com.uc3m.it.CoinPocket.AddObjetivo"
+                android:label="CoinPocket | Fijar Objetivo"
+                android:parentActivityName="com.uc3m.it.CoinPocket.Objetivos">
+            </activity>
 
     </application>
 
