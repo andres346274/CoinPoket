@@ -14,12 +14,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.uc3m.it.CoinPocket.adapter.SpinnerAdapter;
+import com.uc3m.it.CoinPocket.data.RatioSingleton;
+import com.uc3m.it.CoinPocket.response.Ratio;
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,6 +48,7 @@ public class AddIngreso extends AppCompatActivity {
     Button buttonLocalizacionIngreso;
     Calendar calendarioIngreso = Calendar.getInstance();
     List<Address> addresses = null;
+    Spinner moneda;
     String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
 
     @Override
@@ -56,6 +62,9 @@ public class AddIngreso extends AppCompatActivity {
         etFechaIngreso = (TextView) findViewById(R.id.id_etFecha_ingreso);
         buttonSaveIngreso = (Button) findViewById(R.id.id_save_ingreso);
         buttonLocalizacionIngreso = (Button) findViewById(R.id.id_button_localizacion_ingreso);
+        moneda = findViewById(R.id.moneda);
+        moneda.setAdapter(new SpinnerAdapter(this, android.R.layout.simple_spinner_dropdown_item, RatioSingleton.getRatios()));
+
 
         etFechaIngreso.setText(date_n);
 
@@ -126,6 +135,17 @@ public class AddIngreso extends AppCompatActivity {
             id_gasto = id_gasto + 1;
         }
 
+        String cantidad = cantidadIngreso.getText().toString();
+        Ratio ratio = (Ratio) moneda.getSelectedItem();
+        try {
+            Float cantidadInFloat = Float.parseFloat(cantidad);
+            Float multiplicacion = cantidadInFloat / ratio.getValue();
+            DecimalFormat formatter = new DecimalFormat("#,###.##");
+            cantidad = formatter.format(multiplicacion);
+        } catch (Exception e) {
+
+        }
+
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
@@ -138,7 +158,7 @@ public class AddIngreso extends AppCompatActivity {
             values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, "");
         }
         if(cantidadIngreso.getText()!=null){
-            values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidadIngreso.getText().toString());
+            values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidad);
         }else{
             values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, "0");
         }

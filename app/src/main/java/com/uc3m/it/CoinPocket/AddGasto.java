@@ -15,12 +15,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.uc3m.it.CoinPocket.adapter.SpinnerAdapter;
+import com.uc3m.it.CoinPocket.data.RatioSingleton;
+import com.uc3m.it.CoinPocket.response.Ratio;
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,6 +43,7 @@ public class AddGasto extends AppCompatActivity {
     //EditText id_gasto;
     EditText conceptoGasto;
     EditText cantidadGasto;
+    Spinner moneda;
     //TextView fecha;
     TextView etFechaGasto;
     EditText localizacionGasto;
@@ -60,6 +67,8 @@ public class AddGasto extends AppCompatActivity {
         buttonSaveGasto = (Button) findViewById(R.id.id_save_gasto);
         buttonLocalizacionGasto = (Button) findViewById(R.id.id_button_localizacion_gasto);
 
+        moneda = findViewById(R.id.moneda);
+        moneda.setAdapter(new SpinnerAdapter(this, android.R.layout.simple_spinner_dropdown_item, RatioSingleton.getRatios()));
 
         etFechaGasto.setText(date_n);
 
@@ -140,6 +149,27 @@ public class AddGasto extends AppCompatActivity {
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
+
+        String cantidad = cantidadGasto.getText().toString();
+        Ratio ratio = (Ratio) moneda.getSelectedItem();
+        try {
+            Float cantidadInFloat = Float.parseFloat(cantidad);
+            Float multiplicacion = cantidadInFloat / ratio.getValue();
+            DecimalFormat formatter = new DecimalFormat("#,###.##");
+            cantidad = formatter.format(multiplicacion);
+
+        } catch (Exception e) {
+
+        }
+        String address = "No especificado";
+
+        if (addresses != null && !addresses.isEmpty()) {
+
+            address = addresses.get(0).getAddressLine(0);
+
+        }
+
+
         ContentValues values = new ContentValues();
         values.put( utilidades.CAMPO_GASTO_INGRESO, "1");
         values.put(utilidades.CAMPO_ID_GASTO_INGRESO, id_gasto.toString());
@@ -149,7 +179,7 @@ public class AddGasto extends AppCompatActivity {
             values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, "");
         }
         if(cantidadGasto.getText()!=null){
-            values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidadGasto.getText().toString());
+            values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, cantidad);
         }else {
             values.put(utilidades.CAMPO_CANTIDAD_GASTO_INGRESO, "0");
         }

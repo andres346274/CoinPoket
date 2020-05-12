@@ -167,7 +167,7 @@ public class ListaDeudas extends AppCompatActivity {
 
 
     public String CompararFechas(String z, String y) throws ParseException {
-        Log.d(TAG, "--------------------->>> ENTRE COMPARAR FEHCAS: " + z + "--" + y);
+        Log.d(TAG, "--------------------->>> ENTRE COMPARAR FECHAS: " + z + "--" + y);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         Date strDate = sdf.parse(z);

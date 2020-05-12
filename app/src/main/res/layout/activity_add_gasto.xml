@@ -41,6 +41,22 @@
             android:inputType="numberDecimal"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color50"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Moneda"
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></TextView>
+
+        <Spinner
+            android:id="@+id/moneda"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <TextView
             style="@style/Widget.AppCompat.TextView.SpinnerItem"

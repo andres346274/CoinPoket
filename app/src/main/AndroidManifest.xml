@@ -13,14 +13,20 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.MainActivity"
-            android:label="CoinPocket"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.NoBar"
+            android:label="CoinPocket | Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+        </activity>
+
+        <activity
+        android:name="com.uc3m.it.CoinPocket.MainActivity"
+        android:label="CoinPocket"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         </activity>
 
         <activity
@@ -36,18 +42,6 @@
         </activity>
 
         <activity
-            android:name="com.uc3m.it.CoinPocket.ConsultarMovimientos"
-            android:label="CoinPocket | Consultar Cuentas"
-            android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
-        </activity>
-
-        <activity
-            android:name="com.uc3m.it.CoinPocket.GastosDia"
-            android:label="CoinPocket | Gastos por día"
-            android:parentActivityName="com.uc3m.it.CoinPocket.ConsultarMovimientos">
-        </activity>
-
-        <activity
             android:name="com.uc3m.it.CoinPocket.ListaGastosIngresos"
             android:label="CoinPocket | Modificar gasto"
             android:parentActivityName="com.uc3m.it.CoinPocket.GastosDia">
@@ -57,30 +51,6 @@
             android:name="com.uc3m.it.CoinPocket.ModificarEliminar"
             android:label="CoinPocket | Modificar gasto"
             android:parentActivityName="com.uc3m.it.CoinPocket.ListaGastosIngresos">
-        </activity>
-
-        <activity
-            android:name="com.uc3m.it.CoinPocket.GastosMes"
-            android:label="CoinPocket | Gastos por mes"
-            android:parentActivityName="com.uc3m.it.CoinPocket.ConsultarMovimientos">
-        </activity>
-
-        <activity
-            android:name="com.uc3m.it.CoinPocket.ChangeMes"
-            android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.GastosMes">
-        </activity>
-
-        <activity
-            android:name="com.uc3m.it.CoinPocket.GastosYear"
-            android:label="CoinPocket | Gastos por año"
-            android:parentActivityName="com.uc3m.it.CoinPocket.ConsultarMovimientos">
-        </activity>
-
-        <activity
-            android:name="com.uc3m.it.CoinPocket.ChangeYear"
-            android:label="CoinPocket | Modificar gasto"
-            android:parentActivityName="com.uc3m.it.CoinPocket.GastosYear">
         </activity>
 
         <activity
