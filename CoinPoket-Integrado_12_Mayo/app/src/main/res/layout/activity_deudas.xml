@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color50"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/id_button_add_deuda"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/button_simple_config"
+                android:onClick="add_deuda"
+                android:padding="20dp"
+                android:text="Añadir deuda"
+                android:textColor="@color/color50"
+                android:textSize="20sp">
+            </Button>
+
+            <Button
+                android:id="@+id/id_button_consultar_deudas"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_simple_config"
+                android:onClick="list_deudas"
+                android:padding="20dp"
+                android:text="Consultar deudas"
+                android:textColor="@color/color50"
+                android:textSize="20sp">
+            </Button>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
