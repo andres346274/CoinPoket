@@ -16,7 +16,7 @@ import com.uc3m.it.CoinPocket.utilidades.utilidades;
 
 public class ConexionSQLiteHelperDeudas extends SQLiteOpenHelper{
 
-
+    //Asignación del constructor
     public ConexionSQLiteHelperDeudas(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -27,7 +27,7 @@ public class ConexionSQLiteHelperDeudas extends SQLiteOpenHelper{
     }
 
     /**
-     El método upgrade verifica si existe ya una version antigua de nuestra BD
+     Verificación de si existe ya una version antigua de nuestra BD
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAntigua, int versionNueva) {

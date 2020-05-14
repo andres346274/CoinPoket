@@ -8,6 +8,7 @@ package com.uc3m.it.CoinPocket;
 
 public class  GastosIngresosBD {
 
+    //Creación de campos por Deuda contenidos en la BD
     private Integer gastoingreso;
     private Integer id;
     private String concepto;
@@ -25,7 +26,7 @@ public class  GastosIngresosBD {
 
     }
 
-    //GastoIngreso es un booleano hecho con Integer que indica si lo insertado es un gasto (1) o si es un ingreso (0)
+    //Definición de métodos get y set para cada campo
 
     public Integer getGastoingreso() {
         return gastoingreso;

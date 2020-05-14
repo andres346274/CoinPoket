@@ -13,7 +13,10 @@ public class Deudas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deudas);
     }
-    //Arranque de la activity para añadir una deuda
+
+    /**
+     * Arranque de la activity para añadir una deuda
+     */
     public void add_deuda (View view) {
 
         Intent intent = new Intent(this, AddDeuda.class);
@@ -25,7 +28,10 @@ public class Deudas extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Arranque de la activity para ver las deudas enlistadas
+
+    /**
+     * Arranque de la activity para ver las deudas enlistadas
+     */
     public void list_deudas (View view) {
 
         Intent intent = new Intent(this, ListaDeudas.class);

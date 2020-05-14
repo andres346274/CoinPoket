@@ -9,6 +9,7 @@ package com.uc3m.it.CoinPocket;
 
 public class DeudasBD {
 
+        //Creación de campos por Deuda contenidos en la BD
         private Integer pagardeber;
         private Integer id;
         private String nombre;
@@ -25,6 +26,7 @@ public class DeudasBD {
             this.concepto=concepto;
         }
 
+    //Definición de métodos get y set para cada campo
     public Integer getPagardeber() {
         return pagardeber;
     }

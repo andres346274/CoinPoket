@@ -37,9 +37,6 @@ public class AddGasto extends AppCompatActivity {
     //la asignacion de la localizacion sepa capturar los datos extras que devuelve
     private static final int SHOW_SUB_ACTIVITY_ONE = 1;
 
-    //ANDRES
-    private static final String TAG = "ListDataActivity";
-
     //Inicializacion de las variables de la activity
     EditText conceptoGasto;
     EditText cantidadGasto;
@@ -49,8 +46,10 @@ public class AddGasto extends AppCompatActivity {
     Button buttonSaveGasto;
     Button buttonLocalizacionGasto;
     Calendar calendarioGasto = Calendar.getInstance();
-    List<Address> addresses = null; //Variable para la utilizacion del geocoder
-    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());//Variable de la fecha actual
+    //Variable para la utilizacion del geocoder
+    List<Address> addresses = null;
+    //Variable de la fecha actual
+    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +77,6 @@ public class AddGasto extends AppCompatActivity {
                         calendarioGasto.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        //ANDRES
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_gastos_ingresos", null, 1);
         //Escuchador del boton del registro del gasto
         buttonSaveGasto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +86,12 @@ public class AddGasto extends AppCompatActivity {
         });
 
     }
-    //Arrancamos la activity del mapa con la indicacion de que es una sub actividad que luego nos devolvera valores
+
+    /**
+     * Arrancamos la activity del mapa con la indicacion de que es una sub actividad que luego
+     * nos devolvera valores
+     */
+
     public void add_localizacion(View view) {
 
         Intent intent = new Intent(this, MapsActivity.class);
@@ -97,7 +99,10 @@ public class AddGasto extends AppCompatActivity {
     }
 
     @Override
-    //Captura y gestion de la latitud y la longitud que nos devuelve la activity del mapa
+
+    /**
+     * Captura y gestion de la latitud y la longitud que nos devuelve la activity del mapa
+     */
     public void onActivityResult(int requestCode,
                                  int resultCode,
                                  Intent data) {
@@ -132,7 +137,14 @@ public class AddGasto extends AppCompatActivity {
         }
 
     }
-    //ANDRES
+
+    /**
+     * Método para registrar el gasto
+     *      id_gasto = id asignado a la deuda en su creación
+     *      arra_compare = array para movernos con el cursor de la BD a la hora de asignar IDs
+     *      sdf = objeto fecha
+     *      values = Contenedor introducido en la BD
+     */
     private void registrarGasto(){
         ConexionSQLiteHelper newconn = new ConexionSQLiteHelper(this, "bd_gastos_ingresos", null, 1);
         SQLiteDatabase db = newconn.getWritableDatabase();
@@ -140,6 +152,17 @@ public class AddGasto extends AppCompatActivity {
         Integer id_gasto = 0;
         ArrayList arra_compare = new ArrayList();
         Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
+
+        //Formato de la fecha para la inserciones en la base de datos
+        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
+
+        String cantidad = cantidadGasto.getText().toString();
+        Ratio ratio = (Ratio) moneda.getSelectedItem();
+
+        //Contenedor asignado en la BD
+        ContentValues values = new ContentValues();
+
         while (cursor.moveToNext()){
             arra_compare.add( cursor.getInt(1) );
         }
@@ -147,13 +170,7 @@ public class AddGasto extends AppCompatActivity {
             id_gasto = id_gasto + 1;
         }
 
-        //Formato de la fecha para la inserciones en la base de datos
-        String formatoDeFecha = "dd/MM/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
-
-        String cantidad = cantidadGasto.getText().toString();
-        Ratio ratio = (Ratio) moneda.getSelectedItem();
         try {
             Float cantidadInFloat = Float.parseFloat(cantidad);
             Float multiplicacion = cantidadInFloat / ratio.getValue();
@@ -163,17 +180,18 @@ public class AddGasto extends AppCompatActivity {
         } catch (Exception e) {
 
         }
+
+        //¿Eliminar?
+        /**
         String address = "No especificado";
 
         if (addresses != null && !addresses.isEmpty()) {
 
             address = addresses.get(0).getAddressLine(0);
 
-        }
+        }*/
 
-
-        ContentValues values = new ContentValues();
-        values.put( utilidades.CAMPO_GASTO_INGRESO, "1");
+        values.put( utilidades.CAMPO_GASTO_INGRESO, "1"); //Flag indicador de que es gasto
         values.put(utilidades.CAMPO_ID_GASTO_INGRESO, id_gasto.toString());
         if(conceptoGasto.getText()!=null){
             values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, conceptoGasto.getText().toString());
@@ -190,8 +208,6 @@ public class AddGasto extends AppCompatActivity {
             values.put( utilidades.CAMPO_LOCALIZACION_GASTO_INGRESO, addresses.get(0).getAddressLine(0) );
         }
 
-        //Log.d(TAG, "--------------------->>>Values: " + values);
-
         Long idResultante=db.insert(utilidades.TABLA_GASTOS_INGRESOS_BD,null,values);
 
 
@@ -200,7 +216,10 @@ public class AddGasto extends AppCompatActivity {
         returnHome();
 
     }
-    //Data picker para tomar la fecha introducida en caso de cambiarla
+
+    /**
+     * Data picker para tomar la fecha introducida en caso de cambiarla
+     */
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -214,14 +233,20 @@ public class AddGasto extends AppCompatActivity {
         }
 
     };
-    //Introduccion de la fecha
+
+    /**
+     * Introduccion de la fecha
+     */
     private void actualizarInput() {
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
         etFechaGasto.setText(sdf.format(calendarioGasto.getTime()));
 
     }
-    //ANDRES
+
+    /**
+     * Método de retorno a MainActivity al añadir gasto
+     */
     public void returnHome() {
         Intent home_intent = new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 

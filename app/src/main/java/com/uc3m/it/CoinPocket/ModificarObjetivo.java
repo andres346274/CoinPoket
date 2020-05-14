@@ -5,6 +5,7 @@ package com.uc3m.it.CoinPocket;
  --> https://github.com/chenaoh/EjemploSQLite
 
  --> https://github.com/mitchtabian/SaveReadWriteDeleteSQLite
+ --> Comparar fechas: https://www.flipandroid.com/la-mejor-manera-de-comparar-fechas-en-android.html
  */
 
 import android.app.DatePickerDialog;
@@ -33,7 +34,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class ModificarObjetivo extends AppCompatActivity {
-    private static final String TAG = "ListDataActivity";
 
     ConexionSQLiteHelperObjetivos conn;
 
@@ -48,6 +48,8 @@ public class ModificarObjetivo extends AppCompatActivity {
     List<Address> addresses = null;
 
     Objetivos seleccion = new Objetivos();
+
+    Date strDate, str1Date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,19 +105,12 @@ public class ModificarObjetivo extends AppCompatActivity {
 
     public void consultarDeuda() {
         SQLiteDatabase db=conn.getReadableDatabase();
-        Log.d(TAG, "------------------->>> Lista IDS:" + seleccion.listaIDs );
-        Log.d(TAG, "------------------->>> ID seleccionado:" + seleccion.listaIDs.get( seleccion.posicionListaClick).split( "#" )[0] );
         String[] parametros= {seleccion.listaIDs.get( seleccion.posicionListaClick).split( "#" )[0]};
-        Log.d(TAG, "------------------->>> Has entrado en:" + parametros );
 
         try {
             Cursor cursor=db.rawQuery("SELECT * FROM " +utilidades.TABLA_OBJETIVOS_BD+" WHERE "+utilidades.CAMPO_ID_OBJETIVO+"=? ",parametros);
 
             cursor.moveToFirst();
-            Log.d(TAG, "------------------->>> CampoNombre:" + cursor.getString(2) );
-            Log.d(TAG, "------------------->>> CampoImporte:" + cursor.getString(3) );
-            Log.d(TAG, "------------------->>> campofecha:" + cursor.getString(4) );
-            Log.d(TAG, "------------------->>> campoConcepto:" + cursor.getString(5) );
 
             if(cursor.getString( 0 ).equals( "0" )) {
                 ahorrogasto.setText( "Ahorrar: " );
@@ -123,13 +118,9 @@ public class ModificarObjetivo extends AppCompatActivity {
                 ahorrogasto.setText( "Máximo gasto: " );
             }
             campoCantidad.setText(cursor.getString(2));
-            Log.d(TAG, "------------------->>> CampoNombre:" + cursor.getString(2) );
             campofechaInicio.setText(cursor.getString(3));
-            Log.d(TAG, "------------------->>> CampoImporte:" + cursor.getString(3) );
             campofechaFin.setText(cursor.getString(4));
-            Log.d(TAG, "------------------->>> campofecha:" + cursor.getString(4) );
             campoMotivo.setText( cursor.getString( 5 ) );
-            Log.d(TAG, "------------------->>> campoConcepto:" + cursor.getString(5) );
 
 
         }catch (Exception e){
@@ -221,28 +212,14 @@ public class ModificarObjetivo extends AppCompatActivity {
     }
 
     public String CompararFechas(String z, String y) throws ParseException {
-        Log.d(TAG, "--------------------->>> ENTRE COMPARAR FEHCAS: " + z + "--" + y);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         Date strDate = sdf.parse(z);
 
-        int year = strDate.getYear(); // this is deprecated
-        int month = strDate.getMonth(); // this is deprecated
-        int day = strDate.getDay(); // this is deprecated
-
-        Calendar primeraFecha = Calendar.getInstance();
-        primeraFecha.set(year, month, day);
-
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yy");
         Date str1Date = sdf1.parse( y );
-        int year_1 = str1Date.getYear();
-        int month_1 = str1Date.getMonth();
-        int day_1 = str1Date.getDay();
 
-        Calendar segundaFecha = Calendar.getInstance();
-        segundaFecha.set( year_1, month_1, day_1 );
-
-        if (segundaFecha.after(primeraFecha)) {
+        if (str1Date.after(strDate)) {
             return  z;
 
         }else {

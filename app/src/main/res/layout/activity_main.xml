@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -20,17 +18,26 @@
         android:orientation="vertical"
         android:layout_gravity="center">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0.2"
-            android:fontFamily="sans-serif-condensed-light"
-            android:gravity="center"
-            android:text="CoinPocket"
-            android:textColor="#0a0a0a"
-            android:textSize="30sp">
-        </TextView>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.75"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="CoinPocket"
+                android:textColor="#0a0a0a"
+                android:textSize="30sp"></TextView>
+
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/button_add_gasto"
@@ -45,8 +52,7 @@
             android:padding="20dp"
             android:text="Añadir gasto"
             android:textColor="@color/color50"
-            android:textSize="20sp">
-        </Button>
+            android:textSize="20sp"></Button>
 
         <Button
             android:id="@+id/button_add_ingreso"
@@ -60,8 +66,7 @@
             android:padding="20dp"
             android:text="Añadir ingreso"
             android:textColor="@color/color50"
-            android:textSize="20sp">
-        </Button>
+            android:textSize="20sp"></Button>
 
         <Button
             android:id="@+id/button_consultar"
@@ -75,8 +80,7 @@
             android:padding="20dp"
             android:text="Consultar cuentas"
             android:textColor="@color/color50"
-            android:textSize="20sp">
-        </Button>
+            android:textSize="20sp"></Button>
 
         <Button
             android:id="@+id/button_objetivos"
@@ -90,8 +94,7 @@
             android:padding="20dp"
             android:text="Objetivos"
             android:textColor="@color/color50"
-            android:textSize="20sp">
-        </Button>
+            android:textSize="20sp"></Button>
 
         <Button
             android:id="@+id/button_deudas"
@@ -105,9 +108,20 @@
             android:padding="20dp"
             android:text="Deudas"
             android:textColor="@color/color50"
-            android:textSize="20sp">
-        </Button>
+            android:textSize="20sp"></Button>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/id_balance_main"
+            android:padding="8dp"
+            android:background="@color/color50"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:textColor="#0a0a0a"
+            android:textSize="14sp"></TextView>
 
     </LinearLayout>
-
 </LinearLayout>

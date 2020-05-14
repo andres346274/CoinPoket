@@ -16,10 +16,12 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,73 +33,97 @@ import java.util.Date;
  --> https://github.com/chenaoh/EjemploSQLite
 
  --> https://github.com/mitchtabian/SaveReadWriteDeleteSQLite
+
+ --> Comparar fechas: https://www.flipandroid.com/la-mejor-manera-de-comparar-fechas-en-android.html
  */
 
 public class ListaGastosIngresos extends AppCompatActivity {
 
-    private static final String TAG = "ListDataActivity";
-
+    //Inicializacion de las variables de la activity
+    ListView mListView;
     EditText campoConcepto, campoCantidad;
     Spinner spinnerCuentasAll, spinnerCuentasSeleccion;
+    TextView campoTotalLista;
+    ArrayList<String>  listaInfoFecha, listaInfoCantidad, listaInfoConcepto,
+            listaInfoLocalizacion;
+    ArrayList <Integer> listaInfoEmoji, listaInfoGastoIngreso;
+    Integer x;
+    Double totalLista;
+    Date strDate, str1Date;
 
+    //Variables de BD de GastosIngresos
     ConexionSQLiteHelper conn;
-
-    public static Integer posicionListaClick;
-
-    private ListView mListView;
-    ArrayList<String> listaInformacion;
-    public static ArrayList<String> listaIDs;
     ArrayList<GastosIngresosBD> listaGastos, listaGastosOrder;
 
-    Integer x;
+    //Variable de formato de decimales
+    DecimalFormat formatter = new DecimalFormat("#,###.##");
+
+    //Variables públicas utilizadas por otras activities
+    public static Integer posicionListaClick;
+    public static ArrayList<String> listaIDs;
     public static Integer posicionAll = 0;
     public static Integer posicionSeleccion = 0;
-    //Flag para determinar si iniciamos la lista inicial de "todos los movimientos o si
-    //hemos modificado o eliminado algún movimiento y simplemente queremos volver a nuestra
-    //selección de lista anterior
+    //Flag para determinar si quremos mantener la lista anterior o no
     public static Integer flagPosition = 0;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_gastos_ingresos);
+
+        //Asignacion de los componentes que usamos en la activity
         mListView = (ListView) findViewById(R.id.id_list_gastos_ingresos);
-        conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_gastos_ingresos", null, 1);
         campoConcepto = (EditText) findViewById(R.id.id_concepto_gasto);
         campoCantidad = (EditText) findViewById(R.id.id_cantidad_gasto);
         spinnerCuentasAll = (Spinner) findViewById( R.id.id_spinner_cuentas_all );
         spinnerCuentasSeleccion = (Spinner) findViewById( R.id.id_spinner_cuentas_seleccion );
+        campoTotalLista = (TextView) findViewById( R.id.id_total_lista );
+        //Iniciación de BD de gastos e ingresos
+        conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_gastos_ingresos",
+                null, 1);
 
-        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasAll = ArrayAdapter.createFromResource( this, R.array.day_month_year_all, android.R.layout.simple_spinner_item );
+
+        //Inciación de los Spinner de selección
+
+        //Spinner primario (spinner a la izquierda en la pantalla)
+        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasAll = ArrayAdapter.createFromResource(
+                this, R.array.day_month_year_all, android.R.layout.simple_spinner_item );
         adaptadorSpinnerCuentasAll.setDropDownViewResource( android.R.layout.simple_spinner_item );
         spinnerCuentasAll.setAdapter(adaptadorSpinnerCuentasAll);
-
+        //OnClickListener del Spinner primario
         spinnerCuentasAll.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
-
-
             @Override
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                if (flagPosition == 1)
+                //Determinamos si el flag es 1 ó 0 para saber si debemos cargar la selección de spinners anterior
+                if (flagPosition == 1)//Cargamos selección anterior
                 {
-                    if(posicionAll==0) {
+                    //Buscamos en qué posición se encuentra el spinner primario (spinner izquierda)
+                    if(posicionAll==0) {//Spinner primario en "Todos los Movimientos"
                         try {
                             populateListView();
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                         flagPosition = 0;
+                        //Hago invisible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.INVISIBLE );
                     }
-                    if(posicionAll == 1) {
-                        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.createFromResource( parent.getContext(), R.array.numbers, android.R.layout.simple_spinner_item );
-                        adaptadorSpinnerCuentasSeleccion.setDropDownViewResource( android.R.layout.simple_spinner_item );
+                    if(posicionAll == 1) {//Spinner primario en "Día"
+                        //Inicializamos spinner secundario correspondiente
+                        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.
+                                createFromResource( parent.getContext(), R.array.numbers,
+                                        android.R.layout.simple_spinner_item );
+                        adaptadorSpinnerCuentasSeleccion.setDropDownViewResource(
+                                android.R.layout.simple_spinner_item );
                         spinnerCuentasSeleccion.setAdapter(adaptadorSpinnerCuentasSeleccion);
 
+                        //onClick en spinner secundario (derrecha)
                         spinnerCuentasSeleccion.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent2, View view, int position2, long l) {
-                                if(flagPosition == 1) {
+                                if(flagPosition == 1) {//Si hay que cargar spinner anterior
                                     try {
                                         populateListViewDia(spinnerCuentasSeleccion.getSelectedItem().toString());
                                     } catch (ParseException e) {
@@ -106,37 +132,37 @@ public class ListaGastosIngresos extends AppCompatActivity {
                                     flagPosition = 0;
                                     spinnerCuentasSeleccion.setSelection( posicionSeleccion );
 
-                                }else  {
+                                }else  {//Si no hay que cargar spinner anterior
                                     try {
                                         populateListViewDia(parent2.getItemAtPosition(position2).toString());
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                     }
+                                    //Guardo mi nueva posición en este spinner
                                     posicionSeleccion = position2;
                                 }
                             }
-
                             @Override
                             public void onNothingSelected(AdapterView<?> adapterView) {
 
                             }
                         } );
-
+                        //Hago visible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.VISIBLE );
                     }
-                    if(posicionAll == 2) {
+                    if(posicionAll == 2) {//Spinner primario en "Mes"
 
+                        //Inicializamos spinner secundario correspondiente
                         ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.createFromResource( parent.getContext(), R.array.mes, android.R.layout.simple_spinner_item );
                         adaptadorSpinnerCuentasSeleccion.setDropDownViewResource( android.R.layout.simple_spinner_item );
-                        spinnerCuentasSeleccion.setAdapter(adaptadorSpinnerCuentasSeleccion);
-                        //Log.d(TAG, "--------------------->>> POSICION SELECCION: " + posicionSeleccion);
+                        spinnerCuentasSeleccion.setAdapter(adaptadorSpinnerCuentasSeleccion);;
                         spinnerCuentasSeleccion.setSelection( posicionSeleccion );
-
+                        //onClick en spinner secundario (derecha)
                         spinnerCuentasSeleccion.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                             String mesNumber = null;
                             @Override
                             public void onItemSelected(AdapterView<?> parent2, View view, int position2, long l) {
-                                if (flagPosition == 1) {
+                                if (flagPosition == 1) {//Si hay que cargar spinner anterior
                                     spinnerCuentasSeleccion.setSelection( posicionSeleccion );
                                     if(spinnerCuentasSeleccion.getSelectedItem().toString().equals( "Enero" )) mesNumber = "01";
                                     if(spinnerCuentasSeleccion.getSelectedItem().toString().equals( "Febrero" )) mesNumber = "02";
@@ -151,7 +177,7 @@ public class ListaGastosIngresos extends AppCompatActivity {
                                     if(spinnerCuentasSeleccion.getSelectedItem().toString().equals( "Noviembre" )) mesNumber = "11";
                                     if(spinnerCuentasSeleccion.getSelectedItem().toString().equals( "Diciembre" )) mesNumber = "12";
                                     flagPosition = 0;
-                                }else {
+                                }else {//Si no hay que cargar spinner anterior
                                     if(parent2.getItemAtPosition(position2).toString().equals( "Enero" )) mesNumber = "01";
                                     if(parent2.getItemAtPosition(position2).toString().equals( "Febrero" )) mesNumber = "02";
                                     if(parent2.getItemAtPosition(position2).toString().equals( "Marzo" )) mesNumber = "03";
@@ -164,6 +190,7 @@ public class ListaGastosIngresos extends AppCompatActivity {
                                     if(parent2.getItemAtPosition(position2).toString().equals( "Octubre" )) mesNumber = "10";
                                     if(parent2.getItemAtPosition(position2).toString().equals( "Noviembre" )) mesNumber = "11";
                                     if(parent2.getItemAtPosition(position2).toString().equals( "Diciembre" )) mesNumber = "12";
+                                    //Guardo mi nueva posición en este spinner
                                     posicionSeleccion = position2;
                                 }
                                 try {
@@ -179,16 +206,18 @@ public class ListaGastosIngresos extends AppCompatActivity {
 
                             }
                         });
+                        //Hago visible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.VISIBLE );
                     }
-                    if(posicionAll == 3) {
+                    if(posicionAll == 3) {//Spinner primario en "Año"
+                        //Inicializamos spinner secundario correspondiente
                         ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.createFromResource( parent.getContext(), R.array.year, android.R.layout.simple_spinner_item );
                         adaptadorSpinnerCuentasSeleccion.setDropDownViewResource( android.R.layout.simple_spinner_item );
                         spinnerCuentasSeleccion.setAdapter(adaptadorSpinnerCuentasSeleccion);
                         spinnerCuentasSeleccion.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent2, View view, int position2, long l) {
-                                if (flagPosition == 1) {
+                                if (flagPosition == 1) {//Si hay que cargar spinner anterior
                                     spinnerCuentasSeleccion.setSelection( posicionSeleccion );
                                     try {
                                         populateListViewAno(spinnerCuentasSeleccion.getSelectedItem().toString());
@@ -196,12 +225,13 @@ public class ListaGastosIngresos extends AppCompatActivity {
                                         e.printStackTrace();
                                     }
                                     flagPosition = 0;
-                                }else {
+                                }else {//Si no hay que cargar spinner anterior
                                     try {
                                         populateListViewAno(parent2.getItemAtPosition(position2).toString());
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                     }
+                                    //Guardo mi nueva posición en este spinner
                                     posicionSeleccion = position2;
                                 }
                             }
@@ -211,32 +241,37 @@ public class ListaGastosIngresos extends AppCompatActivity {
 
                             }
                         });
-                        //Log.d(TAG, "--------------------->>> POSICION SELECCION: " + posicionSeleccion);
-
-                        //Log.d(TAG, "--------------------->>> POSICION SELECCION string: " + spinnerCuentasSeleccion.getSelectedItem().toString());
-
-
+                        //Hago visible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.VISIBLE );
                     }
 
                     else{
-                        Log.d(TAG, "Error al cargar movimientos");
+                        Toast.makeText(getApplicationContext(),"Error al cargar la consulta",
+                                Toast.LENGTH_SHORT).show();
                     }
+                    //Guardo mi nueva posición en spinner primario
                     spinnerCuentasAll.setSelection( posicionAll );
-                }else {
+                }else {//Si no hay que cargar spinner anterior (entramos desde MainActivity)
+                    //Guardo mi nueva posición en spinner primario
                     posicionAll = position;
-                    if(position==0) {
+                    if(position==0) {//Spinner primario en "Todos los movimientos"
                         try {
                             populateListView();
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        //Hago invisible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.INVISIBLE );
                     }
-                    if(position == 1) {
+                    if(position == 1) {//Spinner primario en "Día"
+                        //Hago visible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.VISIBLE );
-                        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.createFromResource( parent.getContext(), R.array.numbers, android.R.layout.simple_spinner_item );
-                        adaptadorSpinnerCuentasSeleccion.setDropDownViewResource( android.R.layout.simple_spinner_item );
+                        //Inicializamos spinner secundario correspondiente
+                        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.
+                                createFromResource( parent.getContext(), R.array.numbers,
+                                        android.R.layout.simple_spinner_item );
+                        adaptadorSpinnerCuentasSeleccion.setDropDownViewResource(
+                                android.R.layout.simple_spinner_item );
                         spinnerCuentasSeleccion.setAdapter(adaptadorSpinnerCuentasSeleccion);
                         spinnerCuentasSeleccion.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                             @Override
@@ -255,10 +290,15 @@ public class ListaGastosIngresos extends AppCompatActivity {
                             }
                         } );
                     }
-                    if(position == 2) {
+                    if(position == 2) {//Spinner primario en "Mes"
+                        //Hago visible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.VISIBLE );
-                        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.createFromResource( parent.getContext(), R.array.mes, android.R.layout.simple_spinner_item );
-                        adaptadorSpinnerCuentasSeleccion.setDropDownViewResource( android.R.layout.simple_spinner_item );
+                        //Inicializamos spinner secundario correspondiente
+                        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.
+                                createFromResource( parent.getContext(), R.array.mes,
+                                        android.R.layout.simple_spinner_item );
+                        adaptadorSpinnerCuentasSeleccion.setDropDownViewResource(
+                                android.R.layout.simple_spinner_item );
                         spinnerCuentasSeleccion.setAdapter(adaptadorSpinnerCuentasSeleccion);
                         spinnerCuentasSeleccion.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                             @Override
@@ -290,10 +330,15 @@ public class ListaGastosIngresos extends AppCompatActivity {
                             }
                         } );
                     }
-                    if(position == 3) {
+                    if(position == 3) {//Spinner primario en "Año"
+                        //Hago visible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.VISIBLE );
-                        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.createFromResource( parent.getContext(), R.array.year, android.R.layout.simple_spinner_item );
-                        adaptadorSpinnerCuentasSeleccion.setDropDownViewResource( android.R.layout.simple_spinner_item );
+                        //Inicializamos spinner secundario correspondiente
+                        ArrayAdapter<CharSequence> adaptadorSpinnerCuentasSeleccion = ArrayAdapter.
+                                createFromResource( parent.getContext(), R.array.year,
+                                        android.R.layout.simple_spinner_item );
+                        adaptadorSpinnerCuentasSeleccion.setDropDownViewResource(
+                                android.R.layout.simple_spinner_item );
                         spinnerCuentasSeleccion.setAdapter(adaptadorSpinnerCuentasSeleccion);
                         spinnerCuentasSeleccion.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                             @Override
@@ -315,7 +360,8 @@ public class ListaGastosIngresos extends AppCompatActivity {
                     }
 
                     else{
-                        Log.d(TAG, "Error al cargar movimientos");
+                        Toast.makeText(getApplicationContext(),"Error al cargar la consulta",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -327,13 +373,7 @@ public class ListaGastosIngresos extends AppCompatActivity {
         });
 
 
-
-        /**populateListView();
-        //ArrayAdapter adaptador = new  AdaptadorLista(this, listaInformacion);
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaInformacion);*/
-        //mListView.setAdapter(adaptador);
-
-
+        //Inicialización de escuchadores en las fecha
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView adapterView, View view, int i, long l) {
@@ -358,16 +398,26 @@ public class ListaGastosIngresos extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Método creador de lista de Gastos e Ingresos cuando es seleccionado un día en concreto
+     * en Spinner secundario (spinner derecho)
+     *      listaGastos = lista de objetos IngresoGasto obtenidos de la BD
+     *      listaGastosOrder = lista temporal utilizada para oredenar listaGastos
+     *      x = variable utilizada en el proceso de ordenar listaGastos
+     * @param dia Día seleccionado por el Spinner secundario (derecha)
+     * @throws ParseException
+     */
     private  void populateListViewDia(String dia) throws  ParseException {
+        //Variables de lectura de la BD
         SQLiteDatabase db = conn.getReadableDatabase();
-
+        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
         GastosIngresosBD gastos = null;
+
         listaGastos = new ArrayList<GastosIngresosBD>();
         listaGastosOrder = new ArrayList<GastosIngresosBD>();
+        x = 0;
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
-
+        //Creación de listaGastos
         while (cursor.moveToNext()){
             gastos = new GastosIngresosBD();
             gastos.setGastoingreso( cursor.getInt(0));
@@ -378,11 +428,13 @@ public class ListaGastosIngresos extends AppCompatActivity {
 
             listaGastos.add(gastos);
         }
-        x = 0;
+        //Ordenamos listaGastos cronológicamente y exluimos de ella aquello ingresos o gastos que no sean del día seleccionado
         while(listaGastos.size()!=0){
             for(int i=0; i<listaGastos.size(); i++){
 
-                if( CompararFechas( listaGastos.get( x ).getFecha(), listaGastos.get( i ).getFecha() ) == listaGastos.get( x ).getFecha() && listaGastos.get( x ).getFecha()!= listaGastos.get( i ).getFecha()){
+                if( CompararFechas( listaGastos.get( x ).getFecha(), listaGastos.get( i ).getFecha() )
+                        == listaGastos.get( x ).getFecha() && listaGastos.get( x ).getFecha()!=
+                        listaGastos.get( i ).getFecha()){
                     x = i;
                     break;
                 } else {
@@ -399,20 +451,36 @@ public class ListaGastosIngresos extends AppCompatActivity {
             }
         }
         listaGastos = listaGastosOrder;
+        //Llamo al método obtener lista para obtener los datos necesarios en el adaptador de mi lista
         obtenerLista();
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaInformacion);
+        //Incorporo mi lista a mListview con mi adaptador personalizado para gastos e ingresos
+        ArrayAdapter adaptador = new MyAdapterGastosIngresos( ListaGastosIngresos.this,
+                listaInfoFecha, listaInfoCantidad, listaInfoConcepto, listaInfoLocalizacion,
+                listaInfoEmoji, listaInfoGastoIngreso );
         mListView.setAdapter(adaptador);
     }
 
-    private  void populateListViewMes(String mes) throws  ParseException {
-        SQLiteDatabase db = conn.getReadableDatabase();
 
+    /**
+     * Método creador de lista de Gastos e Ingresos cuando es seleccionado un mes en concreto
+     * en Spinner secundario (spinner derecho)
+     *      listaGastos = lista de objetos IngresoGasto obtenidos de la BD
+     *      listaGastosOrder = lista temporal utilizada para oredenar listaGastos
+     *      x = variable utilizada en el proceso de ordenar listaGastos
+     * @param mes Mes seleccionado por el Spinner secundario (derecha)
+     * @throws ParseException
+     */
+    private  void populateListViewMes(String mes) throws  ParseException {
+        //Variables de lectura de la BD
+        SQLiteDatabase db = conn.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
         GastosIngresosBD gastos = null;
+
         listaGastos = new ArrayList<GastosIngresosBD>();
         listaGastosOrder = new ArrayList<GastosIngresosBD>();
+        x = 0;
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
-
+        //Creación de listaGastos
         while (cursor.moveToNext()){
             gastos = new GastosIngresosBD();
             gastos.setGastoingreso( cursor.getInt(0));
@@ -423,7 +491,7 @@ public class ListaGastosIngresos extends AppCompatActivity {
 
             listaGastos.add(gastos);
         }
-        x = 0;
+        //Ordenamos listaGastos cronológicamente y exluimos de ella aquellos ingresos o gastos que no sean del mes seleccionado
         while(listaGastos.size()!=0){
             for(int i=0; i<listaGastos.size(); i++){
 
@@ -444,21 +512,37 @@ public class ListaGastosIngresos extends AppCompatActivity {
             }
         }
         listaGastos = listaGastosOrder;
+        //Llamo al método obtener lista para obtener los datos necesarios en el adaptador de mi lista
         obtenerLista();
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaInformacion);
+        //Incorporo mi lista a mListview con mi adaptador personalizado para gastos e ingresos
+        ArrayAdapter adaptador = new MyAdapterGastosIngresos( ListaGastosIngresos.this,
+                listaInfoFecha, listaInfoCantidad, listaInfoConcepto, listaInfoLocalizacion,
+                listaInfoEmoji, listaInfoGastoIngreso );
         mListView.setAdapter(adaptador);
     }
 
+    /**
+     * Método creador de lista de Gastos e Ingresos cuando es seleccionado un año en concreto
+     * en Spinner secundario (spinner derecho)
+     *      listaGastos = lista de objetos IngresoGasto obtenidos de la BD
+     *      listaGastosOrder = lista temporal utilizada para oredenar listaGastos
+     *      x = variable utilizada en el proceso de ordenar listaGastos
+     * @param ano Mes seleccionado por el Spinner secundario (derecha)
+     * @throws ParseException
+     */
     private  void populateListViewAno(String ano) throws  ParseException {
-        ano = ano.substring( 2,4 );
+        //Variables de lectura de la BD
         SQLiteDatabase db = conn.getReadableDatabase();
-
+        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
         GastosIngresosBD gastos = null;
+
         listaGastos = new ArrayList<GastosIngresosBD>();
         listaGastosOrder = new ArrayList<GastosIngresosBD>();
+        //Substring para coger solo los dos últimos números del año seleccionado en el spinner y que así coincida con el formato de fecha.
+        ano = ano.substring( 2,4 );
+        x = 0;
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
-
+        //Creación de listaGastos
         while (cursor.moveToNext()){
             gastos = new GastosIngresosBD();
             gastos.setGastoingreso( cursor.getInt(0));
@@ -469,7 +553,7 @@ public class ListaGastosIngresos extends AppCompatActivity {
 
             listaGastos.add(gastos);
         }
-        x = 0;
+        //Ordenamos listaGastos cronológicamente y exluimos de ella aquellos ingresos o gastos que no sean del año seleccionado
         while(listaGastos.size()!=0){
             for(int i=0; i<listaGastos.size(); i++){
 
@@ -490,22 +574,35 @@ public class ListaGastosIngresos extends AppCompatActivity {
             }
         }
         listaGastos = listaGastosOrder;
+        //Llamo al método obtener lista para obtener los datos necesarios en el adaptador de mi lista
         obtenerLista();
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaInformacion);
+        //Incorporo mi lista a mListview con mi adaptador personalizado para gastos e ingresos
+        ArrayAdapter adaptador = new MyAdapterGastosIngresos( ListaGastosIngresos.this,
+                listaInfoFecha, listaInfoCantidad, listaInfoConcepto, listaInfoLocalizacion,
+                listaInfoEmoji, listaInfoGastoIngreso );
         mListView.setAdapter(adaptador);
     }
 
+    /**
+     * Método creador de lista de Gastos e Ingresos cuando es seleccionado mostrar la opción de todos
+     * los movimientos guardados
+     *      listaGastos = lista de objetos IngresoGasto obtenidos de la BD
+     *      listaGastosOrder = lista temporal utilizada para oredenar listaGastos
+     *      x = variable utilizada en el proceso de ordenar listaGastos
+     * @throws ParseException
+     */
     private void populateListView() throws ParseException {
 
-
+        //Variables de lectura de la BD
         SQLiteDatabase db = conn.getReadableDatabase();
-
+        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
         GastosIngresosBD gastos = null;
+
         listaGastos = new ArrayList<GastosIngresosBD>();
         listaGastosOrder = new ArrayList<GastosIngresosBD>();
+        x = 0;
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
-
+        //Creación de listaGastos
         while (cursor.moveToNext()){
             gastos = new GastosIngresosBD();
             gastos.setGastoingreso( cursor.getInt(0));
@@ -513,89 +610,123 @@ public class ListaGastosIngresos extends AppCompatActivity {
             gastos.setConcepto(cursor.getString(2));
             gastos.setCantidad(cursor.getString(3));
             gastos.setFecha( cursor.getString( 4 ) );
+            gastos.setLocalizacion( cursor.getString( 5 ) );
 
             listaGastos.add(gastos);
         }
-        x = 0;
+        //Ordenamos listaGastos cronológicamente
         while(listaGastos.size()!=0){
 
             for(int i=0; i<listaGastos.size(); i++){
 
                 if( CompararFechas( listaGastos.get( x ).getFecha(), listaGastos.get( i ).getFecha() ) == listaGastos.get( x ).getFecha()&& listaGastos.get( x ).getFecha()!=listaGastos.get(i).getFecha()){
-                        x = i;
-                        break;
+                    x = i;
+                    break;
 
                 } else {
-                        if (i == listaGastos.size()-1){
+                    if (i == listaGastos.size()-1){
 
-                            listaGastosOrder.add( listaGastos.get( x ) );
-                            listaGastos.remove( listaGastos.get( x ) );
-                            x = 0;
-                            break;
-
-                        }
-
-
+                        listaGastosOrder.add( listaGastos.get( x ) );
+                        listaGastos.remove( listaGastos.get( x ) );
+                        x = 0;
+                        break;
+                    }
                 }
             }
         }
 
         listaGastos = listaGastosOrder;
+        //Llamo al método obtener lista para obtener los datos necesarios en el adaptador de mi lista
         obtenerLista();
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaInformacion);
+        //Incorporo mi lista a mListview con mi adaptador personalizado para gastos e ingresos
+        ArrayAdapter adaptador = new MyAdapterGastosIngresos( ListaGastosIngresos.this,
+                listaInfoFecha, listaInfoCantidad, listaInfoConcepto, listaInfoLocalizacion,
+                listaInfoEmoji, listaInfoGastoIngreso );
         mListView.setAdapter(adaptador);
     }
 
-    private void obtenerLista() {
-        listaInformacion = new ArrayList<String>();
-        listaIDs = new  ArrayList<String>();
 
+    /**
+     * Método que obtiene las estructuras y datos necesarios para ser pasados al ArrayAdapter de
+     * GastosIngresos personalizado y me crea mi lista de IDs (fundamental al hacer click en un
+     * item de la lista para modificarlo)
+     */
+    private void obtenerLista() {
+        //Inicialización de variables para pasar al ArrayAdapter
+        listaInfoEmoji = new ArrayList<Integer>();
+        listaInfoFecha = new ArrayList<String>();
+        listaInfoConcepto = new ArrayList<String>();
+        listaInfoCantidad = new ArrayList<String>();
+        listaInfoLocalizacion = new ArrayList<String>();
+        listaInfoGastoIngreso = new ArrayList<Integer>();
+        //Iniciación de la lista que contendrá la información de el Id de cada input y de si este es un gasto o un ingreso
+        listaIDs = new  ArrayList<String>();
+        //Variable para almacenar el balance total de los movimientos mostrados en la lista por pantalla
+        totalLista = 0.0;
+
+        //Asignación de valores a cada variable para pasar al array adapter
         for (int i=0; i<listaGastos.size(); i++){
-            if(listaGastos.get(i).getGastoingreso()==0){
+
+            if(listaGastos.get(i).getGastoingreso()==0){//Caso de ingreso
+                listaInfoEmoji.add( R.drawable.emoji_ingreso );
+                listaInfoFecha.add( listaGastos.get( i ).getFecha() );
+                listaInfoCantidad.add( "+" + listaGastos.get( i ).getCantidad());
+                listaInfoLocalizacion.add( listaGastos.get( i ).getLocalizacion() );
+                listaInfoGastoIngreso.add( listaGastos.get( i ).getGastoingreso() );
+
                 if(listaGastos.get(i).getConcepto().length()>15){
-                    listaInformacion.add(listaGastos.get(i).getConcepto().substring( 0,15 ) +
-                            "..." + " --->  " + "+ " + listaGastos.get(i).getCantidad() + "€");
+                    listaInfoConcepto.add(listaGastos.get(i).getConcepto().substring( 0,15 ) + "...");
                 }else{
-                    listaInformacion.add(listaGastos.get(i).getConcepto() +
-                            " --->  " + "+ " + listaGastos.get(i).getCantidad() + "€");
+                    listaInfoConcepto.add(listaGastos.get(i).getConcepto());
                 }
 
-            }else {
+            }else {//Caso de gasto
+                listaInfoEmoji.add( R.drawable.emoji_gasto );
+                listaInfoFecha.add( listaGastos.get( i ).getFecha() );
+                listaInfoCantidad.add( "-" + listaGastos.get( i ).getCantidad());
+                listaInfoLocalizacion.add( listaGastos.get( i ).getLocalizacion() );
+                listaInfoGastoIngreso.add( listaGastos.get( i ).getGastoingreso() );
+
                 if(listaGastos.get(i).getConcepto().length()>15){
-                    listaInformacion.add(listaGastos.get(i).getConcepto().substring( 0,15 ) +
-                            "..." + " ---> " + "- " + listaGastos.get(i).getCantidad() + "€");
-                }else {
-                    listaInformacion.add( listaGastos.get( i ).getConcepto()
-                            + " ---> " + "- " + listaGastos.get( i ).getCantidad() + "€" );
+                    listaInfoConcepto.add(listaGastos.get(i).getConcepto().substring( 0,15 ) + "...");
+                }else{
+                    listaInfoConcepto.add(listaGastos.get(i).getConcepto());
                 }
             }
+            //Contar el total de la lista
+            if(listaGastos.get( i ).getCantidad().length()!=0){
+                if(listaGastos.get(i).getGastoingreso()==0){
+                    totalLista = totalLista + Double.parseDouble( listaGastos.get( i ).getCantidad().toString().trim() );
+                }
+                else {
+                    totalLista = totalLista - Double.parseDouble( listaGastos.get( i ).getCantidad().toString().trim() );
+                }
+
+            }
+            //Asignación de valores al array de la siguiente forma por ejemplo: [id#1,id#0,id#0,...]
             listaIDs.add(listaGastos.get(i).getId().toString() + "#" + listaGastos.get( i ).getGastoingreso());
         }
+        //Asignacion del valor del balance de la lista en su TextView correspondiente
+        campoTotalLista.setText( "Balance total de lista: " +  formatter.format(totalLista) + "€" );
     }
 
 
+    /**
+     * Método de comparación de fechas
+     * @param z fecha 1
+     * @param y fecha 2
+     * @return
+     * @throws ParseException
+     */
     public String CompararFechas(String x, String y) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
-        Date strDate = sdf.parse(x);
-
-        int year = strDate.getYear(); // this is deprecated
-        int month = strDate.getMonth(); // this is deprecated
-        int day = strDate.getDay(); // this is deprecated
-
-        Calendar primeraFecha = Calendar.getInstance();
-        primeraFecha.set(year, month, day);
+        strDate = sdf.parse(x);
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yy");
-        Date str1Date = sdf1.parse( y );
-        int year_1 = str1Date.getYear();
-        int month_1 = str1Date.getMonth();
-        int day_1 = str1Date.getDay();
+        str1Date = sdf1.parse( y );
 
-        Calendar segundaFecha = Calendar.getInstance();
-        segundaFecha.set( year_1, month_1, day_1 );
-
-        if (segundaFecha.after(primeraFecha)) {
+        if (str1Date.after(strDate)) {
             return  x;
 
         }else {
@@ -603,6 +734,10 @@ public class ListaGastosIngresos extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método para crear un mensaje Toast que se muestre en la App
+     * @param message
+     */
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }

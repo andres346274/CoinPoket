@@ -2,6 +2,7 @@ package com.uc3m.it.CoinPocket;
 
 public class ObjetivosBD {
 
+    //Creación de campos por Deuda contenidos en la BD
     private Integer gastoahorro;
     private Integer id;
     private String cantidad;
@@ -17,6 +18,8 @@ public class ObjetivosBD {
         this.fechafin =fechafin;
         this.motivo=motivo;
     }
+
+    //Definición de métodos get y set para cada campo
 
     public Integer getGastoahorro() {
         return gastoahorro;

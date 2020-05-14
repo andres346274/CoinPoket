@@ -32,9 +32,6 @@ import java.util.Locale;
 
 public class AddIngreso extends AppCompatActivity {
 
-    //ANDRES
-    private static final String TAG = "ListDataActivity";
-
     private static final int ACTIVITY_CREATE=0;
 
     //Variable para recuperar latitud y longitud cuando lanzamos la activity de mapas
@@ -48,9 +45,11 @@ public class AddIngreso extends AppCompatActivity {
     Button buttonSaveIngreso;
     Button buttonLocalizacionIngreso;
     Calendar calendarioIngreso = Calendar.getInstance();
-    List<Address> addresses = null;//Variable para la utilizacion del geocoder
+    //Variable para la utilizacion del geocoder
+    List<Address> addresses = null;
     Spinner moneda;
-    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());//Variable de la fecha actual
+    //Variable de la fecha actual
+    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +79,7 @@ public class AddIngreso extends AppCompatActivity {
         buttonSaveIngreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registrarGasto();
+                registrarIngreso();
             }
         });
 
@@ -124,19 +123,25 @@ public class AddIngreso extends AppCompatActivity {
 
         }
     }
-    //ANDRES
-    private void registrarGasto(){
+    /**
+     * Método para registrar el Ingreso
+     *      id_ingreso = id asignado a la ingreso en su creación
+     *      arra_compare = array para movernos con el cursor de la BD a la hora de asignar IDs
+     *      sdf = objeto fecha
+     *      values = Contenedor introducido en la BD
+     */
+    private void registrarIngreso(){
         ConexionSQLiteHelper newconn = new ConexionSQLiteHelper(this, "bd_gastos_ingresos", null, 1);
         SQLiteDatabase db = newconn.getWritableDatabase();
 
-        Integer id_gasto = 0;
+        Integer id_ingreso = 0;
         ArrayList arra_compare = new ArrayList();
         Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
         while (cursor.moveToNext()){
             arra_compare.add( cursor.getInt(1) );
         }
-        while (arra_compare.contains( id_gasto )) {
-            id_gasto = id_gasto + 1;
+        while (arra_compare.contains( id_ingreso )) {
+            id_ingreso = id_ingreso + 1;
         }
 
         String cantidad = cantidadIngreso.getText().toString();
@@ -155,8 +160,8 @@ public class AddIngreso extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
 
         ContentValues values = new ContentValues();
-        values.put( utilidades.CAMPO_GASTO_INGRESO, "0" );
-        values.put(utilidades.CAMPO_ID_GASTO_INGRESO, id_gasto.toString());
+        values.put( utilidades.CAMPO_GASTO_INGRESO, "0" );//Flag indicador de que es ingreso
+        values.put(utilidades.CAMPO_ID_GASTO_INGRESO, id_ingreso.toString());
         if(conceptoIngreso.getText()!=null){
             values.put(utilidades.CAMPO_CONCEPTO_GASTO_INGRESO, conceptoIngreso.getText().toString());
         }else{
@@ -172,8 +177,6 @@ public class AddIngreso extends AppCompatActivity {
             values.put( utilidades.CAMPO_LOCALIZACION_GASTO_INGRESO, addresses.get(0).getAddressLine(0) );
         }
 
-        Log.d(TAG, "--------------------->>>Values: " + values);
-
         Long idResultante=db.insert(utilidades.TABLA_GASTOS_INGRESOS_BD,null,values);
 
 
@@ -182,7 +185,11 @@ public class AddIngreso extends AppCompatActivity {
         returnHome();
 
     }
-    //Data picker para tomar la fecha introducida en caso de cambiarla
+
+
+    /**
+     * Data picker para tomar la fecha introducida en caso de cambiarla
+     */
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -195,7 +202,11 @@ public class AddIngreso extends AppCompatActivity {
 
         }
     };
-    //Introduccion de la fecha
+
+
+    /**
+     * Introduccion de la fecha
+     */
     private void actualizarInput() {
 
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
@@ -204,6 +215,10 @@ public class AddIngreso extends AppCompatActivity {
         etFechaIngreso.setText(sdf.format(calendarioIngreso.getTime()));
     }
 
+
+    /**
+     * Método de retorno a MainActivity al añadir ingreso
+     */
     public void returnHome() {
 
         Intent home_intent = new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -1,5 +1,9 @@
 package com.uc3m.it.CoinPocket;
 
+/**
+ *  --> Comparar fechas: https://www.flipandroid.com/la-mejor-manera-de-comparar-fechas-en-android.html
+ */
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Objetivos extends AppCompatActivity {
 
@@ -27,14 +32,23 @@ public class Objetivos extends AppCompatActivity {
     private ListView mListView;
 
     ConexionSQLiteHelperObjetivos conn;
+    ConexionSQLiteHelper connMovimientos;
 
     public static Integer posicionListaClick;
 
     ArrayList<ObjetivosBD> listaObjetivos, listaObjetivosOrder;
+    ArrayList<GastosIngresosBD> listaBalanceObjetivo;
     Integer x;
+    Double totalBalanceObjetivo;
 
     ArrayList<String> listaInformacion;
     public static ArrayList<String> listaIDs;
+    Date strDate, str1Date;
+
+    ArrayList<String>  listaInfoFechaInic, listaInfoFechaFin, listaInfoCantidad, listaInfoMotivo;
+    ArrayList <Integer> listaInfoEmoji, listaInfoAhorrarGastar, flagListaInfoBalance;
+    ArrayList<Double> listaInfoBalance;
+    String fechaHoy = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +57,7 @@ public class Objetivos extends AppCompatActivity {
 
         mListView = (ListView) findViewById( R.id.list_view_objetivos );
         conn = new ConexionSQLiteHelperObjetivos(getApplicationContext(), "bd_objetivos", null, 1);
+        connMovimientos = new ConexionSQLiteHelper(getApplicationContext(), "bd_gastos_ingresos", null, 1);
 
         try {
             populateListView();
@@ -107,6 +122,7 @@ public class Objetivos extends AppCompatActivity {
 
             listaObjetivos.add(objetivos);
         }
+        Log.d(TAG, "--------------------->>> FECHA INICIO OBJETIVOS: " + listaObjetivos.size());
         x = 0;
         Log.d(TAG, "--------------------->>> TAMAÑO LISTA: " + listaObjetivos.size());
         while(listaObjetivos.size()!=0){
@@ -136,32 +152,122 @@ public class Objetivos extends AppCompatActivity {
 
         listaObjetivos = listaObjetivosOrder;
         obtenerLista();
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaInformacion);
+        ArrayAdapter adaptador = new MyAdapterObjetivos( Objetivos.this, listaInfoFechaInic, listaInfoFechaFin, listaInfoCantidad, listaInfoMotivo, listaInfoEmoji, listaInfoAhorrarGastar, listaInfoBalance, flagListaInfoBalance );
+        //ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaInformacion);
         mListView.setAdapter(adaptador);
     }
 
-    private void obtenerLista() {
+    private void obtenerLista() throws ParseException {
         Log.d(TAG, "--------------------->>> ENTRE OBTENER LISTA: ");
         listaInformacion = new ArrayList<String>();
+        listaInfoEmoji = new ArrayList<Integer>();
+        listaInfoFechaInic = new ArrayList<String>();
+        listaInfoFechaFin = new ArrayList<String>();
+        listaInfoMotivo = new ArrayList<String>();
+        listaInfoCantidad = new ArrayList<String>();
+        listaInfoAhorrarGastar = new ArrayList<Integer>();
+        listaInfoBalance = new ArrayList<Double>();
+        flagListaInfoBalance = new ArrayList<Integer>();
         listaIDs = new  ArrayList<String>();
+        Double balance = 0.0;
 
         for (int i=0; i<listaObjetivos.size(); i++){
             if(listaObjetivos.get(i).getGastoahorro()==0){
-                if(listaObjetivos.get(i).getMotivo().length()>15){
-                    listaInformacion.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) +
-                            "..." + " --->  " + "Ahorrar: " + listaObjetivos.get(i).getCantidad() + "€");
-                }else{
-                    listaInformacion.add(listaObjetivos.get(i).getMotivo() +
-                            " --->  " + "Ahorrar: " + listaObjetivos.get(i).getCantidad() + "€");
+
+                if(Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )>balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), true)){
+                    balance = Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )-
+                            balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), true);
+
+                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) == listaObjetivos.get( i ).getFechafin()){
+                        listaInfoEmoji.add( R.drawable.emoji_cross );
+                    }else{
+                        listaInfoEmoji.add( R.drawable.emoji_ahorrar );
+                    }
+                    listaInfoFechaInic.add( listaObjetivos.get( i ).getFechainicio() );
+                    listaInfoFechaFin.add( listaObjetivos.get( i ).getFechafin() );
+                    listaInfoCantidad.add( listaObjetivos.get( i ).getCantidad());
+                    listaInfoAhorrarGastar.add( listaObjetivos.get( i ).getGastoahorro() );
+                    listaInfoBalance.add( balance );
+                    flagListaInfoBalance.add( 1 );
+                    Log.d(TAG, "--------------------->>> ENTRO EN BALANCE 1. ");
+
+                    if(listaObjetivos.get(i).getMotivo().length()>15){
+                        listaInfoMotivo.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) + "...");
+                    }else{
+                        listaInfoMotivo.add(listaObjetivos.get(i).getMotivo());
+                    }
+
+                }else {
+                    balance = balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), true)-
+                            Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() );
+
+                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) == listaObjetivos.get( i ).getFechafin()){
+                        listaInfoEmoji.add( R.drawable.emoji_check );
+                    }else{
+                        listaInfoEmoji.add( R.drawable.emoji_ahorrar );
+                    }
+                    listaInfoFechaInic.add( listaObjetivos.get( i ).getFechainicio() );
+                    listaInfoFechaFin.add( listaObjetivos.get( i ).getFechafin() );
+                    listaInfoCantidad.add( listaObjetivos.get( i ).getCantidad());
+                    listaInfoAhorrarGastar.add( listaObjetivos.get( i ).getGastoahorro() );
+                    listaInfoBalance.add( balance );
+                    flagListaInfoBalance.add( 2 );
+                    Log.d(TAG, "--------------------->>> ENTRO EN BALANCE 2. ");
+
+                    if(listaObjetivos.get(i).getMotivo().length()>15){
+                        listaInfoMotivo.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) + "...");
+                    }else{
+                        listaInfoMotivo.add(listaObjetivos.get(i).getMotivo());
+                    }
                 }
 
-            }else {
-                if(listaObjetivos.get(i).getMotivo().length()>15){
-                    listaInformacion.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) +
-                            "..." + " ---> " + "Gasto máximo: " + listaObjetivos.get(i).getCantidad() + "€");
+            } else {
+
+                if(Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )>balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), false)){
+                    balance = Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )-
+                            balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), false);
+
+                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) == listaObjetivos.get( i ).getFechafin()){
+                        listaInfoEmoji.add( R.drawable.emoji_check );
+                    }else{
+                        listaInfoEmoji.add( R.drawable.emoji_gastar );
+                    }
+                    listaInfoFechaInic.add( listaObjetivos.get( i ).getFechainicio() );
+                    listaInfoFechaFin.add( listaObjetivos.get( i ).getFechafin() );
+                    listaInfoCantidad.add( listaObjetivos.get( i ).getCantidad());
+                    listaInfoAhorrarGastar.add( listaObjetivos.get( i ).getGastoahorro() );
+                    listaInfoBalance.add( balance );
+                    flagListaInfoBalance.add( 3 );
+                    Log.d(TAG, "--------------------->>> ENTRO EN BALANCE 3. ");
+
+                    if(listaObjetivos.get(i).getMotivo().length()>15){
+                        listaInfoMotivo.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) + "...");
+                    }else{
+                        listaInfoMotivo.add(listaObjetivos.get(i).getMotivo());
+                    }
                 }else {
-                    listaInformacion.add( listaObjetivos.get( i ).getMotivo()
-                            + " ---> " + "Gasto máximo: " + listaObjetivos.get( i ).getCantidad() + "€" );
+                    balance = balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), false ) -
+                            Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() );
+
+
+                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) == listaObjetivos.get( i ).getFechafin()){
+                        listaInfoEmoji.add( R.drawable.emoji_cross );
+                    }else{
+                        listaInfoEmoji.add( R.drawable.emoji_gastar );
+                    }
+                    listaInfoFechaInic.add( listaObjetivos.get( i ).getFechainicio() );
+                    listaInfoFechaFin.add( listaObjetivos.get( i ).getFechafin() );
+                    listaInfoCantidad.add( listaObjetivos.get( i ).getCantidad());
+                    listaInfoAhorrarGastar.add( listaObjetivos.get( i ).getGastoahorro() );
+                    listaInfoBalance.add( balance );
+                    flagListaInfoBalance.add( 4 );
+                    Log.d(TAG, "--------------------->>> ENTRO EN BALANCE 4. ");
+
+                    if(listaObjetivos.get(i).getMotivo().length()>15){
+                        listaInfoMotivo.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) + "...");
+                    }else{
+                        listaInfoMotivo.add(listaObjetivos.get(i).getMotivo());
+                    }
                 }
             }
             listaIDs.add(listaObjetivos.get(i).getId().toString() + "#" + listaObjetivos.get( i ).getGastoahorro());
@@ -170,30 +276,88 @@ public class Objetivos extends AppCompatActivity {
     }
 
 
-    public String CompararFechas(String z, String y) throws ParseException {
-        Log.d(TAG, "--------------------->>> ENTRE COMPARAR FEHCAS: " + z + "--" + y);
+    /**
+     *
+     * @param fechaInic
+     * @param fechaFin
+     * @param ahorroGasto Indica si estoy buscando obtener el balance para un objetivo de ahorro
+     *                    (true) o de gasto (false)
+     * @return
+     * @throws ParseException
+     */
+    public Double balanceObjetivo(String fechaInic, String fechaFin, Boolean ahorroGasto) throws ParseException {
+        SQLiteDatabase dbMovimientos = connMovimientos.getReadableDatabase();
+        GastosIngresosBD objetivosBalance = null;
+        listaBalanceObjetivo = new ArrayList<GastosIngresosBD>();
+        Cursor cursorMovimientos = dbMovimientos.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
+        totalBalanceObjetivo = 0.0;
+
+        while (cursorMovimientos.moveToNext()){
+            if ((CompararFechas( cursorMovimientos.getString(4), fechaInic ).equals( fechaInic ) || cursorMovimientos.getString(4).equals( fechaFin )) && (CompararFechas( cursorMovimientos.getString(4), fechaFin ).equals( cursorMovimientos.getString(4) ) || cursorMovimientos.getString(4).equals( fechaFin ))){
+
+                objetivosBalance = new GastosIngresosBD();
+                objetivosBalance.setGastoingreso( cursorMovimientos.getInt(0));
+                objetivosBalance.setId(cursorMovimientos.getInt(1));
+                objetivosBalance.setConcepto(cursorMovimientos.getString(2));
+                objetivosBalance.setCantidad(cursorMovimientos.getString(3));
+                objetivosBalance.setFecha(cursorMovimientos.getString(4));
+
+                listaBalanceObjetivo.add(objetivosBalance);
+            }
+        }
+        if(ahorroGasto){
+            if(listaBalanceObjetivo != null){
+                for(int i=0; i<listaBalanceObjetivo.size();i++){
+                    if(listaBalanceObjetivo.get( i ).getCantidad().length()!=0){
+                        if(listaBalanceObjetivo.get(i).getGastoingreso()==0){
+                            totalBalanceObjetivo = totalBalanceObjetivo + Double.parseDouble( listaBalanceObjetivo.get( i ).getCantidad().trim() );
+                        }
+                        else {
+                            totalBalanceObjetivo = totalBalanceObjetivo - Double.parseDouble( listaBalanceObjetivo.get( i ).getCantidad().trim() );
+                        }
+
+                    }
+                }
+            }
+        }else {
+            if(listaBalanceObjetivo != null){
+                for(int i=0; i<listaBalanceObjetivo.size();i++){
+                    //Miro a ver si es gasto
+                    if(listaBalanceObjetivo.get( i ).getGastoingreso() == 1){
+                        if(listaBalanceObjetivo.get( i ).getCantidad().length()!=0){
+                            totalBalanceObjetivo = totalBalanceObjetivo + Double.parseDouble( listaBalanceObjetivo.get( i ).getCantidad().trim() );
+                        }
+                    }
+
+                }
+            }
+        }
+        return  totalBalanceObjetivo;
+    }
+
+    public String CompararFechas(String x, String y) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
-        Date strDate = sdf.parse(z);
+        Date strDate = sdf.parse(x);
+        /**
+         int year = strDate.getYear(); // this is deprecated
+         int month = strDate.getMonth(); // this is deprecated
+         int day = strDate.getDay(); // this is deprecated
 
-        int year = strDate.getYear(); // this is deprecated
-        int month = strDate.getMonth(); // this is deprecated
-        int day = strDate.getDay(); // this is deprecated
-
-        Calendar primeraFecha = Calendar.getInstance();
-        primeraFecha.set(year, month, day);
+         Calendar primeraFecha = Calendar.getInstance();
+         primeraFecha.set(day, month, year);*/
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yy");
         Date str1Date = sdf1.parse( y );
-        int year_1 = str1Date.getYear();
-        int month_1 = str1Date.getMonth();
-        int day_1 = str1Date.getDay();
+        /**int year_1 = str1Date.getYear();
+         int month_1 = str1Date.getMonth();
+         int day_1 = str1Date.getDay();
 
-        Calendar segundaFecha = Calendar.getInstance();
-        segundaFecha.set( year_1, month_1, day_1 );
+         Calendar segundaFecha = Calendar.getInstance();
+         segundaFecha.set( day_1, month_1, year_1 );*/
 
-        if (segundaFecha.after(primeraFecha)) {
-            return  z;
+        if (str1Date.after(strDate)) {
+            return  x;
 
         }else {
             return y;
