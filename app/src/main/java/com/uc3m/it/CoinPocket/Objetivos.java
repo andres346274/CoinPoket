@@ -84,7 +84,6 @@ public class Objetivos extends AppCompatActivity {
                 }
                 if(itemID > -1){
                     Intent editScreenIntent = new Intent(Objetivos.this, ModificarObjetivo.class);
-                    Toast.makeText(getApplicationContext(),"Id nameShow: " + i, Toast.LENGTH_SHORT).show();
                     posicionListaClick = i;
                     startActivity(editScreenIntent);
                 }

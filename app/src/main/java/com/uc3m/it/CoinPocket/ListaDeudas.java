@@ -72,7 +72,6 @@ public class ListaDeudas extends AppCompatActivity {
                 }
                 if(itemID > -1){
                     Intent editScreenIntent = new Intent(ListaDeudas.this, ModificarDeuda.class);
-                    Toast.makeText(getApplicationContext(),"Id nameShow: " + i, Toast.LENGTH_SHORT).show();
                     posicionListaClick = i;
                     startActivity(editScreenIntent);
                 }

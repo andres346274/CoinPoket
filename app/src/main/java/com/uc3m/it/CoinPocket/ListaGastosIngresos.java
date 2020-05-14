@@ -376,7 +376,6 @@ public class ListaGastosIngresos extends AppCompatActivity {
                 if(itemID > -1){
                     flagPosition = 1;
                     Intent editScreenIntent = new Intent(ListaGastosIngresos.this, ModificarGastoIngreso.class);
-                    Toast.makeText(getApplicationContext(),"Id nameShow: " + i, Toast.LENGTH_SHORT).show();
                     posicionListaClick = i;
                     startActivity(editScreenIntent);
                 }
