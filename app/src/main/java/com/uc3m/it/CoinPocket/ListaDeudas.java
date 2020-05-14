@@ -92,6 +92,7 @@ public class ListaDeudas extends AppCompatActivity {
      * @throws ParseException
      */
     private void populateListView() throws ParseException {
+
         //Variables de lectura de la BD
         SQLiteDatabase db = conn.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " +
@@ -147,11 +148,12 @@ public class ListaDeudas extends AppCompatActivity {
     }
 
     /**
-     * Objtiene las estructuras y datos necesarios para ser pasados al ArrayAdapter de deudas
+     * Obtiene las estructuras y datos necesarios para ser pasados al ArrayAdapter de deudas
      * personalizado y me crea mi lista de IDs (fundamental al hacer click en un item de la
      * lista para modificarlo)
      */
     private void obtenerLista() {
+
         //Inicialización de variables para pasar al ArrayAdapter
         listaInfoEmoji = new ArrayList<Integer>();
         listaInfoFecha = new ArrayList<String>();
@@ -190,7 +192,7 @@ public class ListaDeudas extends AppCompatActivity {
                     listaInfoConcepto.add(listaDeudas.get(i).getConcepto());
                 }
             }
-            //Asignación de valores al array de la siguiente forma por ejemplo: [id#1,id#0,id#0,...]
+            //Asignación de valores al array de la siguiente forma, por ejemplo: [id#1,id#0,id#0,...]
             listaIDs.add(listaDeudas.get(i).getId().toString() + "#" + listaDeudas.get( i ).getPagardeber());
         }
     }

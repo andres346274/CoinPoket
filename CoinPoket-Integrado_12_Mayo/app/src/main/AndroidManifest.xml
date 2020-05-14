@@ -47,7 +47,7 @@
             </activity>
 
             <activity
-                android:name="com.uc3m.it.CoinPocket.ModificarEliminar"
+                android:name="com.uc3m.it.CoinPocket.ModificarGastoIngreso"
                 android:label="CoinPocket | Modificar gasto"
                 android:parentActivityName="com.uc3m.it.CoinPocket.ListaGastosIngresos">
             </activity>

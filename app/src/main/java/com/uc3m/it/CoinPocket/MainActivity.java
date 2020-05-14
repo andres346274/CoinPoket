@@ -30,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
     ConexionSQLiteHelper connMovimientos;
     ConexionSQLiteHelperObjetivos connObjetivos;
     TextView balanceMain;
-    String fechaHoy = new SimpleDateFormat(
-            "dd/MM/yy", Locale.getDefault()).format(new Date());
+    String fechaHoy;
     //Formato de redondeo de cifras
-    DecimalFormat formatter = new DecimalFormat("#,###.##");
+    DecimalFormat formatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 "bd_gastos_ingresos", null, 1);
         connObjetivos = new ConexionSQLiteHelperObjetivos(getApplicationContext(),
                 "bd_objetivos", null, 1);
+        //Asignación de fecha hoy
+        fechaHoy = new SimpleDateFormat(
+                "dd/MM/yy", Locale.getDefault()).format(new Date());
+        //Asignación de formato de decimales
+        formatter = new DecimalFormat("#,###.##");
 
 
         try {

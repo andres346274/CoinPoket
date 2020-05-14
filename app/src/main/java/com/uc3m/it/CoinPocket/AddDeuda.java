@@ -41,9 +41,9 @@ public class AddDeuda extends AppCompatActivity {
     RadioGroup pagarDeber;
     RadioButton apagar, adeber;
     //Variable de la fecha actual
-    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+    String date_n;
     //Formato de redondeo de cifras
-    DecimalFormat formatter = new DecimalFormat("#,###.##");
+    DecimalFormat formatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,11 @@ public class AddDeuda extends AppCompatActivity {
         apagar = (RadioButton) findViewById( R.id.radio1 );
         adeber = (RadioButton) findViewById( R.id.radio2 );
         buttonSaveDeuda = (Button) findViewById(R.id.id_save_deuda);
+        //Asignación de la fecha actual
+        date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
         etFechaDeuda.setText(date_n);
+        //Asignación al formato de decimales
+        formatter = new DecimalFormat("#,###.##");
 
         //Escuchador para modificar la fecha clickando en la fecha
         etFechaDeuda.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +128,8 @@ public class AddDeuda extends AppCompatActivity {
 
             values.put(utilidades.CAMPO_ID_DEUDA, id_deuda.toString());
             values.put(utilidades.CAMPO_NOMBRE_DEUDA, nombreDeuda.getText().toString());
-            values.put(utilidades.CAMPO_IMPORTE_DEUDA, formatter.format( importeDeuda.getText() ));
+            values.put(utilidades.CAMPO_IMPORTE_DEUDA, formatter.format( Double.parseDouble(
+                    importeDeuda.getText().toString().trim() ) ));
             values.put( utilidades.CAMPO_FECHA_DEUDA, sdf.format(calendarioDeuda.getTime()));
             values.put( utilidades.CAMPO_CONCEPTO_DEUDA, conceptoDeuda.getText().toString());
 

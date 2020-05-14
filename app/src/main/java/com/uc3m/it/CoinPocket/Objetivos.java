@@ -28,43 +28,51 @@ import java.util.Locale;
 
 public class Objetivos extends AppCompatActivity {
 
-    private static final String TAG = "ListDataActivity";
-    private ListView mListView;
-
+    //Inicializacion de las variables de la activity
+    ListView mListView;
     ConexionSQLiteHelperObjetivos conn;
     ConexionSQLiteHelper connMovimientos;
-
-    public static Integer posicionListaClick;
-
     ArrayList<ObjetivosBD> listaObjetivos, listaObjetivosOrder;
     ArrayList<GastosIngresosBD> listaBalanceObjetivo;
-    Integer x;
-    Double totalBalanceObjetivo;
-
-    ArrayList<String> listaInformacion;
-    public static ArrayList<String> listaIDs;
-    Date strDate, str1Date;
-
     ArrayList<String>  listaInfoFechaInic, listaInfoFechaFin, listaInfoCantidad, listaInfoMotivo;
     ArrayList <Integer> listaInfoEmoji, listaInfoAhorrarGastar, flagListaInfoBalance;
     ArrayList<Double> listaInfoBalance;
-    String fechaHoy = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+    Integer x;
+    Double totalBalanceObjetivo;
+
+    //Inicialización de variable de la fecha de hoy
+    String fechaHoy;
+
+    //Variables públicas utilizadas por otras activities
+    public static ArrayList<String> listaIDs;
+    public static Integer posicionListaClick;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_objetivos);
 
+        //Asignacion de los componentes que usamos en la activity
         mListView = (ListView) findViewById( R.id.list_view_objetivos );
+
+        //Iniciación de BD de Objetivos y de gastosIngresos
         conn = new ConexionSQLiteHelperObjetivos(getApplicationContext(), "bd_objetivos", null, 1);
         connMovimientos = new ConexionSQLiteHelper(getApplicationContext(), "bd_gastos_ingresos", null, 1);
 
+        //Iniciación de la fecha actual
+        fechaHoy = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+
+        //Llamada al creador de la lista de objetivos
         try {
             populateListView();
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
+        //Inicialización de escuchadores en las fechas
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView adapterView, View view, int i, long l) {
@@ -88,6 +96,10 @@ public class Objetivos extends AppCompatActivity {
 
     }
 
+    /**
+     * Método de onClick en el botón de Añadir Objetivo
+     * @param view
+     */
     public void add_objetivo (View view) {
 
         Intent intent = new Intent(this, AddObjetivo.class);
@@ -99,18 +111,26 @@ public class Objetivos extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    /**
+     * Método creador de lista deudas
+     *      listaObjetivos = lista de objetos Objetivo obtenidos de la BD
+     *      listaObjetivosOrder = lista temporal utilizada para oredenar listaObjetivos
+     *      x = variable utilizada en el proceso de ordenar listaObjetivos
+     * @throws ParseException
+     */
     private void populateListView() throws ParseException {
 
-
-        Log.d(TAG, "--------------------->>> ENTRE POPULATE: ");
+        //Variables de lectura de la BD
         SQLiteDatabase db = conn.getReadableDatabase();
-
+        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_OBJETIVOS_BD,null);
         ObjetivosBD objetivos = null;
+
         listaObjetivos = new ArrayList<ObjetivosBD>();
         listaObjetivosOrder = new ArrayList<ObjetivosBD>();
+        x = 0;
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + utilidades.TABLA_OBJETIVOS_BD,null);
-
+        //Creación de listaObjetivos
         while (cursor.moveToNext()){
             objetivos = new ObjetivosBD();
             objetivos.setGastoahorro( cursor.getInt(0));
@@ -122,25 +142,19 @@ public class Objetivos extends AppCompatActivity {
 
             listaObjetivos.add(objetivos);
         }
-        Log.d(TAG, "--------------------->>> FECHA INICIO OBJETIVOS: " + listaObjetivos.size());
-        x = 0;
-        Log.d(TAG, "--------------------->>> TAMAÑO LISTA: " + listaObjetivos.size());
+
+        //Ordenamos cronológicamente listaObjetivos en función de la fecha de inicio de cada objetivo
         while(listaObjetivos.size()!=0){
-            Log.d(TAG, "--------------------->>> ENTRE WHILE: ");
 
             for(int i=0; i<listaObjetivos.size(); i++){
 
-                Log.d(TAG, "--------------------->>> ENTRE FOR: " + listaObjetivos.get( x ).getFechainicio());
                 if( CompararFechas( listaObjetivos.get( x ).getFechainicio(), listaObjetivos.get( i ).getFechainicio() ) == listaObjetivos.get( x ).getFechainicio() && listaObjetivos.get( x ).getFechainicio()!= listaObjetivos.get( i ).getFechainicio()){
-                    Log.d(TAG, "--------------------->>> ENTRE IF: ");
                     x = i;
                     break;
                 } else {
-                    Log.d(TAG, "--------------------->>> ENTRE ELSE: ");
                     if (i == listaObjetivos.size()-1){
 
                         listaObjetivosOrder.add( listaObjetivos.get( x ) );
-                        Log.d(TAG, "--------------------->>> PRUEBA: " + listaObjetivos.get( x ).getMotivo().toString());
                         listaObjetivos.remove( listaObjetivos.get( x ) );
                         x = 0;
                         break;
@@ -151,15 +165,23 @@ public class Objetivos extends AppCompatActivity {
         }
 
         listaObjetivos = listaObjetivosOrder;
+        //Llamo al método obtener lista para obtener los datos necesarios en el adaptador de mi lista
         obtenerLista();
-        ArrayAdapter adaptador = new MyAdapterObjetivos( Objetivos.this, listaInfoFechaInic, listaInfoFechaFin, listaInfoCantidad, listaInfoMotivo, listaInfoEmoji, listaInfoAhorrarGastar, listaInfoBalance, flagListaInfoBalance );
-        //ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaInformacion);
+        //Incorporo mi lista a mListview con mi adaptador personalizado para objetivos
+        ArrayAdapter adaptador = new MyAdapterObjetivos( Objetivos.this,
+                listaInfoFechaInic, listaInfoFechaFin, listaInfoCantidad, listaInfoMotivo,
+                listaInfoEmoji, listaInfoAhorrarGastar, listaInfoBalance, flagListaInfoBalance );
         mListView.setAdapter(adaptador);
     }
 
+    /**
+     * Obtiene las estructuras y datos necesarios para ser pasados al ArrayAdapter de objetivos
+     * personalizado y me crea mi lista de IDs (fundamental al hacer click en un item de la
+     * lista para modificarlo)
+     */
     private void obtenerLista() throws ParseException {
-        Log.d(TAG, "--------------------->>> ENTRE OBTENER LISTA: ");
-        listaInformacion = new ArrayList<String>();
+
+        //Inicialización de variables para pasar al ArrayAdapter
         listaInfoEmoji = new ArrayList<Integer>();
         listaInfoFechaInic = new ArrayList<String>();
         listaInfoFechaFin = new ArrayList<String>();
@@ -168,19 +190,26 @@ public class Objetivos extends AppCompatActivity {
         listaInfoAhorrarGastar = new ArrayList<Integer>();
         listaInfoBalance = new ArrayList<Double>();
         flagListaInfoBalance = new ArrayList<Integer>();
+        //Incialización de la lista que contendrá la información de el Id de cada deuda y de si este es pagar o deber
         listaIDs = new  ArrayList<String>();
+        //Incialización de la variable balance que almacenará el balance de cada objetivo
         Double balance = 0.0;
 
+        //Asignación de valores a cada variable para pasar al array adapter
         for (int i=0; i<listaObjetivos.size(); i++){
-            if(listaObjetivos.get(i).getGastoahorro()==0){
+            if(listaObjetivos.get(i).getGastoahorro()==0){ //Caso ahorro
 
-                if(Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )>balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), true)){
+                //Caso el objetivo no sea logrado o no esté siendo logrado
+                if(Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )>
+                        balanceObjetivo( listaObjetivos.get( i ).getFechainicio(),
+                                listaObjetivos.get( i ).getFechafin(), true)){
                     balance = Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )-
                             balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), true);
 
-                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) == listaObjetivos.get( i ).getFechafin()){
+                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) ==
+                            listaObjetivos.get( i ).getFechafin()){ //Caso objetivo finalizado
                         listaInfoEmoji.add( R.drawable.emoji_cross );
-                    }else{
+                    }else{ //Caso objetivo no finalizado
                         listaInfoEmoji.add( R.drawable.emoji_ahorrar );
                     }
                     listaInfoFechaInic.add( listaObjetivos.get( i ).getFechainicio() );
@@ -188,8 +217,7 @@ public class Objetivos extends AppCompatActivity {
                     listaInfoCantidad.add( listaObjetivos.get( i ).getCantidad());
                     listaInfoAhorrarGastar.add( listaObjetivos.get( i ).getGastoahorro() );
                     listaInfoBalance.add( balance );
-                    flagListaInfoBalance.add( 1 );
-                    Log.d(TAG, "--------------------->>> ENTRO EN BALANCE 1. ");
+                    flagListaInfoBalance.add( 1 ); //Flag de objetivo ahorro no logrado
 
                     if(listaObjetivos.get(i).getMotivo().length()>15){
                         listaInfoMotivo.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) + "...");
@@ -197,13 +225,16 @@ public class Objetivos extends AppCompatActivity {
                         listaInfoMotivo.add(listaObjetivos.get(i).getMotivo());
                     }
 
+                 //Caso el objetivo se haya logrado o esté siendo logrado
                 }else {
-                    balance = balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), true)-
+                    balance = balanceObjetivo( listaObjetivos.get( i ).getFechainicio(),
+                            listaObjetivos.get( i ).getFechafin(), true)-
                             Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() );
 
-                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) == listaObjetivos.get( i ).getFechafin()){
+                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) ==
+                            listaObjetivos.get( i ).getFechafin()){ //Caso objetivo finalizado
                         listaInfoEmoji.add( R.drawable.emoji_check );
-                    }else{
+                    }else{ //Caso objetivo no finalizado
                         listaInfoEmoji.add( R.drawable.emoji_ahorrar );
                     }
                     listaInfoFechaInic.add( listaObjetivos.get( i ).getFechainicio() );
@@ -211,8 +242,7 @@ public class Objetivos extends AppCompatActivity {
                     listaInfoCantidad.add( listaObjetivos.get( i ).getCantidad());
                     listaInfoAhorrarGastar.add( listaObjetivos.get( i ).getGastoahorro() );
                     listaInfoBalance.add( balance );
-                    flagListaInfoBalance.add( 2 );
-                    Log.d(TAG, "--------------------->>> ENTRO EN BALANCE 2. ");
+                    flagListaInfoBalance.add( 2 ); //Flag de Objetivo ahorro logrado
 
                     if(listaObjetivos.get(i).getMotivo().length()>15){
                         listaInfoMotivo.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) + "...");
@@ -221,15 +251,20 @@ public class Objetivos extends AppCompatActivity {
                     }
                 }
 
-            } else {
+            } else { //Caso gasto
 
-                if(Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )>balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), false)){
+                //Caso el objetivo se haya logrado o esté siendo logrado
+                if(Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )>
+                        balanceObjetivo( listaObjetivos.get( i ).getFechainicio(),
+                                listaObjetivos.get( i ).getFechafin(), false)){
                     balance = Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() )-
-                            balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), false);
+                            balanceObjetivo( listaObjetivos.get( i ).getFechainicio(),
+                                    listaObjetivos.get( i ).getFechafin(), false);
 
-                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) == listaObjetivos.get( i ).getFechafin()){
+                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) ==
+                            listaObjetivos.get( i ).getFechafin()){ //Caso objetivo finalizado
                         listaInfoEmoji.add( R.drawable.emoji_check );
-                    }else{
+                    }else{ //Caso objetivo  no finalizado
                         listaInfoEmoji.add( R.drawable.emoji_gastar );
                     }
                     listaInfoFechaInic.add( listaObjetivos.get( i ).getFechainicio() );
@@ -238,21 +273,24 @@ public class Objetivos extends AppCompatActivity {
                     listaInfoAhorrarGastar.add( listaObjetivos.get( i ).getGastoahorro() );
                     listaInfoBalance.add( balance );
                     flagListaInfoBalance.add( 3 );
-                    Log.d(TAG, "--------------------->>> ENTRO EN BALANCE 3. ");
 
                     if(listaObjetivos.get(i).getMotivo().length()>15){
                         listaInfoMotivo.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) + "...");
                     }else{
                         listaInfoMotivo.add(listaObjetivos.get(i).getMotivo());
                     }
+
+                //Caso el objetivo no sea logrado o no esté siendo logrado
                 }else {
-                    balance = balanceObjetivo( listaObjetivos.get( i ).getFechainicio(), listaObjetivos.get( i ).getFechafin(), false ) -
+                    balance = balanceObjetivo( listaObjetivos.get( i ).getFechainicio(),
+                            listaObjetivos.get( i ).getFechafin(), false ) -
                             Double.parseDouble( listaObjetivos.get( i ).getCantidad().trim() );
 
 
-                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) == listaObjetivos.get( i ).getFechafin()){
+                    if(CompararFechas( listaObjetivos.get( i ).getFechafin(), fechaHoy ) ==
+                            listaObjetivos.get( i ).getFechafin()){ //Caso objetivo finalizado
                         listaInfoEmoji.add( R.drawable.emoji_cross );
-                    }else{
+                    }else{ //Caso objetivo no finalizado
                         listaInfoEmoji.add( R.drawable.emoji_gastar );
                     }
                     listaInfoFechaInic.add( listaObjetivos.get( i ).getFechainicio() );
@@ -261,7 +299,6 @@ public class Objetivos extends AppCompatActivity {
                     listaInfoAhorrarGastar.add( listaObjetivos.get( i ).getGastoahorro() );
                     listaInfoBalance.add( balance );
                     flagListaInfoBalance.add( 4 );
-                    Log.d(TAG, "--------------------->>> ENTRO EN BALANCE 4. ");
 
                     if(listaObjetivos.get(i).getMotivo().length()>15){
                         listaInfoMotivo.add(listaObjetivos.get(i).getMotivo().substring( 0,15 ) + "...");
@@ -270,28 +307,33 @@ public class Objetivos extends AppCompatActivity {
                     }
                 }
             }
+            //Asignación de valores al array de la siguiente forma, por ejemplo: [id#1,id#0,id#0,...]
             listaIDs.add(listaObjetivos.get(i).getId().toString() + "#" + listaObjetivos.get( i ).getGastoahorro());
-            Log.d(TAG, "------------------->>> Has entrado en:" + listaIDs );
         }
     }
 
 
     /**
-     *
+     * Método que calcula el balance para cierto objetivo en función de los datos guardados en la BD
+     * de gastosIngresos durante la jornada que dura el objetivo
      * @param fechaInic
      * @param fechaFin
      * @param ahorroGasto Indica si estoy buscando obtener el balance para un objetivo de ahorro
-     *                    (true) o de gasto (false)
+     *                    (true) o de máximo gasto (false)
      * @return
      * @throws ParseException
      */
     public Double balanceObjetivo(String fechaInic, String fechaFin, Boolean ahorroGasto) throws ParseException {
+
+        //Variables de lectura de la BD de gastosIngresos
         SQLiteDatabase dbMovimientos = connMovimientos.getReadableDatabase();
         GastosIngresosBD objetivosBalance = null;
-        listaBalanceObjetivo = new ArrayList<GastosIngresosBD>();
         Cursor cursorMovimientos = dbMovimientos.rawQuery("SELECT * FROM " + utilidades.TABLA_GASTOS_INGRESOS_BD,null);
+
+        listaBalanceObjetivo = new ArrayList<GastosIngresosBD>();
         totalBalanceObjetivo = 0.0;
 
+        //Creación de listaBalanceObjetivo (lista de gastos e ingresos)
         while (cursorMovimientos.moveToNext()){
             if ((CompararFechas( cursorMovimientos.getString(4), fechaInic ).equals( fechaInic ) || cursorMovimientos.getString(4).equals( fechaFin )) && (CompararFechas( cursorMovimientos.getString(4), fechaFin ).equals( cursorMovimientos.getString(4) ) || cursorMovimientos.getString(4).equals( fechaFin ))){
 
@@ -305,27 +347,32 @@ public class Objetivos extends AppCompatActivity {
                 listaBalanceObjetivo.add(objetivosBalance);
             }
         }
-        if(ahorroGasto){
+
+        //Cálculo del balance en función de los gastos y/o ingresos contenidos en listaBalanceObjetivo
+        if(ahorroGasto){ //Caso objetivo ahorro
             if(listaBalanceObjetivo != null){
                 for(int i=0; i<listaBalanceObjetivo.size();i++){
                     if(listaBalanceObjetivo.get( i ).getCantidad().length()!=0){
                         if(listaBalanceObjetivo.get(i).getGastoingreso()==0){
-                            totalBalanceObjetivo = totalBalanceObjetivo + Double.parseDouble( listaBalanceObjetivo.get( i ).getCantidad().trim() );
+                            totalBalanceObjetivo = totalBalanceObjetivo + Double.parseDouble(
+                                    listaBalanceObjetivo.get( i ).getCantidad().trim() );
                         }
                         else {
-                            totalBalanceObjetivo = totalBalanceObjetivo - Double.parseDouble( listaBalanceObjetivo.get( i ).getCantidad().trim() );
+                            totalBalanceObjetivo = totalBalanceObjetivo - Double.parseDouble(
+                                    listaBalanceObjetivo.get( i ).getCantidad().trim() );
                         }
 
                     }
                 }
             }
-        }else {
+        }else { //Caso objetivo máximo gasto
             if(listaBalanceObjetivo != null){
                 for(int i=0; i<listaBalanceObjetivo.size();i++){
-                    //Miro a ver si es gasto
-                    if(listaBalanceObjetivo.get( i ).getGastoingreso() == 1){
+
+                    if(listaBalanceObjetivo.get( i ).getGastoingreso() == 1){ //Si se trata de un gasto
                         if(listaBalanceObjetivo.get( i ).getCantidad().length()!=0){
-                            totalBalanceObjetivo = totalBalanceObjetivo + Double.parseDouble( listaBalanceObjetivo.get( i ).getCantidad().trim() );
+                            totalBalanceObjetivo = totalBalanceObjetivo + Double.parseDouble(
+                                    listaBalanceObjetivo.get( i ).getCantidad().trim() );
                         }
                     }
 
@@ -335,6 +382,13 @@ public class Objetivos extends AppCompatActivity {
         return  totalBalanceObjetivo;
     }
 
+    /**
+     * Método de comparación de fechas
+     * @param x fecha 1
+     * @param y fecha 2
+     * @return
+     * @throws ParseException
+     */
     public String CompararFechas(String x, String y) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
@@ -364,6 +418,10 @@ public class Objetivos extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método para crear un mensaje Toast que se muestre en la App
+     * @param message
+     */
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }

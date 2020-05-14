@@ -47,7 +47,7 @@
             </activity>
 
             <activity
-                android:name="com.uc3m.it.CoinPocket.ModificarEliminar"
+                android:name="com.uc3m.it.CoinPocket.ModificarGastoIngreso"
                 android:label="CoinPocket | Modificar gasto"
                 android:parentActivityName="com.uc3m.it.CoinPocket.ListaGastosIngresos">
             </activity>
@@ -99,12 +99,6 @@
             <activity
                 android:name="com.uc3m.it.CoinPocket.ModificarDeuda"
                 android:label="CoinPocket | Modificar Deuda"
-                android:parentActivityName="com.uc3m.it.CoinPocket.ListaDeudas">
-            </activity>
-
-            <activity
-                android:name="com.uc3m.it.CoinPocket.SaldarDeuda"
-                android:label="CoinPocket | Saldar Deuda"
                 android:parentActivityName="com.uc3m.it.CoinPocket.ListaDeudas">
             </activity>
 

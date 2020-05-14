@@ -49,9 +49,9 @@ public class AddObjetivo extends AppCompatActivity {
     RadioButton radioahorro, radioMaxGasto;
     Date str1Date, strDate;
     //Variable de fecha actual
-    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+    String date_n;
     //Variable de formato de decimales
-    DecimalFormat formatter = new DecimalFormat("#,###.##");
+    DecimalFormat formatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +70,11 @@ public class AddObjetivo extends AppCompatActivity {
         radioahorro = (RadioButton) findViewById( R.id.radio_objetivo_ahorro );
         radioMaxGasto = (RadioButton) findViewById( R.id.radio_objetivo_gastomax);
 
+        //Asignación al formato de decimales
+        formatter = new DecimalFormat("#,###.##");
 
         //Asignación inicial de fecha actual en las componentes correspondientes
+        date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
         etFechaInicioObjetivo.setText(date_n);
         etFechaFinalObjetivo.setText(date_n);
 
@@ -153,7 +156,7 @@ public class AddObjetivo extends AppCompatActivity {
             }
             values.put(utilidades.CAMPO_ID_OBJETIVO, id_objetivo.toString());
             values.put(utilidades.CAMPO_CANTIDAD_OBJETIVO, formatter.format(
-                    cantidadObjetivo.getText() ));
+                    Double.parseDouble( cantidadObjetivo.getText().toString() ) ));
             values.put( utilidades.CAMPO_FECHA_INICIO_OBJETIVO, sdf.format(
                     calendarioInicioObjetivo.getTime()));
             values.put( utilidades.CAMPO_FECHA_FIN_OBJETIVO, sdf.format(

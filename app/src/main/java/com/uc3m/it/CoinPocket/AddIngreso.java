@@ -49,7 +49,7 @@ public class AddIngreso extends AppCompatActivity {
     List<Address> addresses = null;
     Spinner moneda;
     //Variable de la fecha actual
-    String date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+    String date_n;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,10 @@ public class AddIngreso extends AppCompatActivity {
         //Variable moneda para el ingreso de la moneda que usamos
         moneda = findViewById(R.id.moneda);
         moneda.setAdapter(new SpinnerAdapter(this, android.R.layout.simple_spinner_dropdown_item, RatioSingleton.getRatios()));
+        //Asignación de fecha actual
+        date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
         etFechaIngreso.setText(date_n);
+
         //Asignacion del escuchador por si modificamos la fecha
         etFechaIngreso.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.uc3m.it.CoinPocket.utilidades.utilidades;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -35,27 +36,30 @@ import java.util.Locale;
 
 public class ModificarObjetivo extends AppCompatActivity {
 
-    ConexionSQLiteHelperObjetivos conn;
 
+    //Inicializacion de las variables de la activity
     EditText campoCantidad, campoMotivo;
     TextView campofechaInicio, campofechaFin, ahorrogasto;
-
     Button modificar_objetivo, eliminar_objetivo;
-
     Calendar calendarioInicioModificar = Calendar.getInstance();
     Calendar calendarioFinModificar = Calendar.getInstance();
 
-    List<Address> addresses = null;
+    //Variables de BD de Objetivos
+    ConexionSQLiteHelperObjetivos conn;
 
+    //Incialización de constructor de un objeto de Objetivos()
     Objetivos seleccion = new Objetivos();
 
-    Date strDate, str1Date;
+    //Variable de formato de decimales
+    DecimalFormat formatter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_objetivo );
-        conn = new ConexionSQLiteHelperObjetivos(getApplicationContext(), "bd_objetivos", null, 1);
+
+        //Asignacion de los componentes que usamos en la activity
         campoCantidad = (EditText) findViewById(R.id.id_cantidad_modificar_objetivo);
         campoMotivo = (EditText) findViewById(R.id.id_motivo_modificar_objetivo);
         campofechaInicio = (TextView) findViewById( R.id.id_fechainicio_modificar_objetivo);
@@ -63,28 +67,34 @@ public class ModificarObjetivo extends AppCompatActivity {
         modificar_objetivo = (Button) findViewById( R.id.id_modificar_objetivo_concreto);
         eliminar_objetivo = (Button) findViewById( R.id.id_eliminar_objetivo_concreto);
         ahorrogasto = (TextView) findViewById( R.id.id_ahorro_gasto_modificar_objetivo );
+        //Iniciación de BD de Objetivos
+        conn = new ConexionSQLiteHelperObjetivos(getApplicationContext(),
+                "bd_objetivos", null, 1);
+        //Asignación al formato de decimales
+        formatter = new DecimalFormat("#,###.##");
 
-        consultarDeuda();
+        //La primera acción es consultar el objetivo en cuestión para ver sus parámetros
+        consultarObjetivo();
 
+        //Inicialización de escuchadores en las fechas
         campofechaInicio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {   //FechaInicio
                 new DatePickerDialog(ModificarObjetivo.this, dateInicio, calendarioInicioModificar
                         .get( Calendar.YEAR), calendarioInicioModificar.get(Calendar.MONTH),
                         calendarioInicioModificar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
         campofechaFin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {     //FechaFin
                 new DatePickerDialog(ModificarObjetivo.this, dateFin, calendarioFinModificar
                         .get( Calendar.YEAR), calendarioFinModificar.get(Calendar.MONTH),
                         calendarioFinModificar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
-
+        //Inicialización de escuchador botón de modificar el objetivo
         modificar_objetivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +105,7 @@ public class ModificarObjetivo extends AppCompatActivity {
                 }
             }
         });
+        //Inicialización de escuchador botón de eliminar el objetivo
         eliminar_objetivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,12 +114,21 @@ public class ModificarObjetivo extends AppCompatActivity {
         });
     }
 
-    public void consultarDeuda() {
+    /**
+     * Método para consultar a la BD de objetivos por un objetivo en concreto
+     *      parámetros = valor del id del objetivo seleccionado en la lista obtenido del array listaIDs
+     *          en la posición traida de la clase objetivos y guardada en la variable posicionListaClick
+     */
+    public void consultarObjetivo() {
+
+        //Variables de lectura de la BD
         SQLiteDatabase db=conn.getReadableDatabase();
         String[] parametros= {seleccion.listaIDs.get( seleccion.posicionListaClick).split( "#" )[0]};
 
+        //Lectura de la BD a través del ID del objetivo en cuestión y asignación a cada campo correspondiente
         try {
-            Cursor cursor=db.rawQuery("SELECT * FROM " +utilidades.TABLA_OBJETIVOS_BD+" WHERE "+utilidades.CAMPO_ID_OBJETIVO+"=? ",parametros);
+            Cursor cursor=db.rawQuery("SELECT * FROM " +utilidades.TABLA_OBJETIVOS_BD+
+                    " WHERE "+utilidades.CAMPO_ID_OBJETIVO+"=? ",parametros);
 
             cursor.moveToFirst();
 
@@ -130,12 +150,26 @@ public class ModificarObjetivo extends AppCompatActivity {
     }
 
 
+    /**
+     * Método utilizado para modificar los valores de cierto objetivo concreto en la BD de objetivos
+     * cuendo pulsamos el botón de modificar.
+     *      parámetros = valor del id del objetivo seleccionado en la lista obtenido del array listaIDs
+     *         en la posición traida de la clase objetivos y guardada en la variable posicionListaClick
+     * @throws ParseException
+     */
     private void modificar() throws ParseException {
+
+        //Variables de lectura de la BD
         SQLiteDatabase db=conn.getWritableDatabase();
-        String[] parametros= {seleccion.listaIDs.get( seleccion.posicionListaClick).split( "#" )[0]};
         ContentValues values=new ContentValues();
-        if(campoCantidad.getText().length() != 0 && CompararFechas( campofechaInicio.getText().toString(), campofechaFin.getText().toString()).equals(campofechaInicio.getText().toString())){
-            values.put(utilidades.CAMPO_CANTIDAD_OBJETIVO,campoCantidad.getText().toString());
+        String[] parametros= {seleccion.listaIDs.get( seleccion.posicionListaClick).split( "#" )[0]};
+
+
+        //Asignamos los nuevos campos en la BD si se cumplen las condiciones necesarias para asignar un objetivo
+        if(campoCantidad.getText().length() != 0 && CompararFechas( campofechaInicio.getText().
+                toString(), campofechaFin.getText().toString()).equals(campofechaInicio.getText().toString())){
+            values.put(utilidades.CAMPO_CANTIDAD_OBJETIVO,formatter.format( Double.parseDouble(
+                    campoCantidad.getText().toString().trim() ) ));
             values.put(utilidades.CAMPO_FECHA_INICIO_OBJETIVO,campofechaInicio.getText().toString());
             values.put(utilidades.CAMPO_FECHA_FIN_OBJETIVO,campofechaFin.getText().toString());
             values.put(utilidades.CAMPO_MOTIVO_OBJETIVO,campoMotivo.getText().toString());
@@ -143,12 +177,14 @@ public class ModificarObjetivo extends AppCompatActivity {
             db.update(utilidades.TABLA_OBJETIVOS_BD,values,utilidades.CAMPO_ID_OBJETIVO+"=?",parametros);
             Toast.makeText(getApplicationContext(),"Objetivo Modificado",Toast.LENGTH_LONG).show();
             db.close();
+            //Volvemos a pantalla de Objetivos
             returnHome();
         }else{
-            if(campoCantidad.getText().length() == 0){
+            if(campoCantidad.getText().length() == 0){//Caso de no introducir cantidad
                 Toast.makeText(getApplicationContext(),"Cantidad no especificada", Toast.LENGTH_SHORT).show();
             }else{
-                if(CompararFechas( campofechaInicio.getText().toString(), campofechaFin.getText().toString()).equals(campofechaFin.getText().toString())){
+                if(CompararFechas( campofechaInicio.getText().toString(), campofechaFin.getText().
+                        toString()).equals(campofechaFin.getText().toString())){//Caso de fechaFin<fechaInic
                     Toast.makeText(getApplicationContext(),"Fecha Final posterior a Fecha Inicial", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getApplicationContext(),"Error en el proceso", Toast.LENGTH_SHORT).show();
@@ -157,16 +193,29 @@ public class ModificarObjetivo extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Método utilizado para eliminar un objetivo concreto de la BD a través de su ID
+     *      parámetros = valor del id del objetivo seleccionado en la lista obtenido del array listaIDs
+     *         en la posición traida de la clase objetivos y guardada en la variable posicionListaClick
+     */
     private void eliminar() {
+
+        //Variables de lectura de la BD
         SQLiteDatabase db=conn.getWritableDatabase();
         String[] parametros= {seleccion.listaIDs.get( seleccion.posicionListaClick).split( "#" )[0]};
 
+        //Eliminamos el objetivo en cuestión
         db.delete(utilidades.TABLA_OBJETIVOS_BD,utilidades.CAMPO_ID_OBJETIVO+"=?",parametros);
         Toast.makeText(getApplicationContext(),"Gasto Eliminado",Toast.LENGTH_LONG).show();
         db.close();
+        //Volvemos a pantalla de Objetivos
         returnHome();
     }
 
+    /**
+     * Data pickers para tomar las fechas introducidas en caso de cambiarlas
+     */
     DatePickerDialog.OnDateSetListener dateInicio = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -180,7 +229,6 @@ public class ModificarObjetivo extends AppCompatActivity {
         }
 
     };
-
     DatePickerDialog.OnDateSetListener dateFin = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -195,6 +243,9 @@ public class ModificarObjetivo extends AppCompatActivity {
 
     };
 
+    /**
+     * Introduccion de la fecha de Inicio
+     */
     private void actualizarInputInicio() {
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
@@ -203,6 +254,9 @@ public class ModificarObjetivo extends AppCompatActivity {
 
     }
 
+    /**
+     * Introduccion de la fecha Final
+     */
     private void actualizarInputFin() {
         String formatoDeFecha = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
@@ -211,6 +265,13 @@ public class ModificarObjetivo extends AppCompatActivity {
 
     }
 
+    /**
+     * Método de comparación de fechas
+     * @param z fecha 1
+     * @param y fecha 2
+     * @return
+     * @throws ParseException
+     */
     public String CompararFechas(String z, String y) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
@@ -228,6 +289,9 @@ public class ModificarObjetivo extends AppCompatActivity {
     }
 
 
+    /**
+     * Método de retorno a Objetivos al modificar o eliminar un objetivo
+     */
     public void returnHome() {
 
         Intent home_intent = new Intent(getApplicationContext(),
@@ -235,9 +299,4 @@ public class ModificarObjetivo extends AppCompatActivity {
 
         startActivity(home_intent);
     }
-
-    /**
-     private void toastMessage(String message){
-     Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
-     }*/
 }

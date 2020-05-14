@@ -24,6 +24,8 @@ import java.util.Locale;
 
 public class MyAdapterObjetivos extends ArrayAdapter<String> {
 
+    //Asignación de campos que tendrá mi Adaptador
+    Context mContext;
     ArrayList<String> fechaInic;
     ArrayList<String> fechaFin;
     ArrayList<String> cantidad;
@@ -32,11 +34,17 @@ public class MyAdapterObjetivos extends ArrayAdapter<String> {
     ArrayList<Integer> ahorrargastar;
     ArrayList<Double> balance;
     ArrayList<Integer> flagBalance;
+
+    //Variable de la fecha actual
     String fechaHoy = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
-    Context mContext;
+    //Variable de formato de decimales
     DecimalFormat formatter = new DecimalFormat("#,###.##");
 
-    public MyAdapterObjetivos(Context context, ArrayList<String> fechaInic, ArrayList<String> fechaFin, ArrayList<String> cantidad, ArrayList<String> motivo, ArrayList<Integer> emoji, ArrayList<Integer> ahorrargastar, ArrayList<Double> balance, ArrayList<Integer> flagBalance){
+    //Creación el constructor
+    public MyAdapterObjetivos(Context context, ArrayList<String> fechaInic, ArrayList<String> fechaFin,
+                              ArrayList<String> cantidad, ArrayList<String> motivo, ArrayList<Integer> emoji,
+                              ArrayList<Integer> ahorrargastar, ArrayList<Double> balance,
+                              ArrayList<Integer> flagBalance){
         super(context, R.layout.listview_item_objetivo);
         this.fechaInic = fechaInic;
         this.fechaFin = fechaFin;
@@ -49,6 +57,7 @@ public class MyAdapterObjetivos extends ArrayAdapter<String> {
         this.mContext = context;
     }
 
+    //Método auxiliar para obtener el tamaño de nuestra lista a mostrar
     public int getCount(){
         return  fechaInic.size();
     }
@@ -57,10 +66,14 @@ public class MyAdapterObjetivos extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+        //Inicialización del holder
         ViewHolder mViewHolder = new ViewHolder();
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater) mContext.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            //Asignación de los componentes que usamos en la activity
             convertView = mInflater.inflate( R.layout.listview_item_objetivo, parent, false);
             mViewHolder.mEmoji = (ImageView) convertView.findViewById( R.id.imageView_objetivo);
             mViewHolder.mFecha = (TextView) convertView.findViewById( R.id.textView_fecha_objetivo);
@@ -72,75 +85,100 @@ public class MyAdapterObjetivos extends ArrayAdapter<String> {
         } else {
             mViewHolder = (ViewHolder) convertView.getTag();
         }
+
+        //Asignación del valor correspondiente de los arrays traidos en el constructor a cada valor del holder
         mViewHolder.mEmoji.setImageResource( emoji.get( position ) );
         mViewHolder.mFecha.setText( fechaInic.get( position ) + " - " + fechaFin.get( position ));
         mViewHolder.mMotivo.setText( motivo.get( position ) );
-        if(motivo.get( position )!=null){
+        if(motivo.get( position )!=null){//Recortar motivo al mostrarlo en la lista si es muy largo
             if(motivo.get( position ).length()>20){
                 mViewHolder.mMotivo.setText( motivo.get( position ).substring( 0,20 ) + "..." );
             }else{
                 mViewHolder.mMotivo.setText( motivo.get( position ) );
             }
         }
-        if(ahorrargastar.get( position ) == 0){
+        if(ahorrargastar.get( position ) == 0){ //Caso objetivo ahorro
             mViewHolder.mahorrarGastarOrig.setText( "Conseguir ahorrar:"  + cantidad.get( position ) + "€");
         }
-        if(ahorrargastar.get( position )==1){
+        if(ahorrargastar.get( position )==1){//Caso objetivo gasto
             mViewHolder.mahorrarGastarOrig.setText( "No gastar más de:" + cantidad.get( position ) + "€" );
         }
 
-        if(flagBalance.get( position )==1){
+        //El flagBalance nos indica en qué situación estamos con respecto al objetivo en cuestión
+        if(flagBalance.get( position )==1){ // Se trata de un objetivo de ahorro que no hemos cumplido
             try {
                 if(CompararFechas( fechaFin.get( position ), fechaHoy ) == fechaFin.get( position )){
+                    //Caso de que la fecha fin del objetivo de haya sobrepasado
                     mViewHolder.layout.setBackgroundColor( 0xaaff4730 );
                     if(Double.parseDouble( cantidad.get( position ).trim() ) - balance.get( position )>0){
+                        //Caso de no haber llegado al ahorro deseado pero haber ahorrado algo
                         mViewHolder.mahorrarGastarBalance.setTextSize( 15 );
-                        mViewHolder.mahorrarGastarBalance.setText( "Conseguido ahorrar " + formatter.format((Double.parseDouble( cantidad.get( position ).trim() ) - balance.get( position ))) + "€. No llegaste al objetivo." );
+                        mViewHolder.mahorrarGastarBalance.setText( "Conseguido ahorrar " + formatter.
+                                format((Double.parseDouble( cantidad.get( position ).trim() ) -
+                                        balance.get( position ))) + "€. No llegaste al objetivo." );
                     }else{
+                        //Caso haber tenido balance negativo
                         mViewHolder.mahorrarGastarBalance.setTextSize( 15 );
-                        mViewHolder.mahorrarGastarBalance.setText( "Jornada de balance negativo " + formatter.format((Double.parseDouble( cantidad.get( position ).trim() ) - balance.get( position ))) + "€." );
+                        mViewHolder.mahorrarGastarBalance.setText( "Jornada de balance negativo " +
+                                formatter.format((Double.parseDouble( cantidad.get( position ).trim() ) -
+                                        balance.get( position ))) + "€." );
                     }
 
-                }else{
-                    mViewHolder.mahorrarGastarBalance.setText( "Tienes que ingresar " + formatter.format(balance.get( position )) + "€." );
+                }else{//Caso de que el objetivo aún siga vigente
+                    mViewHolder.mahorrarGastarBalance.setText( "Tienes que ingresar " + formatter.
+                            format(balance.get( position )) + "€." );
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
-        if(flagBalance.get( position )==2){
+        if(flagBalance.get( position )==2){//Se trata de un objetivo de ahorro que sí hemos cumplido
             try {
                 if(CompararFechas( fechaFin.get( position ), fechaHoy ) == fechaFin.get( position )){
+                    //Caso de que la fecha fin del objetivo de haya sobrepasado
                     mViewHolder.layout.setBackgroundColor( 0xaaaaff55 );
                     mViewHolder.mahorrarGastarBalance.setText( "Conseguido ahorrar " + formatter.format((balance.get( position ) + Double.parseDouble( cantidad.get( position ).trim() ))) + "€." );
                 }else{
+                    //Caso de que el objetivo aún siga vigente
                     mViewHolder.mahorrarGastarBalance.setText( " Puedes gastar " + formatter.format(balance.get( position )) + "€." );
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
-        if(flagBalance.get( position )==3){
+        if(flagBalance.get( position )==3){ //Se trata de un objetivo de máximo gasto que sí hemos cumplido
             try {
                 if(CompararFechas( fechaFin.get( position ), fechaHoy ) == fechaFin.get( position )){
+                    //Caso de que la fecha fin del objetivo de haya sobrepasado
                     mViewHolder.layout.setBackgroundColor( 0xaaaaff55 );
-                    mViewHolder.mahorrarGastarBalance.setText( "Solo gastaste " + formatter.format((Double.parseDouble( cantidad.get( position ).trim() ) - balance.get( position ) )) + "€." );
+                    mViewHolder.mahorrarGastarBalance.setText( "Solo gastaste " + formatter.format((
+                            Double.parseDouble( cantidad.get( position ).trim() ) -
+                                    balance.get( position ) )) + "€." );
                 }else{
-                    mViewHolder.mahorrarGastarBalance.setText( " Puedes gastar " + formatter.format(balance.get( position )) + "€.");
+                    //Caso de que el objetivo aún siga vigente
+                    mViewHolder.mahorrarGastarBalance.setText( " Puedes gastar " + formatter.
+                            format(balance.get( position )) + "€.");
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
         }
-        if(flagBalance.get( position )==4){
+        if(flagBalance.get( position )==4){//Se trata de un objetivo de máximo gasto que no hemos cumplido
             try {
                 if(CompararFechas( fechaFin.get( position ), fechaHoy ) == fechaFin.get( position )){
+                    //Caso de que la fecha fin del objetivo de haya sobrepasado
                     mViewHolder.layout.setBackgroundColor( 0xaaff4730 );
                     mViewHolder.mahorrarGastarBalance.setTextSize( 15 );
-                    mViewHolder.mahorrarGastarBalance.setText( "Sobrepasaste el gasto máximo en " + formatter.format(balance.get( position )) + "€. Gastaste " + formatter.format((Double.parseDouble( cantidad.get( position ) ) + balance.get( position ))) + "€ esta jornada." );
+                    mViewHolder.mahorrarGastarBalance.setText( "Sobrepasaste el gasto máximo en "
+                            + formatter.format(balance.get( position )) + "€. Gastaste " +
+                            formatter.format((Double.parseDouble( cantidad.get( position ) )
+                                    + balance.get( position ))) + "€ esta jornada." );
                 }else{
-                    mViewHolder.mahorrarGastarBalance.setText( "Has sobrepasado en " + formatter.format(balance.get( position )) + "€ tu máximo gasto." );
+                    //Caso de que el objetivo aún siga vigente
+                    mViewHolder.mahorrarGastarBalance.setTextSize( 15 );
+                    mViewHolder.mahorrarGastarBalance.setText( "Has sobrepasado en " +
+                            formatter.format(balance.get( position )) + "€ tu máximo gasto." );
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -150,18 +188,25 @@ public class MyAdapterObjetivos extends ArrayAdapter<String> {
         return convertView;
     }
 
+    /**
+     * Clase ViewHolder para almaacenar los datos a asignar en la lista
+     */
     static class ViewHolder {
         ImageView mEmoji;
         TextView mFecha;
         TextView mMotivo;
-        TextView rootMotivo;
         TextView mahorrarGastarOrig;
-        TextView rootGastarOrig;
         TextView mahorrarGastarBalance;
-        TextView rootGastarBalance;
         LinearLayout layout;
     }
 
+    /**
+     * Método de comparación de fechas
+     * @param x fecha 1
+     * @param y fecha 2
+     * @return
+     * @throws ParseException
+     */
     public String CompararFechas(String x, String y) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");

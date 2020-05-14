@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,7 +24,6 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 /**Código basado en las siguientes fuentes:
@@ -56,7 +54,7 @@ public class ListaGastosIngresos extends AppCompatActivity {
     ArrayList<GastosIngresosBD> listaGastos, listaGastosOrder;
 
     //Variable de formato de decimales
-    DecimalFormat formatter = new DecimalFormat("#,###.##");
+    DecimalFormat formatter;
 
     //Variables públicas utilizadas por otras activities
     public static Integer posicionListaClick;
@@ -82,6 +80,8 @@ public class ListaGastosIngresos extends AppCompatActivity {
         //Iniciación de BD de gastos e ingresos
         conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_gastos_ingresos",
                 null, 1);
+        //Formato de decimales
+        formatter = new DecimalFormat("#,###.##");
 
 
         //Inciación de los Spinner de selección
@@ -244,11 +244,6 @@ public class ListaGastosIngresos extends AppCompatActivity {
                         //Hago visible el spinner secundario
                         spinnerCuentasSeleccion.setVisibility( View.VISIBLE );
                     }
-
-                    else{
-                        Toast.makeText(getApplicationContext(),"Error al cargar la consulta",
-                                Toast.LENGTH_SHORT).show();
-                    }
                     //Guardo mi nueva posición en spinner primario
                     spinnerCuentasAll.setSelection( posicionAll );
                 }else {//Si no hay que cargar spinner anterior (entramos desde MainActivity)
@@ -358,11 +353,6 @@ public class ListaGastosIngresos extends AppCompatActivity {
                             }
                         } );
                     }
-
-                    else{
-                        Toast.makeText(getApplicationContext(),"Error al cargar la consulta",
-                                Toast.LENGTH_SHORT).show();
-                    }
                 }
             }
 
@@ -385,7 +375,7 @@ public class ListaGastosIngresos extends AppCompatActivity {
                 }
                 if(itemID > -1){
                     flagPosition = 1;
-                    Intent editScreenIntent = new Intent(ListaGastosIngresos.this, ModificarEliminar.class);
+                    Intent editScreenIntent = new Intent(ListaGastosIngresos.this, ModificarGastoIngreso.class);
                     Toast.makeText(getApplicationContext(),"Id nameShow: " + i, Toast.LENGTH_SHORT).show();
                     posicionListaClick = i;
                     startActivity(editScreenIntent);
@@ -713,7 +703,7 @@ public class ListaGastosIngresos extends AppCompatActivity {
 
     /**
      * Método de comparación de fechas
-     * @param z fecha 1
+     * @param x fecha 1
      * @param y fecha 2
      * @return
      * @throws ParseException

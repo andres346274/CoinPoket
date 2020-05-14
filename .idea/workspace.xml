@@ -12,54 +12,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d9b06fb-5b19-4dd5-8428-cddf598157a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Entrega_final-CoinPoket.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterDeudas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterGastosIngresos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterObjetivos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emoji_ahorrar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emoji_check.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emoji_cross.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emoji_deuda_adeber.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emoji_deuda_apagar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emoji_gastar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emoji_gasto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emoji_ingreso.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_deuda.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_ingreso_gasto.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_objetivo.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddDeuda.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddDeuda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddGasto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddGasto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddIngreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddIngreso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddObjetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddObjetivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelperDeudas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelperDeudas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelperObjetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelperObjetivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Deudas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Deudas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/DeudasBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/DeudasBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/GastosIngresosBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/GastosIngresosBD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ListaDeudas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ListaDeudas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ListaGastosIngresos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ListaGastosIngresos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarDeuda.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarDeuda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarEliminar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarGastoIngreso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarObjetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarObjetivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterDeudas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterDeudas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterGastosIngresos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterGastosIngresos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterObjetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterObjetivos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Objetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/Objetivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ObjetivosBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ObjetivosBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_gastos_ingresos.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_gastos_ingresos.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/git_CoinPocket-CoinPoket.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
