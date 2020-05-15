@@ -171,26 +171,26 @@ public class MainActivity extends AppCompatActivity {
                     balance = Double.parseDouble( listaObjetivo.get( objetivoproximo ).getCantidad().trim() )-
                             balanceObjetivo( listaObjetivo.get( objetivoproximo ).getFechainicio(),
                                     listaObjetivo.get( objetivoproximo ).getFechafin(), true);
-                    balanceMain.setText( "Balance de objetivo actual: 'Tienes que ingresar " +
-                            formatter.format(balance)  + " €'");
+                    balanceMain.setText( "Balance de objetivo actual: Tienes que ingresar " +
+                            formatter.format(balance)  + " €");
                 }else {
                     balance = balanceObjetivo( listaObjetivo.get( objetivoproximo ).getFechainicio(), listaObjetivo.get( objetivoproximo ).getFechafin(), true)-
                             Double.parseDouble( listaObjetivo.get( objetivoproximo ).getCantidad().trim() );
-                    balanceMain.setText( "Balance de objetivo actual: 'Puedes gastar " +
-                            formatter.format(balance) + " €'");
+                    balanceMain.setText( "Balance de objetivo actual: Puedes gastar " +
+                            formatter.format(balance) + " €");
                 }
             } else {
 
                 if(Double.parseDouble( listaObjetivo.get( objetivoproximo ).getCantidad().trim() )>balanceObjetivo( listaObjetivo.get( objetivoproximo ).getFechainicio(), listaObjetivo.get( objetivoproximo ).getFechafin(), false)){
                     balance = Double.parseDouble( listaObjetivo.get( objetivoproximo ).getCantidad().trim() )-
                             balanceObjetivo( listaObjetivo.get( objetivoproximo ).getFechainicio(), listaObjetivo.get( objetivoproximo ).getFechafin(), false);
-                    balanceMain.setText( "Balance de objetivo actual: 'Puedes gastar " +
-                            formatter.format(balance) + " €'");
+                    balanceMain.setText( "Balance de objetivo actual: Puedes gastar " +
+                            formatter.format(balance) + " €");
                 }else {
                     balance = balanceObjetivo( listaObjetivo.get( objetivoproximo ).getFechainicio(), listaObjetivo.get( objetivoproximo ).getFechafin(), false ) -
                             Double.parseDouble( listaObjetivo.get( objetivoproximo ).getCantidad().trim() );
-                    balanceMain.setText( "Balance de objetivo actual: 'Has sobrepasado tu gasto en " +
-                            formatter.format(balance) + " €'");
+                    balanceMain.setText( "Balance de objetivo actual: Has sobrepasado tu gasto en " +
+                            formatter.format(balance) + " €");
                 }
             }
         }else {

@@ -1,33 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color50">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:id="@+id/id_spinner_cuentas_all"
-            android:layout_weight="1"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="10dp">
-        </Spinner>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:id="@+id/id_spinner_cuentas_seleccion"
-            android:layout_weight="1"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="10dp">
-        </Spinner>
-    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,17 +15,45 @@
         android:background="@color/color300"
         android:gravity="bottom"
         android:layout_gravity="bottom"
-        android:paddingLeft="15dp"
+        android:paddingLeft="10dp"
         android:textColor="#0a0a0a"
-        android:textSize="14sp"></TextView>
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:background="@android:color/black"/>
+        android:textSize="16sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/color300">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:id="@+id/id_spinner_cuentas_all"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp">
+        </Spinner>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:id="@+id/id_spinner_cuentas_seleccion"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+        </Spinner>
+
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/id_list_gastos_ingresos">
+        android:id="@+id/id_list_gastos_ingresos"
+        android:textSize="16sp">
     </ListView>
+
 </LinearLayout>

@@ -63,7 +63,7 @@ public class AddDeuda extends AppCompatActivity {
         date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
         etFechaDeuda.setText(date_n);
         //Asignación al formato de decimales
-        formatter = new DecimalFormat("#,###.##");
+        formatter = new DecimalFormat("####.##");
 
         //Escuchador para modificar la fecha clickando en la fecha
         etFechaDeuda.setOnClickListener(new View.OnClickListener() {

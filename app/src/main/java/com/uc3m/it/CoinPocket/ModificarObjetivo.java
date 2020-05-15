@@ -71,7 +71,7 @@ public class ModificarObjetivo extends AppCompatActivity {
         conn = new ConexionSQLiteHelperObjetivos(getApplicationContext(),
                 "bd_objetivos", null, 1);
         //Asignación al formato de decimales
-        formatter = new DecimalFormat("#,###.##");
+        formatter = new DecimalFormat("####.##");
 
         //La primera acción es consultar el objetivo en cuestión para ver sus parámetros
         consultarObjetivo();

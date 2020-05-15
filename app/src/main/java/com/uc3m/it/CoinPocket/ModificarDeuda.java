@@ -65,7 +65,7 @@ public class ModificarDeuda extends AppCompatActivity {
         deberpagar = (TextView) findViewById( R.id.id_pagar_deber_modificar_deuda );
         //Iniciación de BD de Deudas
         conn = new ConexionSQLiteHelperDeudas(getApplicationContext(), "bd_deudas", null, 1);
-        formatter = new DecimalFormat("#,###.##");
+        formatter = new DecimalFormat("####.##");
 
         //La primera acción es consultar la deuda en cuestión para ver sus parámetros
         consultarDeuda();

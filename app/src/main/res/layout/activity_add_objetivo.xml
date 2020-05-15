@@ -29,7 +29,7 @@
             android:paddingLeft="10dp"
             android:text="Cantidad objetivo"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <EditText
@@ -42,7 +42,7 @@
             android:gravity="top|left"
             android:inputType="numberDecimal"
             android:paddingLeft="10dp"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </EditText>
 
         <TextView
@@ -55,7 +55,7 @@
             android:paddingLeft="10dp"
             android:text="Fecha incio"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <TextView
@@ -71,7 +71,7 @@
             android:paddingLeft="10dp"
             android:text=""
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <TextView
@@ -84,7 +84,7 @@
             android:paddingLeft="10dp"
             android:text="Fecha final"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <TextView
@@ -100,7 +100,7 @@
             android:paddingLeft="10dp"
             android:text=""
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <TextView
@@ -112,7 +112,7 @@
             android:paddingLeft="10dp"
             android:text="Motivo o fin"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <EditText
@@ -127,7 +127,7 @@
             android:inputType="textMultiLine"
             android:maxLength="140"
             android:paddingLeft="10dp"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </EditText>
 
         <RadioGroup

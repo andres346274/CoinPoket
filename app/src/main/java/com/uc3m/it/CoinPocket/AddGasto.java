@@ -176,7 +176,7 @@ public class AddGasto extends AppCompatActivity {
         try {
             Float cantidadInFloat = Float.parseFloat(cantidad);
             Float multiplicacion = cantidadInFloat / ratio.getValue();
-            DecimalFormat formatter = new DecimalFormat("#,###.##");
+            DecimalFormat formatter = new DecimalFormat("####.##");
             cantidad = formatter.format(multiplicacion);
 
         } catch (Exception e) {

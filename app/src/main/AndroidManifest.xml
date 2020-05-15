@@ -42,7 +42,7 @@
 
             <activity
                 android:name="com.uc3m.it.CoinPocket.ListaGastosIngresos"
-                android:label="CoinPocket | Modificar gasto"
+                android:label="CoinPocket | Movimientos"
                 android:parentActivityName="com.uc3m.it.CoinPocket.MainActivity">
             </activity>
 

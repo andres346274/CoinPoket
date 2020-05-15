@@ -23,7 +23,7 @@
             android:paddingLeft="10dp"
             android:text="Objetivo"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <LinearLayout
@@ -39,7 +39,7 @@
                 android:paddingLeft="10dp"
                 android:gravity="center"
                 android:inputType="numberDecimal"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textColor="@android:color/black">
             </TextView>
 
@@ -52,7 +52,7 @@
                 android:gravity="top|left"
                 android:inputType="numberDecimal"
                 android:hint="Cantidad del objetivo."
-                android:textSize="14sp">
+                android:textSize="16sp">
             </EditText>
 
         </LinearLayout>
@@ -67,7 +67,7 @@
             android:paddingLeft="10dp"
             android:text="Fecha de inicio"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <TextView
@@ -78,7 +78,7 @@
             android:gravity="top|left"
             android:inputType="numberDecimal"
             android:hint="Fecha desconocida (pulsar para añadir)."
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="@android:color/black">
         </TextView>
 
@@ -91,7 +91,7 @@
             android:paddingLeft="10dp"
             android:text="Fecha final"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <TextView
@@ -103,7 +103,7 @@
             android:gravity="top|left"
             android:inputType="numberDecimal"
             android:hint="Fecha desconocida (pulsar para añadir)."
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="@android:color/black">
         </TextView>
 
@@ -116,7 +116,7 @@
             android:paddingLeft="10dp"
             android:text="Motivo"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <EditText
@@ -126,7 +126,7 @@
             android:paddingLeft="10dp"
             android:gravity="top|left"
             android:hint="No se ha indicado motivo (pulsa para añadir)."
-            android:textSize="14sp">
+            android:textSize="16sp">
         </EditText>
 
     </LinearLayout>
@@ -144,7 +144,7 @@
             android:background="@drawable/button_simple_config"
             android:textColor="@color/color50"
             android:text="Modificar"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </Button>
 
         <Button
@@ -155,7 +155,7 @@
             android:background="@drawable/button_simple_config"
             android:textColor="@color/color50"
             android:text="Eliminar"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </Button>
 
     </LinearLayout>

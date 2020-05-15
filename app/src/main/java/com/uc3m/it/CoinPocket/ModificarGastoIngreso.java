@@ -74,7 +74,7 @@ public class ModificarGastoIngreso extends AppCompatActivity {
         conn = new ConexionSQLiteHelper(getApplicationContext(),
                 "bd_gastos_ingresos", null, 1);
         //Asignación al formato de decimales
-        formatter = new DecimalFormat("#,###.##");
+        formatter = new DecimalFormat("####.##");
 
         //La primera acción es consultar el gasto o ingreso en cuestión para ver sus parámetros
         consultarGastoIngreso();

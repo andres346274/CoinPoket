@@ -60,12 +60,12 @@ public class MyAdapterGastosIngresos extends ArrayAdapter<String> {
 
             //Asignación de los componentes que usamos en la activity
             convertView = mInflater.inflate( R.layout.listview_item_ingreso_gasto, parent, false);
-            mViewHolder.mEmoji = (ImageView) convertView.findViewById( R.id.imageView);
-            mViewHolder.mFecha = (TextView) convertView.findViewById( R.id.textView_fecha_ingreso_gasto);
-            mViewHolder.mCantidad = (TextView) convertView.findViewById( R.id.textView_catidad_ingreso_gasto);
-            mViewHolder.mConcepto = (TextView) convertView.findViewById( R.id.textView_concepto_ingreso_gasto);
-            mViewHolder.mLocalizacion = (TextView) convertView.findViewById( R.id.textView_localización_ingreso_gasto);
-            mViewHolder.mgastoIngreso = (TextView) convertView.findViewById( R.id.textView_ingreso_gasto );
+            mViewHolder.mEmoji = (ImageView) convertView.findViewById( R.id.id_imageView);
+            mViewHolder.mFecha = (TextView) convertView.findViewById( R.id.id_textView_fecha_ingreso_gasto);
+            mViewHolder.mCantidad = (TextView) convertView.findViewById( R.id.id_textView_catidad_ingreso_gasto);
+            mViewHolder.mConcepto = (TextView) convertView.findViewById( R.id.id_textView_concepto_ingreso_gasto);
+            mViewHolder.mLocalizacion = (TextView) convertView.findViewById( R.id.id_textView_localización_ingreso_gasto);
+            mViewHolder.mgastoIngreso = (TextView) convertView.findViewById( R.id.id_textView_ingreso_gasto);
             convertView.setTag(mViewHolder);
         } else {
             mViewHolder = (ViewHolder) convertView.getTag();

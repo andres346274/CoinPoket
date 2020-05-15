@@ -71,7 +71,7 @@ public class AddObjetivo extends AppCompatActivity {
         radioMaxGasto = (RadioButton) findViewById( R.id.radio_objetivo_gastomax);
 
         //Asignación al formato de decimales
-        formatter = new DecimalFormat("#,###.##");
+        formatter = new DecimalFormat("####.##");
 
         //Asignación inicial de fecha actual en las componentes correspondientes
         date_n = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());

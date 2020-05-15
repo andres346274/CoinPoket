@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/color50">
 
     <TextView
         android:id="@+id/textView_fecha_objetivo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/color100"
+        android:textColor="#000000"
+        android:textSize="16sp"
         android:text="TextView"
         android:gravity="center"
-        android:background="@color/color100"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Title">
+    </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,60 +29,51 @@
 
         <ImageView
             android:id="@+id/imageView_objetivo"
-            android:layout_width="114dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:padding="5dp"
-            app:srcCompat="@drawable/emoji_gasto" />
+            app:srcCompat="@drawable/emoji_gasto">
+        </ImageView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-                <TextView
-                    android:id="@+id/textView_ahorro_gasto_original"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView"
-                    android:gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
+            <TextView
+                android:id="@+id/textView_ahorro_gasto_original"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:gravity="left"
+                android:textSize="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title">
+            </TextView>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/black"/>
+            <TextView
+                android:id="@+id/textView_ahorro_gasto_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:gravity="left"
+                android:textSize="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" >
+            </TextView>
 
-                <TextView
-                    android:id="@+id/textView_ahorro_gasto_balance"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView"
-                    android:gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-
-
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/black"/>
             <TextView
                 android:id="@+id/textView_motivo_objetivo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Motivo no especificado"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                android:hint="Motivo no especificado"
+                android:gravity="left"
+                android:textSize="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title">
+            </TextView>
+
         </LinearLayout>
 
     </LinearLayout>
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black"/>
-
 
 </LinearLayout>

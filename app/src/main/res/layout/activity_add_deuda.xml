@@ -29,7 +29,7 @@
             android:paddingLeft="10dp"
             android:text="Nombre"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <EditText
@@ -43,7 +43,7 @@
             android:ems="1"
             android:maxLength="50"
             android:paddingLeft="10dp"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </EditText>
 
         <TextView
@@ -55,7 +55,7 @@
             android:paddingLeft="10dp"
             android:text="Importe de la deuda"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <EditText
@@ -68,7 +68,7 @@
             android:gravity="top|left"
             android:inputType="numberDecimal"
             android:paddingLeft="10dp"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </EditText>
 
         <TextView
@@ -81,7 +81,7 @@
             android:paddingLeft="10dp"
             android:text="Fecha"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <EditText
@@ -97,7 +97,7 @@
             android:paddingLeft="10dp"
             android:text=""
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </EditText>
 
         <TextView
@@ -109,7 +109,7 @@
             android:paddingLeft="10dp"
             android:text="Concepto"
             android:textColor="#0a0a0a"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </TextView>
 
         <EditText
@@ -124,7 +124,7 @@
             android:inputType="textMultiLine"
             android:maxLength="140"
             android:paddingLeft="10dp"
-            android:textSize="14sp">
+            android:textSize="16sp">
         </EditText>
 
         <RadioGroup
