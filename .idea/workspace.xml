@@ -12,46 +12,187 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d9b06fb-5b19-4dd5-8428-cddf598157a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/git_CoinPocket-CoinPoket.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_1_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_1_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_collections_28_0_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_28_0_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_26_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_26_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_16_0_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_16_0_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_maps_16_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_16_0_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_7_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_8_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_13_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_3_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_3_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/render.experimental.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entrega_final-CoinPoket.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddDeuda.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddDeuda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddGasto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddGasto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddIngreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddIngreso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddObjetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/AddObjetivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarDeuda.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarDeuda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarGastoIngreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarGastoIngreso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarObjetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/ModificarObjetivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterGastosIngresos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket/MyAdapterGastosIngresos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_deuda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_deuda.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_gasto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_gasto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_ingreso.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_ingreso.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_objetivo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_objetivo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_deudas.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_deudas.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_gastos_ingresos.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_gastos_ingresos.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_deuda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_deuda.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_eliminar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_eliminar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_objetivo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_modificar_objetivo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_saldar_deuda.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_deuda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_deuda.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_ingreso_gasto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_ingreso_gasto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_objetivo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_item_objetivo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Andres.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/CoinPoket-Andres.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/CoinPoket-Integrado_12_Mayo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/CoinPoket-Integrado_12_Mayo-app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/ic_launcher-playstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/AddDeuda.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/AddGasto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/AddIngreso.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/AddObjetivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelperDeudas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ConexionSQLiteHelperObjetivos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/Deudas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/DeudasBD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/GastosIngresosBD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ListaDeudas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ListaGastosIngresos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/MapsActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ModificarDeuda.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ModificarEliminar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ModificarObjetivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/Objetivos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/ObjetivosBD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/SaldarDeuda.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/SplashActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/adapter/SpinnerAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/data/RatioSingleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/data/RetrofitInstance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/data/Services.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/response/Ratio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/response/RatioResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/java/com/uc3m/it/CoinPocket/utilidades/utilidades.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/drawable/button_simple_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/drawable/button_special_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/drawable/cell_bacground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/drawable/main_menu.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/drawable/round_green_button.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/drawable/shape_border.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/font/ubuntu_light.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_add_deuda.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_add_gasto.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_add_ingreso.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_add_objetivo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_deudas.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_lista_deudas.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_lista_gastos_ingresos.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_maps.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_modificar_deuda.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_modificar_eliminar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_modificar_objetivo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_objetivos.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_saldar_deuda.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/layout/activity_splash.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/menu/menu_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/values/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/values/font_certs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/values/ids.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/values/preloaded_fonts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/local.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoinPoket-Integrado_12_Mayo/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/CoinPoket-app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/git_CoinPocket-CoinPoket.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +209,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -93,9 +239,11 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5_API_23" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-15T01:10:15.161Z" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/com/uc3m/it/CoinPocket" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Descargas/moviles/NotepadDBAppMov" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -361,21 +509,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
